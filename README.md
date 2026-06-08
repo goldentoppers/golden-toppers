@@ -37,6 +37,6 @@ npm run build
 
 ## 📜 License
 
-Copyright © 2026 Maxin. All rights reserved.
+Copyright © 2026 Maxine Gerhard. All rights reserved.
 
 All source code contained within this private repository are the exclusive intellectual property of the author. Unauthorized duplication, modification, rebranding, or distribution of this platform or its core calculation logic is strictly prohibited. Built with care for Sunny & Charlie.
