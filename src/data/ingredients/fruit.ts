@@ -1,0 +1,406 @@
+import type { Ingredient } from "../../types/nutrition";
+
+export const FRUIT_INGREDIENTS: Ingredient[] = [
+  // --- GOLDEN TOPPERS (Antioxidant Focus) ---
+  {
+    id: "blueberries",
+    name: "Blueberries",
+    kcalPerGram: 0.57,
+    category: "fruit",
+    role: "topper",
+    icon: "blueberries",
+    benefits: ["Cognitive Function", "Antioxidants"],
+    vitamins: ["Vitamin C", "K", "Fiber"],
+    maxGramsCap: 30.0, // Healthy handful ceiling (~2 tbsp max)
+    preparation: "Wash & Serve Whole or slightly mashed",
+  },
+  {
+    id: "apple",
+    name: "Apple",
+    kcalPerGram: 0.52,
+    category: "fruit",
+    role: "topper",
+    icon: "apple",
+    benefits: ["Dental Health", "Fresh Breath"],
+    vitamins: ["Vitamin A", "C", "Fiber"],
+    maxGramsCap: 25.0, // Limits excess sugars (~2 small slices fine-sliced)
+    preparation: "Core, Seed & Cube Fine",
+    preparationAlert:
+      "MUST remove all seeds and the core. Seeds contain cyanide which is toxic to dogs.",
+  },
+  {
+    id: "strawberries",
+    name: "Strawberries",
+    kcalPerGram: 0.33,
+    category: "fruit",
+    role: "topper",
+    icon: "strawberries",
+    benefits: ["Teeth Whitening Enzyme"],
+    vitamins: ["Vitamin C", "Folate", "Potassium"],
+    maxGramsCap: 30.0, // Safe antioxidant ceiling
+    preparation: "Hull & Finely Slice",
+  },
+  {
+    id: "raspberry",
+    name: "Raspberries",
+    kcalPerGram: 0.52,
+    category: "fruit",
+    role: "topper",
+    icon: "raspberry",
+    benefits: ["Anti-Inflammatory"],
+    vitamins: ["Manganese", "Fiber"],
+    maxGramsCap: 20.0, // Controlled portioning for delicate berries
+    preparation: "Rinse & Crush Lightly",
+  },
+
+  // --- HYDRATING & ENERGY ---
+  {
+    id: "banana",
+    name: "Banana",
+    kcalPerGram: 0.89,
+    category: "fruit",
+    role: "topper",
+    icon: "banana",
+    benefits: ["Muscle Function", "Energy"],
+    vitamins: ["Potassium", "B6", "C"],
+    maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Restricts high starch load to ~1-2 slices max
+    preparation: "Peel & Mash into Mix",
+    preparationAlert: "High in sugar. Feed in moderation to prevent weight gain.",
+  },
+  {
+    id: "watermelon",
+    name: "Watermelon",
+    kcalPerGram: 0.3,
+    category: "fruit",
+    role: "topper",
+    icon: "watermelon",
+    benefits: ["Hydration Support"],
+    vitamins: ["Lycopene", "Vitamin A", "C"],
+    maxGramsCap: 40.0, // High-hydration ceiling allowance
+    preparation: "Slice Core & De-seed",
+    preparationAlert: "Remove all seeds and the rind to prevent intestinal blockages.",
+  },
+
+  // --- EXOTIC & MISC (All moved to Toppers) ---
+  {
+    id: "mango",
+    name: "Mango",
+    kcalPerGram: 0.6,
+    category: "fruit",
+    role: "topper",
+    icon: "mango",
+    maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Prevents rapid blood glucose spikes
+    preparation: "Skin, Pit & Dice Flesh",
+    preparationAlert: "Remove pit and skin.",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "pear",
+    name: "Pear",
+    kcalPerGram: 0.57,
+    category: "fruit",
+    role: "topper",
+    icon: "pear",
+    maxGramsCap: 25.0, // Safe fibrous flesh cutoff
+    preparation: "Core, Seed & Finely Slice",
+    preparationAlert: "Remove all seeds.",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "dragonfruit",
+    name: "Dragonfruit",
+    kcalPerGram: 0.6,
+    category: "fruit",
+    role: "topper",
+    icon: "dragonfruit",
+    maxGramsCap: 25.0, // Controlled exotic flesh ceiling
+    preparation: "Peel Pink Skin & Cube",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "kiwi",
+    name: "Kiwi",
+    kcalPerGram: 0.61,
+    category: "fruit",
+    role: "topper",
+    icon: "kiwi",
+    maxGramsCap: 15.0, // Restricts dense actinidain enzyme exposure
+    preparation: "Peel Fuzzy Skin & Dice",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "pineapple",
+    name: "Pineapple",
+    kcalPerGram: 0.5,
+    category: "fruit",
+    role: "topper",
+    icon: "pineapple",
+    maxGramsCap: 15.0, // Clamps heavy bromelain enzyme volumes
+    preparation: "Core & Chop Flesh Fine",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "papaya",
+    name: "Papaya",
+    kcalPerGram: 0.43,
+    role: "topper",
+    category: "fruit",
+    icon: "papaya",
+    maxGramsCap: 20.0, // Clean papain enzyme limit
+    preparation: "De-seed, Peel & Mash",
+    vitamins: [],
+    benefits: [],
+  },
+
+  // --- ⚠️ TOXIC & PROHIBITED (Filtered out of Pantry, kept for Explore) ---
+  {
+    id: "grapes",
+    name: "Grapes / Raisins",
+    kcalPerGram: 0,
+    category: "fruit",
+    role: "topper",
+    icon: "grapes",
+    isToxic: true,
+    maxGramsCap: 0, // Blocked entirely from active calculations
+    preparation: "DO NOT SERVE",
+    preparationAlert: "LETHAL TOXICITY. Can cause acute, sudden kidney failure.",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "avocado",
+    name: "Avocado",
+    kcalPerGram: 0,
+    category: "fruit",
+    role: "topper",
+    icon: "avocado",
+    isHighRisk: true,
+    maxGramsCap: 0, // Blocked entirely from active calculations
+    preparation: "AVOID ENTIRELY",
+    preparationAlert: "Pit and skin are lethal choking risks.",
+    vitamins: [],
+    benefits: [],
+  },
+  {
+    id: "lemon",
+    name: "Lemon / Lime",
+    kcalPerGram: 0,
+    category: "fruit",
+    role: "topper",
+    icon: "lemon",
+    isHighRisk: true,
+    maxGramsCap: 0, // Blocked entirely from active calculations
+    preparation: "Do Not Serve Citric Acid",
+    vitamins: [],
+    benefits: [],
+  },
+
+  // ==========================================
+  // --- 🌈 RAINBOW FRUITS (Fresh Toppers) ---
+  // ==========================================
+  {
+    id: "apricot",
+    name: "Apricot",
+    kcalPerGram: 0.48,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "apricot",
+    benefits: ["Cellular Support"],
+    vitamins: ["Beta-Carotene", "Potassium"],
+    maxGramsCap: 20.0, // Controlled stone fruit flesh cutoff
+    preparation: "Skin, Pit & Dice Flesh",
+    preparationAlert:
+      "CRITICAL: Stem, leaves, and pit contain cyanide and are lethal. Serve flesh only.",
+  },
+  {
+    id: "blackberry",
+    name: "Blackberries",
+    kcalPerGram: 0.43,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "blackberry",
+    benefits: ["Brain Health Support"],
+    vitamins: ["Vitamin C", "K", "Manganese"],
+    maxGramsCap: 30.0, // Standard berry cap mapping
+    preparation: "Wash & Serve Whole",
+  },
+  // {
+  //   id: "cherries",
+  //   name: "Cherries",
+  //   kcalPerGram: 0.5,
+  //   role: "vegetable",
+  //   density: "rainbow",
+  //   category: "fruit",
+  //   icon: "cherries",
+  //   benefits: ["Joint Support"],
+  //   vitamins: ["Melatonin", "Antioxidants"],
+  //   maxGramsCap: 15.0, // Restricts localized pit exposure hazards
+  //   preparation: "Pit, Stem & Chop Flesh",
+  //   preparationAlert:
+  //     "CRITICAL: Cherry pits, stems, and leaves contain cyanide and can cause toxic blocks.",
+  // },
+  {
+    id: "coconut",
+    name: "Coconut Flesh",
+    kcalPerGram: 3.54,
+    role: "carbohydrate",
+    density: "rainbow",
+    category: "fruit",
+    icon: "coconut",
+    benefits: ["Immune Booster", "Coat Shine"],
+    vitamins: ["Lauric Acid", "Manganese"],
+    maxGramsCap: 10.0, // ⚠️ CRITICAL HIGH-FAT CEILING: Protects pancreatic tissue health
+    preparation: "Remove Shell & Shred Fine",
+    preparationAlert: "High fat content. Serve in very small topper portions.",
+  },
+  {
+    id: "currant",
+    name: "Currants (Fresh)",
+    kcalPerGram: 0.56,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "currant",
+    isHighRisk: true,
+    maxGramsCap: 15.0, // Strict precautionary micro-dose clamp
+    preparation: "Verify Variety - Serve Fresh Only",
+    vitamins: [],
+    benefits: [],
+    preparationAlert:
+      "WARNING: Ensure these are true fresh berries (Ribes). Never feed dried black Corinth currants, which are toxic grapes.",
+  },
+  {
+    id: "fig",
+    name: "Fig",
+    kcalPerGram: 0.74,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "fig",
+    benefits: ["Digestive Support"],
+    vitamins: ["Fiber", "Calcium", "Potassium"],
+    maxGramsCap: 15.0, // ⚠️ CRITICAL CLINICAL CEILING: Prevents acute digestive diarrhea flare-ups
+    preparation: "Chop Fine or Mash Raw",
+    preparationAlert: "High fiber and sugar. Feed in moderation; excessive amounts cause diarrhea.",
+  },
+  {
+    id: "grapefruit",
+    name: "Grapefruit",
+    kcalPerGram: 0.32,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "grapefruit",
+    vitamins: [],
+    benefits: [],
+    isHighRisk: true,
+    maxGramsCap: 0, // Set to zero to isolate from active calculations
+    preparation: "Flesh Only - Serve Sparingly",
+    preparationAlert:
+      "Highly acidic. Rind and seeds are toxic. Can cause severe vomiting or gastric distress.",
+  },
+  {
+    id: "melon",
+    name: "Cantaloupe / Melon",
+    kcalPerGram: 0.34,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "melon",
+    benefits: ["Vision Support", "Hydration"],
+    vitamins: ["Vitamin A", "C", "B6"],
+    maxGramsCap: 35.0, // Generous clean melon hydration weight
+    preparation: "De-seed, Rind Off & Cube",
+  },
+  {
+    id: "orange",
+    name: "Orange",
+    kcalPerGram: 0.47,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "orange",
+    benefits: ["Immune Flush"],
+    vitamins: ["Vitamin C", "Potassium"],
+    maxGramsCap: 20.0, // Clamps dense citric acid load to prevent gastric pain
+    preparation: "Peel, Seed & Slice Flesh",
+    preparationAlert: "High sugar and citric acid. Remove all seeds and white pith.",
+  },
+  {
+    id: "peach",
+    name: "Peach",
+    kcalPerGram: 0.39,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "peach",
+    benefits: ["Skin Barrier Health"],
+    vitamins: ["Vitamin A", "C"],
+    maxGramsCap: 25.0, // Safe stone fruit flesh limit
+    preparation: "Skin, Pit & Dice Flesh",
+    preparationAlert: "CRITICAL: The pit contains cyanide and is a fatal choking/blockage hazard.",
+  },
+  {
+    id: "goji-berries",
+    name: "Goji Berries",
+    kcalPerGram: 3.49,
+    role: "topper",
+    density: "rainbow",
+    category: "fruit", // 👈 Clean, honest database classification!
+    icon: "goji-berry",
+    benefits: ["Eye Longevity", "Immune Defense"],
+    vitamins: ["Zeaxanthin", "Vitamin C", "Polysaccharides"],
+    maxGramsCap: 5.0, // Best in small superfood doses
+    preparation: "Soak in Warm Water & Mash",
+  },
+  {
+    id: "plum",
+    name: "Plum",
+    kcalPerGram: 0.46,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "plum",
+    benefits: ["Cellular Support"],
+    vitamins: ["Vitamin C", "K"],
+    maxGramsCap: 20.0, // Safe stone fruit flesh limit
+    preparation: "Skin, Pit & Cube Flesh",
+    preparationAlert: "CRITICAL: Pit contains toxic cyanide and must be discarded completely.",
+  },
+  {
+    id: "pomegranate",
+    name: "Pomegranate",
+    kcalPerGram: 0.83,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "pomegranate",
+    isHighRisk: true,
+    benefits: ["Polyphenol Power"],
+    vitamins: ["Antioxidants", "Fiber"],
+    maxGramsCap: 10.0, // ⚠️ CRITICAL RESTRAINT CEILING: Hard-to-digest aril limit to prevent acute vomiting
+    preparation: "Mash Arils Sparingly",
+    preparationAlert:
+      "Hard to digest. Seeds can cause severe stomach aches and vomiting if fed in volume.",
+  },
+  {
+    id: "tangerine",
+    name: "Tangerine",
+    kcalPerGram: 0.53,
+    role: "vegetable",
+    density: "rainbow",
+    category: "fruit",
+    icon: "tangerine",
+    benefits: ["Antioxidant Flush"],
+    vitamins: ["Vitamin C"],
+    maxGramsCap: 20.0, // Clamps dense citric acid levels identically to Orange
+    preparation: "Peel, Seed & Segment",
+  },
+];

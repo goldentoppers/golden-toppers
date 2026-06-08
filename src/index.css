@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* 1. Define our Design System */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --font-serif: "Fraunces", ui-serif, Georgia;
+
+  /* Custom Golden Colors for Sunny & Charlie */
+  --color-golden-50: #fffbeb;
+  --color-golden-100: #fef3c7;
+  --color-golden-400: #fbbf24;
+  --color-golden-900: #78350f;
+}
+
+/* 2. Global Resets */
+@layer base {
+  body {
+    @apply bg-stone-50 text-stone-900 antialiased;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Ensure our custom fonts apply to everything */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
+  body,
+  p,
+  span,
+  input,
+  select,
+  button {
+    @apply font-sans;
+  }
+}
+
+/* 3. Utility for the Custom SVGs */
+/* This ensures icons take on the color of their parent text */
+svg {
+  fill: currentColor;
+}
+
+/* 4. Hide scrollbars but keep functionality for our horizontal rows */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

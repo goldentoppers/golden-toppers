@@ -1,0 +1,133 @@
+import type { Ingredient } from "../../types/nutrition";
+
+export const SEAFOOD_INGREDIENTS: Ingredient[] = [
+  // --- PRIORITY FISH (Main Protein - 40% Bucket) ---
+  {
+    id: "salmon-fillet",
+    name: "Salmon Fillets",
+    kcalPerGram: 2.08,
+    role: "protein",
+    category: "seafood",
+    icon: "salmon-fillets",
+    benefits: ["Coat Shine", "Brain Health"],
+    vitamins: ["Omega-3", "D"],
+    preparation: "Bake or Steam (No Oil)",
+    preparationAlert: "DANGEROUS RAW. Must be fully cooked to kill parasites lethal to dogs.",
+  },
+  {
+    id: "sardine",
+    name: "Sardines",
+    kcalPerGram: 2.08,
+    role: "protein",
+    category: "seafood",
+    icon: "sardine",
+    benefits: ["Heart Health", "Skin Support"],
+    vitamins: ["B12", "Omega-3", "Calcium"],
+    preparation: "Serve Canned in Water",
+  },
+  {
+    id: "fish-fillet",
+    name: "White Fish Fillet",
+    kcalPerGram: 0.95,
+    role: "protein",
+    category: "seafood",
+    icon: "fish-fillet",
+    benefits: ["Lean Growth", "Easily Digestible"],
+    vitamins: ["Iodine", "B12"],
+    preparation: "Poach & Check for Bones",
+  },
+  // {
+  //   id: "sole",
+  //   name: "Sole",
+  //   kcalPerGram: 0.91,
+  //   role: "protein",
+  //   category: "seafood",
+  //   icon: "sole",
+  //   isNovelProtein: true,
+  //   benefits: ["Gentle Digestion"],
+  //   vitamins: ["Selenium"],
+  //   preparation: "Lightly Steam & Flake",
+  // },
+
+  // --- SHELLFISH & CEPHALOPODS (Topper - 5% Bucket) ---
+  {
+    id: "mussel",
+    name: "Mussels",
+    kcalPerGram: 1.72,
+    role: "topper",
+    category: "seafood",
+    icon: "mussels",
+    benefits: ["Natural Glucosamine", "Joint Mobility"],
+    vitamins: ["Manganese", "Zinc"],
+    maxGramsCap: 25.0, // Safe micro-mineral joint ceiling (~2-3 mussels max)
+    preparation: "Steam Plain & De-shell",
+  },
+  {
+    id: "clam",
+    name: "Clams",
+    kcalPerGram: 1.48,
+    role: "topper",
+    category: "seafood",
+    icon: "clams",
+    benefits: ["Energy Metabolism"],
+    vitamins: ["Iron", "B12"],
+    maxGramsCap: 20.0, // Controlled trace element portioning
+    preparation: "Fully Cook & Chop Fine",
+  },
+  {
+    id: "shrimp",
+    name: "Shrimp",
+    kcalPerGram: 0.99,
+    role: "topper",
+    category: "seafood",
+    icon: "shrimp",
+    benefits: ["Antioxidant Boost"],
+    vitamins: ["Selenium", "Copper"],
+    maxGramsCap: 30.0, // Limits digestive shellfish burdens (~2 medium shrimp max)
+    preparation: "De-shell, Vein & Boil",
+    preparationAlert: "Remove shells, tails, and veins. Cook fully to avoid food poisoning.",
+  },
+
+  // --- ⚠️ TOXIC / HIGH-RISK (Maintained for Explore Page) ---
+  {
+    id: "tuna",
+    name: "Tuna",
+    kcalPerGram: 1.32,
+    role: "protein",
+    category: "seafood",
+    icon: "tuna",
+    isHighRisk: true,
+    vitamins: [],
+    benefits: [],
+    maxGramsCap: 35.0, // ⚠️ CRITICAL MERCURY CEILING: Heavily restricts larger predatory fish serving mass
+    preparation: "Serve Sparingly (Cooked)",
+    preparationAlert: "Feed sparingly. Moderate mercury risk for larger fish species.",
+  },
+  {
+    id: "puffer-fish",
+    name: "Puffer Fish",
+    kcalPerGram: 0,
+    role: "protein",
+    category: "seafood",
+    icon: "puffer-fish",
+    isToxic: true,
+    vitamins: [],
+    benefits: [],
+    maxGramsCap: 0, // Blocked entirely from active calculations
+    preparation: "PROHIBITED FROM DIET",
+    preparationAlert: "LETHAL TOXICITY. Contains tetrodotoxin; strictly prohibited.",
+  },
+  // {
+  //   id: "seaweed",
+  //   name: "Seaweed",
+  //   kcalPerGram: 0.45,
+  //   role: "topper",
+  //   category: "seafood",
+  //   icon: "seaweed",
+  //   benefits: ["Thyroid Support"],
+  //   vitamins: ["Iodine", "Magnesium"],
+  //   maxGramsCap: 2.5, // ⚠️ CRITICAL THYROID CEILING: Strict micro-dose cap to prevent iodine overdose spikes
+  //   preparation: "Dust Micro-portions Only",
+  //   preparationAlert: "Extremely high Iodine. Strictly limit to topper portions.",
+  // },
+];
