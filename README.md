@@ -1,75 +1,42 @@
-# React + TypeScript + Vite
+# 🐕 Golden Toppers | Wholefood Bowl Enrichment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A premium, tactile countertop calculator designed to safely diversify your Golden Retriever's daily bowl using the veterinary-approved 10% supplemental caloric rule. Live deployment at [goldentoppers.com](https://goldentoppers.com).
 
-Currently, two official plugins are available:
+## 🎨 The Product Philosophy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Formulating a completely home-cooked diet carries high mineral deficiency risks without a veterinary specialist. However, replacing just 10% of standard commercial dry kibble with fresh, living whole foods introduces vital antioxidants, live food hydration, and metabolic phytonutrients without unbalancing their core nutrition.
 
-## React Compiler
+This platform operates as a strict portion guardrail, preventing calorie inflation and keeping mix-ins practical, measurable, and fitted for a digital kitchen scale.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## ✨ Features & Architecture
 
-## Expanding the ESLint configuration
+- ⚖️ **Dynamic Portion Clamping**: Automatically calculates target caloric thresholds based on biometric inputs (Weight & Exercise Tiers).
+- 🌫️ **Artisan "Naked Canvas" Design**: Built with premium book-serif italics, horizontal oval mist vignettes, and custom edge-to-edge watermark illustrations.
+- ⚙️ **Automated Edge CI/CD Pipeline**: Statically optimized with Vite & SVGO, backed by Git hooks, and globally distributed on AWS Amplify.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Local Development Quickstart
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Ensure you have [Node.js](https://nodejs.org) installed locally, then spin up the environment:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# 1. Install project dependencies and specialized vector engines
+npm install
+
+# 2. Fire up the local hot-reloading Vite server
+npm run dev
+
+# 3. Generate the production-optimized compiler distribution bundle
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📜 License
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Copyright © 2026 Maxin. All rights reserved.
+
+All source code contained within this private repository are the exclusive intellectual property of the author. Unauthorized duplication, modification, rebranding, or distribution of this platform or its core calculation logic is strictly prohibited. Built with care for Sunny & Charlie.
