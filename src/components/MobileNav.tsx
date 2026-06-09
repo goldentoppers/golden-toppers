@@ -13,8 +13,8 @@ export const MobileNav: React.FC = () => {
   return (
     <nav
       aria-label="Primary Mobile View Switching"
-      className="animate-fade-in fixed right-4 bottom-4 left-4 z-50 mx-auto flex h-20 max-w-full
-        items-center justify-evenly rounded-3xl border border-white/40 bg-white/70 p-1.5
+      className="animate-fade-in fixed right-0 bottom-0 left-0 z-50 mx-auto flex h-20 max-w-full
+        items-center justify-evenly border border-white/40 bg-white/70 p-1.5
         shadow-[0_8px_24px_rgba(28,25,23,0.1),0_2px_6px_rgba(28,25,23,0.04)] backdrop-blur-xl
         select-none print:hidden"
     >
@@ -32,10 +32,10 @@ export const MobileNav: React.FC = () => {
         }}
         aria-current={currentPath === "/" ? "page" : undefined}
         role="tab"
-        style={{
-          backgroundColor: currentPath === "/" ? activeBackingTint : "transparent",
-          color: currentPath === "/" ? AMBER_700 : "#57534e",
-        }}
+        // style={{
+        //   backgroundColor: currentPath === "/" ? activeBackingTint : "transparent",
+        //   color: currentPath === "/" ? AMBER_700 : "#57534e",
+        // }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
           justify-center overflow-hidden rounded-xl outline-none"
       >
@@ -69,7 +69,7 @@ export const MobileNav: React.FC = () => {
       </button>
 
       {/* 🔘 VERTICAL FINE LINE COMPONENT SEPARATOR */}
-      <div className="pointer-events-none h-6 w-px shrink-0 bg-stone-800/10" aria-hidden="true" />
+      <div className="pointer-events-none h-10 w-px shrink-0 bg-stone-800/20" aria-hidden="true" />
 
       {/* ========================================================= */}
       {/* ⚙️ TAB 2: THE INTERACTIVE ABOUT GUIDANCE ROUTE              */}

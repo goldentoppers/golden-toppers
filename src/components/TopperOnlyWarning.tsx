@@ -2,7 +2,7 @@ import React from "react";
 
 export const TopperOnlyWarning: React.FC = () => (
   <section
-    className="mb-4 rounded-2xl bg-amber-50/50 p-4 shadow-[0_4px_20px_rgba(217,119,6,0.01)]"
+    className="mb-4 rounded-2xl bg-amber-50/50 p-4 shadow-sm"
     role="status"
     aria-live="polite"
   >

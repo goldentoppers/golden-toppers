@@ -174,8 +174,8 @@ export const RecipeBook: React.FC = () => {
                     leading-relaxed font-medium tracking-wide text-stone-800/95 select-text
                     sm:text-[16.5px] md:max-w-155"
                 >
-                  Use our builder to customize a safe 10% fresh food mix-in to enrich your Golden's
-                  daily bowl with whole-food nutrition based on their weight and exercise level.
+                  Customize a safe 10% fresh food mix-in to enrich your Golden Retriever's daily
+                  bowl with whole-food nutrition.
                 </p>
               </div>
               <div className="flex w-full flex-col gap-8 transition-all duration-300 select-none">
@@ -212,7 +212,7 @@ export const RecipeBook: React.FC = () => {
           )}
           <div
             className="mx-auto flex w-full max-w-4xl flex-row justify-between border-t
-              border-stone-800/10 pt-3"
+              border-stone-800/10 pt-8"
           >
             <footer className="flex w-full">
               <div className="xs:flex-row flex w-full flex-col gap-4">

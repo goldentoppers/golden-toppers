@@ -6,6 +6,7 @@ import { EmptyPantrySlots } from "./EmptyPantrySlots";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { CloseButton } from "./common/CloseButton";
+import { TopperOnlyWarning } from "./TopperOnlyWarning";
 
 interface IngredientSlotsProps {
   activeChapter: ChapterConfig;
@@ -24,7 +25,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
   const { formData } = context || { formData: { servingSize: 1 } };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col pb-4">
+    <div className="mx-auto flex w-full max-w-4xl flex-col">
       <div className="w-full text-center select-text">
         <header
           className="mb-6 flex w-full flex-row flex-wrap items-center justify-between gap-y-3
@@ -63,11 +64,10 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                         className="flex flex-col items-end justify-center pr-2 text-center
                           select-text"
                       >
-                        {/* PRIMARY SCALE BADGE (e.g., 20g) */}
                         <span
-                          className="shadow-3xs block rounded-md border border-stone-400/80
-                            bg-stone-50 px-2.5 py-1 text-center font-mono text-sm leading-none
-                            font-black text-stone-950"
+                          className="block rounded-md border border-stone-400/80 bg-stone-50 px-2.5
+                            py-1 text-center font-mono text-sm leading-none font-black
+                            text-stone-950"
                         >
                           {
                             formatSmartWeight({
@@ -80,7 +80,6 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                             }).primary
                           }
 
-                          {/* SECONDARY LBS/OZ ACCENT (e.g., 0.7 oz) */}
                           {formatSmartWeight({
                             grams: item.grams,
                             category: item.category,
@@ -118,7 +117,6 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                           {item.name}
                         </h4>
 
-                        {/* Dynamic dynamic nutrients & benefits tracking block */}
                         <span
                           className="mt-1 block text-[8.5px] font-black tracking-wider
                             text-stone-500 uppercase"
@@ -139,9 +137,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                       </div>
                     </div>
 
-                    {/* RIGHT SEGMENT: MULTI-METRIC BADGES & YOUR CUSTOM CLOSE BUTTON */}
                     <div className="relative z-10 flex shrink-0 items-center gap-6 pr-1">
-                      {/* Semantic close icon component toggle */}
                       <div className="-mt-8 -mr-2">
                         <CloseButton
                           onClick={() => onToggle(item.id)}
@@ -199,6 +195,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
             maxSlots={activeChapter.max}
             activeIngredientsCount={activeSelectedItems?.length}
           />
+          <TopperOnlyWarning />
         </div>
       </ul>
     </div>
