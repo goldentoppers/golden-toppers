@@ -80,7 +80,7 @@ export const AppLayout: React.FC = () => {
       </div>
 
       <div
-        className="pointer-events-none absolute top-0 left-0 z-0 h-72 w-full overflow-hidden
+        className="xs:h-64 pointer-events-none absolute top-0 left-0 z-0 h-72 w-full overflow-hidden
           select-none print:hidden"
       >
         <img

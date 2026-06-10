@@ -24,7 +24,7 @@ export const AppHeader = () => {
               tracking-[0.26em] text-stone-700/95 uppercase
               drop-shadow-[0_1.5px_4px_rgba(255,255,255,0.95)] select-none sm:mt-1.5"
           >
-            Wholefood Bowl Enrichment
+            Whole food Bowl Enrichment
           </span>
         </div>
 

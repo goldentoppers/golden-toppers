@@ -5,7 +5,7 @@ import kitchenHero from "../assets/hero-woman-and-dog-in-kitchen.jpg";
 export const About: React.FC = () => {
   return (
     <section
-      className="mx-auto w-full max-w-4xl px-4 pt-8 pb-16 text-left font-sans select-none"
+      className="mx-auto w-full max-w-4xl px-4 pb-16 text-left font-sans select-none"
       aria-labelledby="about-philosophy-title"
     >
       <header className="mt-8 mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">

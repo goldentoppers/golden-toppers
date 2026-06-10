@@ -161,23 +161,36 @@ export const RecipeBook: React.FC = () => {
         <div className="flex flex-col gap-4">
           {!isReviewOpen && (
             <>
-              <div
-                style={{
-                  background:
-                    "radial-gradient(ellipse closest-side, rgba(245, 242, 235, 0.95) 0%, rgba(245, 242, 235, 0.95) 50%, rgba(245, 242, 235, 0.6) 75%, rgba(245, 242, 235, 0) 100%)",
-                }}
-                className="animate-fade-in mx-auto flex max-w-2xl flex-col items-center
-                  justify-center px-8 pt-6 pb-4 text-center transition-all duration-300"
-              >
-                <p
-                  className="mx-auto mt-2 max-w-140 text-center font-serif text-[15px]
-                    leading-relaxed font-medium tracking-wide text-stone-800/95 select-text
-                    sm:text-[16.5px] md:max-w-155"
+              <header className="relative w-full overflow-hidden bg-cover bg-center">
+                <section
+                  className="relative z-10 flex max-w-3xl flex-col items-start px-6 pb-6 text-left
+                    sm:px-12"
+                  aria-labelledby="hero-main-headline"
                 >
-                  Customize a safe 10% fresh food mix-in to enrich your Golden Retriever's daily
-                  bowl with whole-food nutrition.
-                </p>
-              </div>
+                  <h1
+                    id="hero-main-headline"
+                    className="mb-4 font-serif text-3xl leading-tight font-black tracking-wide
+                      text-stone-900 italic"
+                  >
+                    <div className="text-amber-700">Real, living food.</div>
+                    <div>Tailored for their bowl.</div>
+                  </h1>
+
+                  <div
+                    className="max-w-2xl font-serif text-[14.5px] leading-relaxed font-medium
+                      text-stone-700/95 italic select-text sm:text-[16px]"
+                  >
+                    <p>
+                      Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
+                      kibble with living ingredients introduces vital hydration, raw antioxidants,
+                      and active nutrients. Input their weight and activity level, then browse our
+                      ingredient pantry to craft a safe, custom topping plan tailored perfectly for
+                      your kitchen scale.
+                    </p>
+                  </div>
+                </section>
+              </header>
+
               <div className="flex w-full flex-col gap-8 transition-all duration-300 select-none">
                 <div
                   className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center

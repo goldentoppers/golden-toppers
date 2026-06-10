@@ -90,6 +90,7 @@ import { GroundChicken } from "../assets/art/react-icons/meat/ground-chicken";
 import { LambIcon } from "../assets/art/react-icons/meat/lamb";
 import { EmptyDogBowlIcon } from "../assets/art/react-icons/vegetables/empty-dog-bowl";
 import { FancyChefHatIcon } from "../assets/art/react-icons/fancy-chef-hat";
+import { DogSleepingIcon } from "../assets/art/react-icons/dogs/sleeping";
 
 interface AssetIconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -123,6 +124,14 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
     case "playing-with-tennis-ball":
       return (
         <PlayingWithTennisBallIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "sleeping":
+      return (
+        <DogSleepingIcon
           className={`${className} transition-colors duration-200`}
           style={style}
           {...props}

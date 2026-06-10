@@ -195,8 +195,8 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
             maxSlots={activeChapter.max}
             activeIngredientsCount={activeSelectedItems?.length}
           />
-          <TopperOnlyWarning />
         </div>
+        <TopperOnlyWarning />
       </ul>
     </div>
   );
