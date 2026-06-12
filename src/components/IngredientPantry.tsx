@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
-import type { ChapterConfig } from "./RecipeBook";
 import { IngredientButton } from "./IngredientButton";
+import type { ChapterConfig } from "../data/chapter-config";
 
 interface PantryProps {
   onToggle: (id: string) => void;
@@ -34,39 +34,48 @@ export const IngredientPantry: React.FC<PantryProps> = ({
     return [noneOption, ...alphabetized];
   }, [options, chapterConfig.id]);
 
-  // ****** TODO: IMPLEMENT FILTERING ******* //
-  // const [selectedBenefit, setSelectedBenefit] = useState<string>("");
-  // const [selectedVitamin, setSelectedVitamin] = useState<string>("");
-
-  // const filteredOptions = useMemo(() => {
-  //   return options.filter((item) => {
-  //     const matchesBenefit = !selectedBenefit || item.benefits.includes(selectedBenefit);
-  //     const matchesVitamin = !selectedVitamin || item.vitamins.includes(selectedVitamin);
-  //     return matchesBenefit && matchesVitamin;
-  //   });
-  // }, [options, selectedBenefit, selectedVitamin]);
-
   const categoryIsEmpty = selectedIds.length === 0;
 
   return (
     <div
       id="ingredient-pantry-section"
-      className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center md:px-2"
+      className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center"
     >
-      <div className="w-full text-center select-text">
-        <header
-          className="mb-6 flex w-full flex-row flex-wrap items-center justify-between gap-y-3
-            border-t border-stone-800/10 pt-3"
+      <div
+        className="mx-auto mt-2 mb-6 flex w-full max-w-5xl flex-row items-center justify-start gap-3
+          px-4"
+      >
+        {/* 🖋️ MASTER SECTION HEADING TITLE */}
+        <h3
+          className="shrink-0 text-[11px] leading-none font-black tracking-[0.22em] text-stone-900
+            uppercase"
         >
-          <h2
-            className="mx-auto text-[12px] leading-none font-black tracking-[0.22em] text-stone-900
-              uppercase select-text"
-          >
-            Choose Ingredients
-          </h2>
-        </header>
-      </div>
+          Choose Ingredients
+        </h3>
 
+        <span
+          aria-live="polite"
+          style={{
+            color: selectedIds.length === chapterConfig.max ? chapterConfig.hexColor : undefined,
+          }}
+          className={`shrink-0 text-[10px] leading-none font-bold tracking-wider uppercase
+            transition-colors duration-200
+            ${selectedIds.length === chapterConfig.max ? "font-black opacity-100" : "text-stone-500/90"}`}
+        >
+          <span className="mr-2 font-normal text-stone-800/10" aria-hidden="true">
+            —
+          </span>
+          {selectedIds.length === chapterConfig.max
+            ? `Max reached: ${selectedIds.length}/${chapterConfig.max}`
+            : `Select up to ${chapterConfig.max} (${selectedIds.length} chosen)`}
+        </span>
+
+        {/* 📏 HORIZONTAL DIVIDER RULE EXTENSION LINE */}
+        <div
+          className="pointer-events-none ml-2 h-[1px] flex-1 bg-stone-800/10"
+          aria-hidden="true"
+        />
+      </div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl items-center justify-center gap-6">
           <ul
@@ -97,6 +106,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     isDisabled={isDisabled}
                     onClick={handleItemClick}
                     isNoneItem={isNoneItem}
+                    color={chapterConfig.hexColor}
                   />
                 </li>
               );

@@ -1,7 +1,6 @@
 import React from "react";
 import { AssetIcon } from "./AssetIcon";
 import type { Ingredient } from "../types/nutrition";
-import { AMBER_700 } from "../data/color-scheme";
 import { NoSymbolIcon } from "@heroicons/react/24/solid";
 
 interface IngredientButtonProps {
@@ -19,6 +18,7 @@ interface IngredientButtonProps {
   isDisabled: boolean;
   onClick: () => void;
   isNoneItem: boolean;
+  color: string;
 }
 
 export const IngredientButton: React.FC<IngredientButtonProps> = ({
@@ -27,7 +27,9 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
   isDisabled,
   onClick,
   isNoneItem,
+  color,
 }) => {
+  console.log("color: ", color);
   return (
     <button
       type="button"
@@ -39,8 +41,8 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       }
       style={{
         borderWidth: isSelected ? "2px" : "1px",
-        borderColor: isSelected ? AMBER_700 : "rgba(120, 113, 108, 0.2)",
-        backgroundColor: isSelected ? `${AMBER_700}1A` : "#faf7f2",
+        borderColor: isSelected ? color : "rgba(120, 113, 108, 0.2)",
+        backgroundColor: isSelected ? `${color}1A` : "#faf7f2",
       }}
       className={`relative z-10 flex aspect-square h-40 w-40 flex-col items-center justify-center
         rounded-2xl p-3 text-center shadow-md transition-all duration-200 outline-none select-none
@@ -81,9 +83,8 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
           ) : (
             <AssetIcon
               name={ingredient.icon}
-              className={`pointer-events-none h-16 w-16 transition-all duration-200 ${
-                isSelected ? "text-stone-950 saturate-100" : "text-stone-800/75 saturate-[0.85]"
-              }`}
+              className={`pointer-events-none h-16 w-16 text-stone-950 saturate-100 transition-all
+                duration-200`}
             />
           )}
         </div>
@@ -110,9 +111,9 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       {/* PINNED CHECKMARK BADGE CHIP INDICATOR */}
       {isSelected && (
         <div
+          style={{ backgroundColor: color }}
           className="shadow-3xs animate-fade-in absolute top-2 right-2 flex h-4.5 w-4.5 items-center
-            justify-center rounded-full border-2 border-white bg-amber-600 font-sans text-[8px]
-            font-black text-white"
+            justify-center rounded-full font-sans text-[8px] font-black text-white"
           aria-hidden="true"
         >
           ✓
