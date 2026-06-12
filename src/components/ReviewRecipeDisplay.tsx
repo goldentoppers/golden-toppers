@@ -26,10 +26,10 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
     selectedIds.includes(item.id),
   );
 
-  const hasNoIngredients = activeSelectedItems.length === 0;
+  const hasNoIngredients = selectedIds.length === 0;
 
   return (
-    <div className="animate-fade-in w-full pt-6 text-left select-none md:px-8">
+    <div className="animate-fade-in w-full pt-12 text-left select-none md:px-8 md:pt-32">
       {hasNoIngredients ? (
         <div
           className="animate-fade-in flex w-full flex-col items-center justify-center rounded-3xl

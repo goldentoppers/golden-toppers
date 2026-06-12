@@ -1,11 +1,7 @@
 import React from "react";
 
 export const TopperOnlyWarning: React.FC = () => (
-  <section
-    className="mb-4 rounded-2xl bg-amber-50/50 p-4 shadow-sm"
-    role="status"
-    aria-live="polite"
-  >
+  <section className="rounded-2xl bg-amber-50/50 p-4 shadow-sm" role="status" aria-live="polite">
     <div className="flex items-start gap-3">
       <span
         className="pointer-events-none mt-0.5 text-xs text-amber-600/80 select-none"

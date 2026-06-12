@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { IngredientButton } from "./IngredientButton";
+import { IngredientButton } from "./buttons/IngredientButton";
 import type { ChapterConfig } from "../data/chapter-config";
 
 interface PantryProps {
@@ -37,13 +37,10 @@ export const IngredientPantry: React.FC<PantryProps> = ({
   const categoryIsEmpty = selectedIds.length === 0;
 
   return (
-    <div
-      id="ingredient-pantry-section"
-      className="mx-auto flex w-full max-w-5xl flex-col items-center justify-center"
-    >
+    <div id="ingredient-pantry-section" className="flex w-full flex-col">
       <div
-        className="mx-auto mt-2 mb-6 flex w-full max-w-5xl flex-row items-center justify-start gap-3
-          px-4"
+        className="xxs:flex-row mt-2 mb-6 flex flex-col items-center justify-center gap-3
+          text-center"
       >
         {/* 🖋️ MASTER SECTION HEADING TITLE */}
         <h3
@@ -52,7 +49,10 @@ export const IngredientPantry: React.FC<PantryProps> = ({
         >
           Choose Ingredients
         </h3>
-
+        <div
+          className="xs:block pointer-events-none flex hidden h-[1px] w-4 bg-stone-800/10"
+          aria-hidden="true"
+        />
         <span
           aria-live="polite"
           style={{
@@ -62,9 +62,6 @@ export const IngredientPantry: React.FC<PantryProps> = ({
             transition-colors duration-200
             ${selectedIds.length === chapterConfig.max ? "font-black opacity-100" : "text-stone-500/90"}`}
         >
-          <span className="mr-2 font-normal text-stone-800/10" aria-hidden="true">
-            —
-          </span>
           {selectedIds.length === chapterConfig.max
             ? `Max reached: ${selectedIds.length}/${chapterConfig.max}`
             : `Select up to ${chapterConfig.max} (${selectedIds.length} chosen)`}
@@ -72,15 +69,15 @@ export const IngredientPantry: React.FC<PantryProps> = ({
 
         {/* 📏 HORIZONTAL DIVIDER RULE EXTENSION LINE */}
         <div
-          className="pointer-events-none ml-2 h-[1px] flex-1 bg-stone-800/10"
+          className="xs:block pointer-events-none ml-2 hidden h-[1px] flex-1 bg-stone-800/10"
           aria-hidden="true"
         />
       </div>
       <div className="flex w-full flex-col items-center">
         <div className="flex w-full max-w-5xl items-center justify-center gap-6">
           <ul
-            className="xs:grid-cols-3 xxs:grid-cols-2 m-0 grid list-none grid-cols-1 justify-center
-              gap-4 sm:grid-cols-3 sm:px-4 md:grid-cols-4 md:gap-6 lg:grid-cols-5"
+            className="xs:grid-cols-3 xxs:grid-cols-2 m-0 grid list-none grid-cols-1 gap-4
+              sm:grid-cols-3 sm:px-4 md:grid-cols-4 md:gap-6 lg:grid-cols-5"
             role="list"
             aria-label={`${chapterConfig.label}`}
           >

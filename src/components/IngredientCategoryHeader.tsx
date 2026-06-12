@@ -54,17 +54,17 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
           />
         </div>
 
-        <div className="w-full text-left">
+        <div className="w-full max-w-3xl text-left">
           <p
             className="w-full font-serif text-[13.5px] leading-relaxed font-medium tracking-wide
               text-stone-600/95 italic select-text sm:text-[14.5px]"
           >
             <span
               style={{ color: hexColor }}
-              className="float-left mr-4 flex h-17 w-17 items-center justify-center"
+              className="float-left mr-4 flex items-center justify-center"
               aria-hidden="true"
             >
-              <AssetIcon name={icon} className="" />
+              <AssetIcon name={icon} className="h-17 w-17" />
             </span>
             {description}
           </p>

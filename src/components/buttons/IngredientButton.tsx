@@ -1,6 +1,6 @@
 import React from "react";
-import { AssetIcon } from "./AssetIcon";
-import type { Ingredient } from "../types/nutrition";
+import { AssetIcon } from "../AssetIcon";
+import type { Ingredient } from "../../types/nutrition";
 import { NoSymbolIcon } from "@heroicons/react/24/solid";
 
 interface IngredientButtonProps {
@@ -44,7 +44,7 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
         borderColor: isSelected ? color : "rgba(120, 113, 108, 0.2)",
         backgroundColor: isSelected ? `${color}1A` : "#faf7f2",
       }}
-      className={`relative z-10 flex aspect-square h-40 w-40 flex-col items-center justify-center
+      className={`relative z-10 flex aspect-square h-40 w-40 flex-col items-center justify-between
         rounded-2xl p-3 text-center shadow-md transition-all duration-200 outline-none select-none
         focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 ${
           !isSelected && !isDisabled
@@ -73,13 +73,15 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
             ${isSelected ? "scale-105 opacity-100" : "opacity-85"}`}
         >
           {isNoneItem ? (
-            <NoSymbolIcon
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.85}
-              className={`pointer-events-none h-10 w-10 transition-transform duration-200
-                ${isSelected ? "text-stone-950" : "text-stone-600/80"}`}
-            />
+            <div className="pt-6">
+              <NoSymbolIcon
+                fill="none"
+                stroke={color}
+                strokeWidth={1.85}
+                className={`pointer-events-none h-10 w-10 transition-transform duration-200
+                  ${isSelected ? "text-stone-950" : "text-stone-600/80"}`}
+              />
+            </div>
           ) : (
             <AssetIcon
               name={ingredient.icon}
@@ -96,7 +98,6 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
           {Array.isArray(ingredient.vitamins)
             ? ingredient.vitamins.join(" / ")
             : ingredient.vitamins || "Nutrients"}
-          {/* <span className="mx-1 text-amber-700/80">•</span>{" "} */}
           <span
             className="font-serif text-[10px] font-bold tracking-normal text-emerald-800 normal-case
               italic"

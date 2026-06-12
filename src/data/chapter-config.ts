@@ -80,7 +80,7 @@ export const chapterConfig: ChapterConfig[] = [
     title: "Energy Boosts",
     label: "Boosts",
     target: "10%",
-    hexColor: "#1e40af", // Rich deep cobalt blue
+    hexColor: "#1e3a8a", // Rich deep cobalt blue
     max: 2,
     options: INGREDIENT_LIBRARY.filter(
       (i) =>
