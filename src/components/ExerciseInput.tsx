@@ -15,7 +15,6 @@ export const ExerciseInput = () => {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Set initial width parameters to cleanly fit the capsule layout format
   const [coords, setCoords] = useState({ top: 0, left: 0, width: 240 });
 
   const options: { value: ActivityLevel; label: string }[] = [
@@ -32,7 +31,7 @@ export const ExerciseInput = () => {
       setCoords({
         top: rect.bottom + window.scrollY + 6,
         left: rect.left + window.scrollX,
-        width: rect.width, // Explicitly locks options menu width directly to the capsule bar shape
+        width: rect.width,
       });
     }
   }, [isOpen]);
@@ -74,9 +73,8 @@ export const ExerciseInput = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex w-full max-w-md flex-col items-start font-sans select-none"
+      className="relative flex w-full flex-col items-start font-sans select-none"
     >
-      {/* 1. HIGH-CONTRAST EDITORIAL TRACKED LABEL */}
       <label
         htmlFor="canine-exercise-trigger"
         className="mb-2 text-[10px] font-black tracking-[0.25em] text-stone-800 uppercase
@@ -85,7 +83,6 @@ export const ExerciseInput = () => {
         Exercise Level
       </label>
 
-      {/* 2. CAPSULE DROPDOWN TRIGGER BAR */}
       <button
         id="canine-exercise-trigger"
         ref={triggerRef}
@@ -93,15 +90,13 @@ export const ExerciseInput = () => {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full cursor-pointer items-center justify-between rounded-full border
+        className="flex w-50 cursor-pointer items-center justify-between rounded-full border
           border-white/40 bg-white/40 px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm
           backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-300/80
           hover:bg-white/60 focus-visible:ring-2 focus-visible:ring-stone-400"
       >
-        {/* Active choice phrasing display layout */}
         <span className="font-medium text-stone-700/90">{currentLabel}</span>
 
-        {/* Right flag style trailing divider layout */}
         <div
           className="flex items-center gap-2 border-l border-stone-400/40 pl-3 font-bold
             text-stone-900"
@@ -122,7 +117,6 @@ export const ExerciseInput = () => {
         </div>
       </button>
 
-      {/* 3. CAPSULE ALIGNED FLOATING LIST PANEL */}
       {isOpen &&
         createPortal(
           <ul

@@ -23,7 +23,7 @@ export const AppFooter: React.FC<AppFooterProps> = ({ backgroundImage }) => (
     </div>
 
     <div
-      className="relative z-10 mx-auto flex max-w-4xl flex-col items-center justify-center pb-24
+      className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center pb-24
         text-center md:pb-4"
     >
       <div className="flex items-center justify-center gap-1 text-stone-900">

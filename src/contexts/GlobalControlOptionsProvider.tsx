@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNutrition } from "../hooks/useNutrition";
 import { GlobalControlOptionsContext, type SelectionsState } from "./GlobalControlOptionsContext";
-import type { Ingredient } from "../types/nutrition";
+import type { BookCategory, Ingredient } from "../types/nutrition";
 
 export const GlobalControlOptionsProvider: React.FC<{
   children: React.ReactNode;
@@ -12,6 +12,9 @@ export const GlobalControlOptionsProvider: React.FC<{
     activity: "moderate" as "low" | "moderate" | "high",
     servingSize: 1 as 1 | 2,
   });
+
+  const [currentChapter, setCurrentChapter] = useState<BookCategory>("proteins");
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
 
   // 2. INITIALIZE ALL 5 MARCO BUCKETS
   const [selections, setSelections] = useState<SelectionsState>({
@@ -94,6 +97,10 @@ export const GlobalControlOptionsProvider: React.FC<{
           recipeItems: calculatedData.recipeItems,
           dailyCalorieTarget: calculatedData.dailyCalorieTarget,
         },
+        currentChapter,
+        setCurrentChapter,
+        isReviewOpen,
+        setIsReviewOpen,
       }}
     >
       {children}

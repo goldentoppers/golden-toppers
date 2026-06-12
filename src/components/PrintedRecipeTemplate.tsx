@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { AssetIcon } from "./AssetIcon";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
+import { DailyTargetDisplay } from "./DailyTargetDisplay";
 
 export const PrintedRecipeTemplate = () => {
   const { formData, nutritionResults, selectedIds } = useContext(GlobalControlOptionsContext);
@@ -37,18 +38,7 @@ export const PrintedRecipeTemplate = () => {
               className="flex w-full flex-row flex-wrap items-center justify-between gap-y-4
                 font-sans select-none"
             >
-              <div className="flex min-w-[140px] flex-col items-start leading-tight">
-                <span
-                  className="mb-1.5 text-[10px] font-black tracking-[0.2em] text-stone-500
-                    uppercase"
-                >
-                  Target Metrics
-                </span>
-                {/* ✅ FIXED: Combined onto a single horizontal line with tracking-tight protection */}
-                <span className="text-lg font-black tracking-tight whitespace-nowrap text-stone-900">
-                  {Math.round(nutritionResults.dailyCalorieTarget)} kcal / day
-                </span>
-              </div>
+              <DailyTargetDisplay />
 
               <div className="flex min-w-[80px] flex-col items-start leading-tight">
                 <span

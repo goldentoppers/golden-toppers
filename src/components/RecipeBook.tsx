@@ -1,20 +1,14 @@
-import React, { useState, useMemo, useContext } from "react";
+import React, { useMemo, useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { BookOpenIcon } from "@heroicons/react/24/solid";
 import { INGREDIENT_LIBRARY } from "../data/ingredients";
-import type { Ingredient } from "../types/nutrition";
+import type { BookCategory, Ingredient } from "../types/nutrition";
 import { IngredientPantry } from "./IngredientPantry";
 import { PrintButton } from "./PrintButton";
-import { IngredientSlots } from "./IngredientSlots";
 import { IngredientCategoryHeader } from "./IngredientCategoryHeader";
-import { WeightInput } from "./WeightInput";
-import { ExerciseInput } from "./ExerciseInput";
 import { ReviewRecipeDisplay } from "./ReviewRecipeDisplay";
-import { DailyTargetDisplay } from "./DailyTargetDisplay";
 import { AMBER_700 } from "../data/color-scheme";
 import { RestartButton } from "./RestartButton";
-
-export type BookCategory = "proteins" | "heartyBases" | "freshColors" | "energyBoosts" | "toppers";
 
 export interface ChapterConfig {
   id: BookCategory;
@@ -25,73 +19,96 @@ export interface ChapterConfig {
   max: number;
   description: string;
   icon: string;
+  hexColor: string;
   options: Ingredient[];
-  progressIcon: string;
 }
 
 export const RecipeBook: React.FC = () => {
-  const { selections, nutritionResults, toggleIngredient, selectedIds, clearAllSelections } =
-    useContext(GlobalControlOptionsContext);
-
-  const [currentChapter, setCurrentChapter] = useState<BookCategory>("proteins");
-  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const {
+    selections,
+    toggleIngredient,
+    selectedIds,
+    clearAllSelections,
+    currentChapter,
+    setCurrentChapter,
+    isReviewOpen,
+    setIsReviewOpen,
+  } = useContext(GlobalControlOptionsContext);
 
   const chapters: ChapterConfig[] = useMemo(
     () => [
+      // =========================================================
+      // 🍖 CATEGORY 1: MAIN PROTEINS (CRIMSON REFACTOR)
+      // =========================================================
       {
         id: "proteins",
         icon: "downward-dog-tail-wagging",
-        progressIcon: "fig",
         stepNumber: 1,
         title: "Main Proteins",
         label: "Proteins",
         target: "40%",
-
+        hexColor: "#991b1b", // Rich premium crimson red
+        tailwindColor: "text-red-800 border-red-200 bg-red-50/30",
         max: 2,
         options: INGREDIENT_LIBRARY.filter(
           (i) => i.role === "protein" && !i.isToxic && !i.isHighRisk,
         ),
         description:
-          "Essential amino acids required to maintain lean muscle mass and tissue health.",
+          "Essential raw amino acids required to maintain lean muscle mass, support rapid cellular repair, and protect your Golden's structural tissue health. These complete protein building blocks form the nutritional baseline of your supplemental recipe bowl.",
       },
+
+      // =========================================================
+      // 🌾 CATEGORY 2: HEARTY BASES (OATMEAL CLAY)
+      // =========================================================
       {
         id: "heartyBases",
         icon: "standing",
-        progressIcon: "fig",
         stepNumber: 2,
         title: "Hearty Bases",
         label: "Bases",
         target: "10%",
+        hexColor: "#c25d3d", // Warm earthen clay tone
+        tailwindColor: "text-amber-800 border-amber-200 bg-amber-50/20",
         max: 2,
         options: INGREDIENT_LIBRARY.filter(
           (i) => i.role === "vegetable" && i.density === "base" && !i.isToxic && !i.isHighRisk,
         ),
         description:
-          "Complex whole grains serving as high-density calorie anchors to stabilize energy levels.",
+          "Complex whole grains and high-density starches serving as stabilizing calorie anchors. These clean, fibrous carbohydrate structures supply long-sustained glucose pathways to fuel daily energy cycles without overloading digestion.",
       },
+
+      // =========================================================
+      // 🥦 CATEGORY 3: FRESH COLORS (BOTANICAL EMERALD)
+      // =========================================================
       {
         id: "freshColors",
         icon: "laying-down-head-up",
-        progressIcon: "fig",
         stepNumber: 3,
         title: "Fresh Colors",
         label: "Colors",
         target: "35%",
+        hexColor: "#065f46", // Natural deep emerald botanical green
+        tailwindColor: "text-emerald-800 border-emerald-200 bg-emerald-50/30",
         max: 2,
         options: INGREDIENT_LIBRARY.filter(
           (i) => i.role === "vegetable" && i.density !== "base" && !i.isToxic && !i.isHighRisk,
         ),
         description:
-          "Vibrant vegetables rich in live antioxidants and dietary fiber for digestive regularity.",
+          "Vibrant, sun-ripened garden vegetables rich in raw plant antioxidants, living food hydration, and active phytonutrients. These colorful selection rows support intestinal regularity and guard long-term metabolic health.",
       },
+
+      // =========================================================
+      // 🥑 CATEGORY 4: ENERGY BOOSTS (OCEAN COBALT BLUE REFACTOR)
+      // =========================================================
       {
         id: "energyBoosts",
         icon: "playing-with-tennis-ball",
-        progressIcon: "fig",
         stepNumber: 4,
         title: "Energy Boosts",
         label: "Boosts",
         target: "10%",
+        hexColor: "#1e40af", // Rich deep cobalt blue
+        tailwindColor: "text-blue-800 border-blue-200 bg-blue-50/30",
         max: 2,
         options: INGREDIENT_LIBRARY.filter(
           (i) =>
@@ -100,8 +117,12 @@ export const RecipeBook: React.FC = () => {
             !i.isHighRisk,
         ),
         description:
-          "Therapeutic lipids tracking omega fatty acids to fuel healthy skin barrier hydration.",
+          "Therapeutic whole lipids and concentrated fatty acids designed to fuel cellular metabolism. This functional tier is loaded with organic Omega-3 paths to nourish the skin barrier and maintain deep, glossy coat hydration.",
       },
+
+      // =========================================================
+      // 👑 CATEGORY 5: GOLDEN TOPPERS (DEEP AMETHYST PURPLE REFACTOR)
+      // =========================================================
       {
         id: "toppers",
         icon: "running-dog",
@@ -110,11 +131,14 @@ export const RecipeBook: React.FC = () => {
         title: "Golden Toppers",
         label: "Toppers",
         target: "5%",
+        hexColor: "#6b21a8", // Royal amethyst purple accent
+        tailwindColor: "text-purple-800 border-purple-200 bg-purple-50/30",
         max: 2,
         options: INGREDIENT_LIBRARY.filter(
           (i) => i.role === "topper" && !i.isToxic && !i.isHighRisk,
         ),
-        description: "Raw macro-booster supplements designed to supercharge immune vitality.",
+        description:
+          "Elite, biological macro-booster supplements designed to supercharge immune vitality. Handpicked target enzymes and functional trace elements provide a final layer of protection to complete the perfect supplemental bowl blueprint.",
       },
     ],
     [],
@@ -124,29 +148,27 @@ export const RecipeBook: React.FC = () => {
   const activeChapter = chapters[currentIndex];
 
   // Filters the master dataset down to the page category, then smoothly alphabetizes the array.
-  const filteredCategoryItems = useMemo(() => {
-    const baseItems = nutritionResults.recipeItems.filter((item) => {
-      if (currentChapter === "proteins") return item.role === "protein";
-      if (currentChapter === "heartyBases") return item.density === "base";
-      if (currentChapter === "freshColors")
-        return (
-          item.role === "vegetable" && item.category !== "seeds-nuts" && item.density !== "base"
-        );
-      if (currentChapter === "energyBoosts")
-        return (
-          item.category === "seeds-nuts" || item.category === "oil" || item.role === "carbohydrate"
-        );
-      return item.role === "topper" && item.category !== "seeds-nuts" && item.category !== "oil";
-    });
+  // const filteredCategoryItems = useMemo(() => {
+  //   const baseItems = nutritionResults.recipeItems.filter((item) => {
+  //     if (currentChapter === "proteins") return item.role === "protein";
+  //     if (currentChapter === "heartyBases") return item.density === "base";
+  //     if (currentChapter === "freshColors")
+  //       return (
+  //         item.role === "vegetable" && item.category !== "seeds-nuts" && item.density !== "base"
+  //       );
+  //     if (currentChapter === "energyBoosts")
+  //       return (
+  //         item.category === "seeds-nuts" || item.category === "oil" || item.role === "carbohydrate"
+  //       );
+  //     return item.role === "topper" && item.category !== "seeds-nuts" && item.category !== "oil";
+  //   });
 
-    return [...baseItems].sort((a, b) =>
-      a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
-    );
-  }, [nutritionResults.recipeItems, currentChapter]);
+  //   return [...baseItems].sort((a, b) =>
+  //     a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
+  //   );
+  // }, [nutritionResults.recipeItems, currentChapter]);
 
-  const activeSelectedItems = useMemo(() => {
-    return filteredCategoryItems.filter((item) => selections[currentChapter].includes(item.id));
-  }, [filteredCategoryItems, selections, currentChapter]);
+  // console.log("nutritionResults: ", nutritionResults);
 
   const resetToBeginning = () => {
     clearAllSelections();
@@ -155,7 +177,7 @@ export const RecipeBook: React.FC = () => {
   };
 
   return (
-    <div className="min-h-6xl mx-auto select-none" role="region" aria-label="Recipe Formulation">
+    <div className="min-h-6xl select-none" role="region" aria-label="Recipe Formulation">
       <div className="flex flex-col gap-8" role="region" aria-label="Recipe Formulation">
         {isReviewOpen && <ReviewRecipeDisplay goToStart={resetToBeginning} />}
         <div className="flex flex-col gap-4">
@@ -163,17 +185,17 @@ export const RecipeBook: React.FC = () => {
             <>
               <header className="relative w-full overflow-hidden bg-cover bg-center">
                 <section
-                  className="relative z-10 flex max-w-3xl flex-col items-start px-6 pb-6 text-left
+                  className="relative z-10 flex max-w-3xl flex-col items-start px-6 text-left
                     sm:px-12"
                   aria-labelledby="hero-main-headline"
                 >
                   <h1
                     id="hero-main-headline"
-                    className="mb-4 font-serif text-3xl leading-tight font-black tracking-wide
-                      text-stone-900 italic"
+                    className="mb-5 font-serif text-2xl leading-tight font-bold tracking-wide
+                      text-stone-800 italic sm:text-3xl"
                   >
-                    <div className="text-amber-700">Real, living food.</div>
-                    <div>Tailored for their bowl.</div>
+                    <span className="mb-1 block text-amber-700/95">Real, living food.</span>
+                    <span className="block text-stone-900/90">Tailored for their bowl.</span>
                   </h1>
 
                   <div
@@ -183,26 +205,15 @@ export const RecipeBook: React.FC = () => {
                     <p>
                       Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
                       kibble with living ingredients introduces vital hydration, raw antioxidants,
-                      and active nutrients. Input their weight and activity level, then browse our
-                      ingredient pantry to craft a safe, custom topping plan tailored perfectly for
-                      your kitchen scale.
+                      and active nutrients. Browse our ingredient pantry to craft a safe, custom
+                      topping plan tailored perfectly for your kitchen scale.
                     </p>
                   </div>
                 </section>
               </header>
 
               <div className="flex w-full flex-col gap-8 transition-all duration-300 select-none">
-                <div
-                  className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center
-                    gap-4 sm:items-center md:flex-row md:gap-8"
-                >
-                  <ExerciseInput />
-                  <div className="flew-col flex justify-between gap-4 sm:flex-row">
-                    <WeightInput />
-                    <DailyTargetDisplay />
-                  </div>
-                </div>
-                <div className="mx-auto items-center justify-center md:px-2">
+                <div className="items-center justify-center md:px-2">
                   <IngredientCategoryHeader activeChapter={activeChapter} />
                 </div>
 
@@ -212,19 +223,11 @@ export const RecipeBook: React.FC = () => {
                   chapterConfig={activeChapter}
                   onToggle={(id: string) => toggleIngredient(id, currentChapter)}
                 />
-
-                <IngredientSlots
-                  currentChapter={currentChapter}
-                  setCurrentChapter={(ch) => setCurrentChapter(ch)}
-                  activeChapter={activeChapter}
-                  onToggle={(id) => toggleIngredient(id, currentChapter)}
-                  activeSelectedItems={activeSelectedItems}
-                />
               </div>
             </>
           )}
           <div
-            className="mx-auto flex w-full max-w-4xl flex-row justify-between border-t
+            className="mx-auto flex w-full max-w-5xl flex-row justify-between border-t
               border-stone-800/10 pt-8"
           >
             <footer className="flex w-full">

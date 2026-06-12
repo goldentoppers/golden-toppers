@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { AssetIcon } from "./AssetIcon";
-import { formatSmartWeight } from "../helpers/format-smart-weight";
 import { DogStaringAtBowlIcon } from "../assets/art/react-icons/dogs/dog-staring-at-bowl";
 import { TopperOnlyWarning } from "./TopperOnlyWarning";
+import { IngredientFormattedWeightDisplay } from "./IngredientFormattedWeightDisplay";
+import { DailyTargetDisplay } from "./DailyTargetDisplay";
+import ServingSelector from "./ServingSelector";
+import { WeightInput } from "./WeightInput";
+import { ExerciseInput } from "./ExerciseInput";
 
 interface ReviewRecipeDisplayProps {
   goToStart: () => void;
@@ -12,14 +16,12 @@ interface ReviewRecipeDisplayProps {
 export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToStart }) => {
   const context = useContext(GlobalControlOptionsContext);
 
-  // Safe default structural fallbacks to protect layout rendering pipelines
-  const { formData, nutritionResults, selectedIds } = context || {
+  const { nutritionResults, selectedIds } = context || {
     formData: { weight: 65, activity: "MODERATE", servingSize: 1 },
     nutritionResults: { dailyCalorieTarget: 142, recipeItems: [] },
     selectedIds: [],
   };
 
-  // Filter out which items match our active selections list state array
   const activeSelectedItems = nutritionResults.recipeItems.filter((item) =>
     selectedIds.includes(item.id),
   );
@@ -50,9 +52,9 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
 
           <button
             type="button"
-            onClick={goToStart} /* Snaps the user straight back to Step 1 */
+            onClick={goToStart}
             className="mt-8 mb-6 flex cursor-pointer flex-row items-center justify-center gap-1.5
-              rounded-xl bg-amber-800 px-6 py-2.5 font-sans text-[11px] font-black tracking-widest
+              rounded-xl bg-amber-700 px-6 py-2.5 font-sans text-[11px] font-black tracking-widest
               text-white uppercase shadow-md transition-all duration-150 outline-none
               focus-visible:ring-2 focus-visible:ring-stone-500 active:scale-95"
           >
@@ -97,93 +99,14 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
               className="mb-6 flex w-full flex-col items-center border-b border-stone-800/10 pb-6
                 select-none"
             >
-              <div
-                className="xs:grid-cols-4 grid w-full max-w-2xl grid-cols-2 gap-x-8 gap-y-8 px-4
-                  font-sans"
-              >
-                <div
-                  className="xs:items-center xs:text-center flex w-full flex-col items-start
-                    text-left leading-tight"
-                >
-                  <span
-                    className="mb-2 text-[9.5px] font-black tracking-[0.18em] text-stone-500
-                      uppercase"
-                  >
-                    Target Metrics
-                  </span>
-                  <div className="flex items-baseline gap-1 font-sans text-stone-800">
-                    <span className="text-xl font-black tracking-tight text-stone-900">
-                      {Math.round(nutritionResults.dailyCalorieTarget)}
-                    </span>
-                    <span
-                      className="ml-0.5 text-[12px] font-bold tracking-normal text-stone-500/90
-                        lowercase italic"
-                    >
-                      kcal / day
-                    </span>
-                  </div>
+              <div className="flex w-full flex-col items-center justify-between gap-8 sm:flex-row">
+                <div className="flex flex-row items-center justify-center gap-8">
+                  <WeightInput />
+                  <ExerciseInput />
                 </div>
-
-                <div
-                  className="xs:items-center xs:text-center flex w-full flex-col items-end
-                    text-right leading-tight"
-                >
-                  <span
-                    className="mb-2 text-[9.5px] font-black tracking-[0.18em] text-stone-500
-                      uppercase"
-                  >
-                    Dog Weight
-                  </span>
-                  <div className="flex items-baseline gap-1 text-stone-800">
-                    <span className="text-xl font-black tracking-tight text-stone-900">
-                      {formData.weight || 65}
-                    </span>
-                    <span
-                      className="ml-0.5 text-[12px] font-semibold tracking-normal text-stone-500/90
-                        lowercase italic"
-                    >
-                      lbs
-                    </span>
-                  </div>
-                </div>
-
-                <div
-                  className="xs:items-center xs:text-center flex w-full flex-col items-start
-                    text-left leading-tight"
-                >
-                  <span
-                    className="mb-3 text-[9.5px] font-black tracking-[0.18em] text-stone-500
-                      uppercase"
-                  >
-                    Exercise Tier
-                  </span>
-                  <span className="text-[15px] font-black tracking-wide text-stone-800 capitalize">
-                    {formData.activity}
-                  </span>
-                </div>
-
-                <div
-                  className="xs:items-center xs:text-center flex w-full flex-col items-end
-                    text-right leading-tight"
-                >
-                  <span
-                    className="mb-3 text-[9.5px] font-black tracking-[0.18em] text-amber-600
-                      uppercase"
-                  >
-                    Serving Scale
-                  </span>
-                  <div className="flex items-baseline gap-1 font-sans text-amber-950">
-                    <span className="text-[15px] font-black tracking-wide">
-                      {formData.servingSize === 2 ? "2 Dogs" : "1 Dog"}
-                    </span>
-                    <span
-                      className="ml-1 pt-0.5 font-serif text-[11px] font-normal tracking-normal
-                        text-stone-500/90 lowercase italic"
-                    >
-                      ({formData.servingSize || 1}{" "}
-                      {formData.servingSize === 2 ? "portions" : "portion"})
-                    </span>
-                  </div>
+                <div className="flex w-full flex-row items-center justify-center gap-8">
+                  <DailyTargetDisplay />
+                  <ServingSelector />
                 </div>
               </div>
             </section>
@@ -232,43 +155,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                       )}
                     </div>
                   </div>
-                  <div
-                    className="shadow-3xs text-stone-95 block flex-col items-center gap-2 rounded-md
-                      border border-stone-200/80 bg-stone-50 px-2.5 py-1 text-center font-mono
-                      text-xs leading-none font-black"
-                  >
-                    {
-                      formatSmartWeight({
-                        grams: item.grams,
-                        category: item.category,
-                        densityType: item.density,
-                        role: item.role,
-                        servingSize: formData.servingSize || 1,
-                        ingredientId: item.id,
-                      }).primary
-                    }
-                    {formatSmartWeight({
-                      grams: item.grams,
-                      category: item.category,
-                      densityType: item.density,
-                      role: item.role,
-                      servingSize: formData.servingSize || 1,
-                      ingredientId: item.id,
-                    }).subtext && (
-                      <span className="text-[9px] font-bold tracking-wider text-stone-500 uppercase">
-                        {
-                          formatSmartWeight({
-                            grams: item.grams,
-                            category: item.category,
-                            densityType: item.density,
-                            role: item.role,
-                            servingSize: formData.servingSize || 1,
-                            ingredientId: item.id,
-                          }).subtext
-                        }
-                      </span>
-                    )}
-                  </div>
+                  <IngredientFormattedWeightDisplay ingredient={item} />
                 </li>
               ))}
             </ul>

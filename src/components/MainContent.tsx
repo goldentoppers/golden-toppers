@@ -12,7 +12,7 @@ export const MainContent: React.FC = () => {
         <AppHeader />
 
         <div className="w-full">
-          <div className="mx-auto mt-12 pb-2">
+          <div className="mx-auto mt-8 pb-2">
             <Outlet />
           </div>
         </div>

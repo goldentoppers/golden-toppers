@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --breakpoint-xxs: 360px;
-  --breakpoint-xs: 480px;
+  --breakpoint-xxs: 390px;
+  --breakpoint-xs: 550px;
 }
 
 .counter {

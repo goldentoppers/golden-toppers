@@ -139,7 +139,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     benefits: ["Instant Calorie Absorption", "Gastro Relief"],
     vitamins: ["Iron", "B6"],
     preparation: "Over-cook Fully Till Soft",
-    preparationAlert: "Exceptional for soothing active diarrhea or loose stools.",
+    // preparationAlert: "Exceptional for soothing active diarrhea or loose stools.",
   },
   {
     id: "rye",

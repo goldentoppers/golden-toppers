@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AssetIcon } from "./AssetIcon";
-import type { BookCategory, ChapterConfig } from "./RecipeBook";
+import type { ChapterConfig } from "./RecipeBook";
 import type { RecipeResultItem } from "../types/nutrition";
 import { EmptyPantrySlots } from "./EmptyPantrySlots";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
@@ -12,8 +12,6 @@ interface IngredientSlotsProps {
   activeChapter: ChapterConfig;
   activeSelectedItems: RecipeResultItem[];
   onToggle: (id: string) => void;
-  currentChapter: BookCategory;
-  setCurrentChapter: (cat: BookCategory) => void;
 }
 
 export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
@@ -25,7 +23,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
   const { formData } = context || { formData: { servingSize: 1 } };
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col">
+    <div className="mx-auto flex w-full max-w-5xl flex-col">
       <div className="w-full text-center select-text">
         <header
           className="mb-6 flex w-full flex-row flex-wrap items-center justify-between gap-y-3

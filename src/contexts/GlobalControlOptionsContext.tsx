@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
-import type { RecipeResultItem } from "../types/nutrition";
+import type { BookCategory, RecipeResultItem } from "../types/nutrition";
 
 // 1. Explicitly match your exact 5-bucket state type architecture
 export interface SelectionsState {
@@ -17,6 +17,10 @@ interface GlobalFormData {
 }
 
 interface GlobalContextType {
+  currentChapter: BookCategory;
+  setCurrentChapter: React.Dispatch<React.SetStateAction<BookCategory>>;
+  isReviewOpen: boolean;
+  setIsReviewOpen: React.Dispatch<React.SetStateAction<boolean>>;
   formData: GlobalFormData;
   setFormData: React.Dispatch<React.SetStateAction<GlobalFormData>>;
   selections: SelectionsState;
@@ -36,6 +40,10 @@ export const GlobalControlOptionsContext = createContext<GlobalContextType>({
     activity: "low",
     servingSize: 1,
   },
+  currentChapter: "proteins",
+  setCurrentChapter: () => null,
+  isReviewOpen: false,
+  setIsReviewOpen: () => null,
   setFormData: () => null,
   selections: {
     proteins: [],

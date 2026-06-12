@@ -57,7 +57,7 @@ export const WeightInput = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex w-full flex-col items-start font-sans select-none sm:w-31.25"
+      className="relative flex w-full flex-col items-start font-sans select-none"
     >
       <label
         htmlFor="canine-exercise-trigger"
@@ -74,10 +74,10 @@ export const WeightInput = () => {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full cursor-pointer items-center justify-between rounded-full border
+        className="flex w-35 cursor-pointer items-center justify-between rounded-full border
           border-white/40 bg-white/40 px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm
           backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-300/80
-          hover:bg-white/60 focus-visible:ring-2 focus-visible:ring-stone-400 sm:w-31.25"
+          hover:bg-white/60 focus-visible:ring-2 focus-visible:ring-stone-400"
       >
         <span className="font-medium text-stone-700/90">
           {formData.weight ? `${formData.weight}` : "Select Weight"}

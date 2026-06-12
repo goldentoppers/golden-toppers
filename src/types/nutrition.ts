@@ -28,6 +28,8 @@ export type IngredientCategory =
   | "grain";
 export type NutritionalRole = "protein" | "vegetable" | "carbohydrate" | "topper";
 
+export type BookCategory = "proteins" | "heartyBases" | "freshColors" | "energyBoosts" | "toppers";
+
 export interface Ingredient {
   id: string;
   name: string;
