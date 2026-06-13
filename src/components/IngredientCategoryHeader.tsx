@@ -64,7 +64,7 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
               className="float-left mr-4 flex items-center justify-center"
               aria-hidden="true"
             >
-              <AssetIcon name={icon} className="h-17 w-17" />
+              <AssetIcon name={icon} className="h-20 w-20" />
             </span>
             {description}
           </p>

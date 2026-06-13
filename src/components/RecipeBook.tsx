@@ -42,33 +42,35 @@ export const RecipeBook: React.FC = () => {
       <div className="flex flex-col gap-4">
         {!isReviewOpen && (
           <>
-            <header className="relative w-full overflow-hidden bg-cover bg-center">
-              <section
-                className="relative z-10 flex max-w-3xl flex-col items-start text-left"
-                aria-labelledby="hero-main-headline"
-              >
-                <h1
-                  id="hero-main-headline"
-                  className="mb-5 font-serif text-2xl leading-tight font-bold tracking-wide
-                    text-stone-800 italic sm:text-3xl"
+            {currentIndex === 0 && (
+              <header className="relative w-full overflow-hidden bg-cover bg-center">
+                <section
+                  className="relative z-10 flex max-w-3xl flex-col items-start text-left"
+                  aria-labelledby="hero-main-headline"
                 >
-                  <span className="mb-1 block text-amber-700/95">Real, living food.</span>
-                  <span className="block text-stone-900/90">Tailored for their bowl.</span>
-                </h1>
+                  <h1
+                    id="hero-main-headline"
+                    className="mb-5 font-serif text-2xl leading-tight font-bold tracking-wide
+                      text-stone-800 italic sm:text-3xl"
+                  >
+                    <span className="mb-1 block text-amber-700/95">Real, living food.</span>
+                    <span className="block text-stone-900/90">Tailored for their bowl.</span>
+                  </h1>
 
-                <div
-                  className="max-w-2xl font-serif text-[14.5px] leading-relaxed font-medium
-                    text-stone-700/95 italic select-text sm:text-[16px]"
-                >
-                  <p>
-                    Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
-                    kibble with living ingredients introduces vital hydration, raw antioxidants, and
-                    active nutrients. Browse our ingredient pantry to craft a safe, custom topping
-                    plan tailored perfectly for your kitchen scale.
-                  </p>
-                </div>
-              </section>
-            </header>
+                  <div
+                    className="max-w-2xl font-serif text-[14.5px] leading-relaxed font-medium
+                      text-stone-700/95 italic select-text sm:text-[16px]"
+                  >
+                    <p>
+                      Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
+                      kibble with living ingredients introduces vital hydration, raw antioxidants,
+                      and active nutrients. Browse our ingredient pantry to craft a safe, custom
+                      topping plan tailored perfectly for your kitchen scale.
+                    </p>
+                  </div>
+                </section>
+              </header>
+            )}
 
             <div className="flex flex-col gap-4 transition-all duration-300 select-none">
               <IngredientCategoryHeader activeChapter={activeChapter} />
@@ -105,6 +107,10 @@ export const RecipeBook: React.FC = () => {
                     : activeChapter.hexColor
               }
               onPrevious={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
                 if (currentIndex > 0 && !isReviewOpen)
                   setCurrentChapter(chapterConfig[currentIndex - 1].id);
                 setIsReviewOpen(false);
@@ -127,7 +133,13 @@ export const RecipeBook: React.FC = () => {
                 {!isReviewOpen && (
                   <NextButton
                     color={activeChapter.hexColor}
-                    onNext={() => setCurrentChapter(chapterConfig[currentIndex + 1]?.id)}
+                    onNext={() => {
+                      setCurrentChapter(chapterConfig[currentIndex + 1]?.id);
+                      window.scrollTo({
+                        top: 0,
+                        behavior: "smooth",
+                      });
+                    }}
                   />
                 )}
                 {isReviewOpen && selectedIds.length > 0 && (
