@@ -39,10 +39,9 @@ export const IngredientPantry: React.FC<PantryProps> = ({
   return (
     <div id="ingredient-pantry-section" className="flex w-full flex-col">
       <div
-        className="xxs:flex-row mt-2 mb-6 flex flex-col items-center justify-center gap-3
+        className="xxs:flex-row mt-2 mb-6 flex flex-col items-center justify-between gap-3
           text-center"
       >
-        {/* 🖋️ MASTER SECTION HEADING TITLE */}
         <h3
           className="shrink-0 text-[11px] leading-none font-black tracking-[0.22em] text-stone-900
             uppercase"
@@ -73,44 +72,40 @@ export const IngredientPantry: React.FC<PantryProps> = ({
           aria-hidden="true"
         />
       </div>
-      <div className="flex w-full flex-col items-center">
-        <div className="flex w-full max-w-5xl items-center justify-center gap-6">
-          <ul
-            className="xs:grid-cols-3 xxs:grid-cols-2 m-0 grid list-none grid-cols-1 gap-4
-              sm:grid-cols-3 sm:px-4 md:grid-cols-4 md:gap-6 lg:grid-cols-5"
-            role="list"
-            aria-label={`${chapterConfig.label}`}
-          >
-            {processedOptions.map((item) => {
-              const isNoneItem = "isNonePlaceholder" in item;
-              const isSelected = isNoneItem ? categoryIsEmpty : selectedIds.includes(item.id);
-              const isDisabled = !isNoneItem && !isSelected && selectedIds.length >= maxSlots;
+      <ul
+        className="xs:grid-cols-3 xxs:grid-cols-2 grid list-none grid-cols-1 gap-4 sm:grid-cols-3
+          sm:px-4 md:grid-cols-4 lg:grid-cols-5"
+        role="list"
+        aria-label={`${chapterConfig.label}`}
+      >
+        {processedOptions.map((item) => {
+          const isNoneItem = "isNonePlaceholder" in item;
+          const isSelected = isNoneItem ? categoryIsEmpty : selectedIds.includes(item.id);
+          const isDisabled = !isNoneItem && !isSelected && selectedIds.length >= maxSlots;
 
-              const handleItemClick = () => {
-                if (isNoneItem) {
-                  if (onClearCategory) onClearCategory();
-                  else selectedIds.forEach((id) => onToggle(id));
-                } else {
-                  onToggle(item.id);
-                }
-              };
+          const handleItemClick = () => {
+            if (isNoneItem) {
+              if (onClearCategory) onClearCategory();
+              else selectedIds.forEach((id) => onToggle(id));
+            } else {
+              onToggle(item.id);
+            }
+          };
 
-              return (
-                <li key={item.id} role="listitem" className="flex w-full justify-center">
-                  <IngredientButton
-                    ingredient={item}
-                    isSelected={isSelected}
-                    isDisabled={isDisabled}
-                    onClick={handleItemClick}
-                    isNoneItem={isNoneItem}
-                    color={chapterConfig.hexColor}
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+          return (
+            <li key={item.id} role="listitem">
+              <IngredientButton
+                ingredient={item}
+                isSelected={isSelected}
+                isDisabled={isDisabled}
+                onClick={handleItemClick}
+                isNoneItem={isNoneItem}
+                color={chapterConfig.hexColor}
+              />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

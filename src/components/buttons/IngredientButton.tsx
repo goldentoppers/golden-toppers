@@ -43,13 +43,13 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
         borderColor: isSelected ? color : "rgba(120, 113, 108, 0.2)",
         backgroundColor: isSelected ? `${color}1A` : "#faf7f2",
       }}
-      className={`relative z-10 flex aspect-square h-48 w-40 flex-col items-center justify-between
+      className={`relative z-10 flex aspect-square h-46 w-full flex-col items-center justify-between
         rounded-2xl p-3 text-center shadow-md transition-all duration-200 outline-none select-none
         focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 ${
           !isSelected && !isDisabled
             ? "cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
             : ""
-        } ${isSelected ? "scale-[0.97] cursor-pointer font-black" : ""} ${
+        } ${isSelected ? "cursor-pointer font-black" : ""} ${
           isDisabled
             ? `cursor-not-allowed border-stone-200/40 bg-stone-100/50 opacity-30 shadow-none
               grayscale-60`
