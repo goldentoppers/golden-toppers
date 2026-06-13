@@ -8,6 +8,7 @@ import ServingSelector from "./ServingSelector";
 import { WeightInput } from "./WeightInput";
 import { ExerciseInput } from "./ExerciseInput";
 import { DogNameInput } from "./DogNameInput";
+import { DailyTargetDisplay } from "./DailyTargetDisplay";
 
 interface ReviewRecipeDisplayProps {
   goToStart: () => void;
@@ -29,7 +30,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
   const hasNoIngredients = selectedIds.length === 0;
 
   return (
-    <div className="animate-fade-in w-full text-left select-none md:px-8">
+    <div className="animate-fade-in w-full text-left select-none">
       {hasNoIngredients ? (
         <div
           className="animate-fade-in flex w-full flex-col items-center justify-center rounded-3xl
@@ -75,52 +76,56 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section className="animate-fade-in space-y-4 select-text">
-            <header className="flex flex-col items-start pb-4 select-text">
-              <h1
-                className="font-serif text-4xl leading-tight font-black tracking-wide text-stone-900
-                  italic"
-              >
-                <div className="text-amber-700">
-                  {formData.dogName ? `${formData.dogName}'s` : "Golden"}
-                </div>
-                Topper Plan
-              </h1>
-              <div
-                className="animate-fade-in mt-2 w-fit max-w-xl rounded-xl border border-amber-500/10
-                  bg-amber-500/6 px-4 py-2 text-center select-none"
-              >
-                <p
-                  className="text-[10px] leading-normal font-black tracking-widest text-amber-700/80
-                    uppercase select-text"
-                >
-                  Dietary Strategy: 10% Fresh Food Supplemental Bowl Booster
-                </p>
-              </div>
-            </header>
-
             <section
               className="mb-2 flex w-full flex-col border-b border-stone-800/10 pb-6 select-none"
             >
               <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
-                <div className="xs:flex-row flex flex-col items-center gap-4">
+                <div className="flex flex-col items-center gap-4 sm:flex-row">
+                  <DogNameInput />
                   <div className="flex flex-row items-center gap-4">
-                    <DogNameInput />
-                    <WeightInput />
+                    <WeightInput /> <ServingSelector />
                   </div>
-                  <ServingSelector />
                 </div>
                 <div className="flex flex-row items-center gap-4">
                   <ExerciseInput />
                 </div>
               </div>
             </section>
+            <div className="flex flex-row items-start justify-between pt-6">
+              <header className="flex flex-col items-start pb-4 select-text">
+                <h1
+                  className="text-center font-serif text-4xl leading-tight font-black tracking-wide
+                    text-stone-900 italic"
+                >
+                  <div className="inline text-amber-700">
+                    {formData.dogName ? `${formData.dogName}'s ` : "Golden "}
+                  </div>
+                  Topper Plan
+                </h1>
+                <div
+                  className="animate-fade-in mt-2 w-fit max-w-xl rounded-xl border
+                    border-amber-500/10 bg-amber-500/6 px-4 py-2 text-center select-none"
+                >
+                  <p
+                    className="text-[10px] leading-normal font-black tracking-widest
+                      text-amber-700/80 uppercase select-text"
+                  >
+                    Dietary Strategy: 10% Fresh Food Supplemental Bowl Booster
+                  </p>
+                </div>
+              </header>
+              <div className="xs:block hidden sm:pr-5">
+                <DailyTargetDisplay />
+              </div>
+            </div>
+
             <div className="flex flex-col items-end">
               <ul className="m-0 w-full list-none p-0" role="list">
                 {activeSelectedItems.map((item) => (
                   <li
                     key={item.id}
                     className="flex items-center justify-between gap-6 border-b border-stone-800/10
-                      p-2 py-3 transition-all duration-300 select-none sm:p-5
+                      py-3 pr-2 transition-all duration-300 select-none sm:py-5 sm:pr-5
                       print:break-inside-avoid"
                     role="listitem"
                   >
