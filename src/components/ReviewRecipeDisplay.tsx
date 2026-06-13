@@ -4,10 +4,10 @@ import { AssetIcon } from "./AssetIcon";
 import { DogStaringAtBowlIcon } from "../assets/art/react-icons/dogs/dog-staring-at-bowl";
 import { TopperOnlyWarning } from "./TopperOnlyWarning";
 import { IngredientFormattedWeightDisplay } from "./IngredientFormattedWeightDisplay";
-import { DailyTargetDisplay } from "./DailyTargetDisplay";
 import ServingSelector from "./ServingSelector";
 import { WeightInput } from "./WeightInput";
 import { ExerciseInput } from "./ExerciseInput";
+import { DogNameInput } from "./DogNameInput";
 
 interface ReviewRecipeDisplayProps {
   goToStart: () => void;
@@ -16,8 +16,8 @@ interface ReviewRecipeDisplayProps {
 export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToStart }) => {
   const context = useContext(GlobalControlOptionsContext);
 
-  const { nutritionResults, selectedIds } = context || {
-    formData: { weight: 65, activity: "MODERATE", servingSize: 1 },
+  const { nutritionResults, selectedIds, formData } = context || {
+    formData: { weight: 65, activity: "MODERATE", servingSize: 1, dogName: "" },
     nutritionResults: { dailyCalorieTarget: 142, recipeItems: [] },
     selectedIds: [],
   };
@@ -29,7 +29,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
   const hasNoIngredients = selectedIds.length === 0;
 
   return (
-    <div className="animate-fade-in w-full pt-12 text-left select-none md:px-8 md:pt-32">
+    <div className="animate-fade-in w-full text-left select-none md:px-8">
       {hasNoIngredients ? (
         <div
           className="animate-fade-in flex w-full flex-col items-center justify-center rounded-3xl
@@ -75,12 +75,15 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section className="animate-fade-in space-y-4 select-text">
-            <header className="flex flex-col items-center pb-4 select-text">
+            <header className="flex flex-col items-start pb-4 select-text">
               <h1
-                className="font-serif text-3xl leading-none font-black text-stone-950 normal-case
+                className="font-serif text-4xl leading-tight font-black tracking-wide text-stone-900
                   italic"
               >
-                Golden Topper Plan
+                <div className="text-amber-700">
+                  {formData.dogName ? `${formData.dogName}'s` : "Golden"}
+                </div>
+                Topper Plan
               </h1>
               <div
                 className="animate-fade-in mt-2 w-fit max-w-xl rounded-xl border border-amber-500/10
@@ -96,69 +99,73 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
             </header>
 
             <section
-              className="mb-6 flex w-full flex-col items-center border-b border-stone-800/10 pb-6
-                select-none"
+              className="mb-2 flex w-full flex-col border-b border-stone-800/10 pb-6 select-none"
             >
-              <div className="flex w-full flex-col items-center justify-between gap-8 sm:flex-row">
-                <div className="flex flex-row items-center justify-center gap-8">
-                  <WeightInput />
-                  <ExerciseInput />
-                </div>
-                <div className="flex w-full flex-row items-center justify-center gap-8">
-                  <DailyTargetDisplay />
+              <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+                <div className="xs:flex-row flex flex-col items-center gap-4">
+                  <div className="flex flex-row items-center gap-4">
+                    <DogNameInput />
+                    <WeightInput />
+                  </div>
                   <ServingSelector />
+                </div>
+                <div className="flex flex-row items-center gap-4">
+                  <ExerciseInput />
                 </div>
               </div>
             </section>
-            <ul className="m-0 w-full list-none p-0" role="list">
-              {activeSelectedItems.map((item) => (
-                <li
-                  key={item.id}
-                  className="flex items-center justify-between gap-6 p-2 py-3 transition-all
-                    duration-300 select-none sm:p-5 print:break-inside-avoid"
-                  role="listitem"
-                >
-                  <div className="flex items-center gap-4">
-                    <div
-                      className="mt-0.5 hidden h-4 w-4 shrink-0 rounded-md border-2 border-amber-400
-                        sm:block"
-                      aria-hidden="true"
-                    />
+            <div className="flex flex-col items-end">
+              <ul className="m-0 w-full list-none p-0" role="list">
+                {activeSelectedItems.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex items-center justify-between gap-6 border-b border-stone-800/10
+                      p-2 py-3 transition-all duration-300 select-none sm:p-5
+                      print:break-inside-avoid"
+                    role="listitem"
+                  >
+                    <div className="flex items-center gap-4">
+                      <div
+                        className="mt-0.5 hidden h-4 w-4 shrink-0 rounded-md border-2
+                          border-amber-400 sm:block"
+                        aria-hidden="true"
+                      />
 
-                    <div className="h-12 w-12 shrink-0 text-stone-700" aria-hidden="true">
-                      <AssetIcon name={item.icon} className="h-full w-full object-contain" />
-                    </div>
+                      <div className="h-12 w-12 shrink-0 text-stone-700" aria-hidden="true">
+                        <AssetIcon name={item.icon} className="h-full w-full object-contain" />
+                      </div>
 
-                    <div className="flex flex-col text-left">
-                      <span className="text-xs font-black tracking-tight text-stone-900 uppercase">
-                        {item.name}
-                      </span>
-
-                      {item.preparation && (
-                        <span
-                          className="mt-0.5 text-[9px] font-bold tracking-wider text-stone-500
-                            uppercase"
-                        >
-                          Preparation: {item.preparation}
+                      <div className="flex flex-col text-left">
+                        <span className="text-xs font-black tracking-tight text-stone-900 uppercase">
+                          {item.name}
                         </span>
-                      )}
 
-                      {item.preparationAlert && (
-                        <span
-                          className="mt-1.5 max-w-xl border-l-2 border-amber-400 bg-amber-50/50 py-1
-                            pl-2.5 text-[9px] leading-normal font-bold tracking-wider text-amber-800
-                            uppercase"
-                          role="status"
-                        >
-                          Warning: {item.preparationAlert}
-                        </span>
-                      )}
+                        {item.preparation && (
+                          <span
+                            className="mt-0.5 text-[9px] font-bold tracking-wider text-stone-500
+                              uppercase"
+                          >
+                            Preparation: {item.preparation}
+                          </span>
+                        )}
+
+                        {item.preparationAlert && (
+                          <span
+                            className="mt-1.5 max-w-xl border-l-2 border-amber-400 bg-amber-50/50
+                              py-1 pl-2.5 text-[9px] leading-normal font-bold tracking-wider
+                              text-amber-800 uppercase"
+                            role="status"
+                          >
+                            Warning: {item.preparationAlert}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                  <IngredientFormattedWeightDisplay ingredient={item} />
-                </li>
-              ))}
-            </ul>
+                    <IngredientFormattedWeightDisplay ingredient={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div className="pt-4">
               <TopperOnlyWarning />
             </div>

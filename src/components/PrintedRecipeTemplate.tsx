@@ -18,7 +18,15 @@ export const PrintedRecipeTemplate = () => {
         <div className="mx-auto max-w-[800px] p-12">
           <header className="mb-8 flex items-end justify-between border-b-2 border-amber-400 pb-6">
             <div>
-              <h1 className="font-serif text-3xl text-stone-900 italic">Golden Topper Plan</h1>
+              <h1
+                className="font-serif text-4xl leading-tight font-black tracking-wide text-stone-900
+                  italic"
+              >
+                <div className="text-amber-700">
+                  {formData.dogName ? `${formData.dogName}'s` : "Golden"}
+                </div>
+                Topper Plan
+              </h1>
               <div className="mt-1.5 flex items-center gap-2">
                 <span
                   className="rounded-md border border-amber-200/60 bg-amber-50 px-2.5 py-1
@@ -47,7 +55,6 @@ export const PrintedRecipeTemplate = () => {
                 >
                   Dog Weight
                 </span>
-                {/* ✅ FIXED: Laid flat inline using standard spacing */}
                 <span className="text-lg font-black tracking-tight whitespace-nowrap text-stone-900">
                   {formData.weight || 65} lbs
                 </span>
@@ -82,20 +89,15 @@ export const PrintedRecipeTemplate = () => {
                   className="flex items-center gap-1.5 text-lg font-black whitespace-nowrap
                     text-amber-950"
                 >
-                  <span>{formData.servingSize === 2 ? "2 Dogs" : "1 Dog"}</span>
-                  <span
-                    className="pt-0.5 font-serif text-[11px] font-normal tracking-normal
-                      text-stone-500 lowercase italic"
-                  >
-                    ({formData.servingSize || 1}{" "}
-                    {formData.servingSize === 2 ? "portions" : "portion"})
+                  <span>
+                    {formData.servingSize || 1}{" "}
+                    {formData.servingSize === 2 ? "portions" : "portion"}
                   </span>
                 </div>
               </div>
             </div>
           </section>
 
-          {/* --- INGREDIENTS CHECKLIST SECTION --- */}
           <section className="space-y-6">
             <h2
               className="border-b border-stone-200 pb-2 text-xs font-black tracking-widest
@@ -104,7 +106,6 @@ export const PrintedRecipeTemplate = () => {
               Selected Kitchen Ingredients
             </h2>
 
-            {/* Semantic unordered list structure for assistive readers */}
             <ul className="m-0 list-none space-y-4 p-0" role="list">
               {nutritionResults.recipeItems
                 .filter((item) => selectedIds.includes(item.id))
@@ -115,28 +116,22 @@ export const PrintedRecipeTemplate = () => {
                       print:break-inside-avoid"
                     role="listitem"
                   >
-                    {/* LEFT SIDE: Checkbox, Icon, Name, and Prep Alerts */}
                     <div className="flex items-center gap-4">
-                      {/* 1. SEMANTIC GHOST CHECKBOX (From your inspiration image) */}
                       <div
                         className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-md border-2
                           border-amber-500/40"
                         aria-hidden="true"
                       />
 
-                      {/* 2. DOCK ASSET ICON */}
                       <div className="h-8 w-8 flex-shrink-0 text-stone-700" aria-hidden="true">
                         <AssetIcon name={item.icon} className="h-full w-full" />
                       </div>
 
-                      {/* 3. INGREDIENT TEXT & PREPARATION ANNOTATION */}
                       <div className="flex flex-col text-left">
-                        {/* 1. PRIMARY INGREDIENT NAME */}
                         <span className="text-xs font-black tracking-tight text-stone-900 uppercase">
                           {item.name}
                         </span>
 
-                        {/* 2. OPERATIONAL KITCHEN INSTRUCTION */}
                         {item.preparation && (
                           <span
                             className="mt-0.5 text-[9px] font-bold tracking-wider text-stone-500
@@ -146,7 +141,6 @@ export const PrintedRecipeTemplate = () => {
                           </span>
                         )}
 
-                        {/* 3. HIGH-CONTRAST PRINT WARNING */}
                         {item.preparationAlert && (
                           <span
                             className="mt-1.5 max-w-xl border-l-2 border-amber-400 bg-amber-50/50
@@ -161,9 +155,6 @@ export const PrintedRecipeTemplate = () => {
                       </div>
                     </div>
 
-                    {/* ========================================== */}
-                    {/* 🧮 RIGHT SIDE: BOLD WEIGHT METRICS         */}
-                    {/* ========================================== */}
                     <div
                       className="flex min-w-[70px] flex-shrink-0 flex-col items-end justify-center
                         gap-1 text-right"
@@ -185,15 +176,6 @@ export const PrintedRecipeTemplate = () => {
                         }
                       </span>
 
-                      {/* ========================================== */}
-                      {/* ⚖️ 2. SECONDARY METRIC ACCENT (Lbs & Oz)    */}
-                      {/* ========================================== */}
-                      {/* 
-     - ✅ THE FIX: Explicitly targets and renders the '.secondary' data object key property!
-     - Uses standard text-stone-600 font-bold to keep it distinct from the primary scale metric.
-     - Added an inline conditional check so it cleanly hides itself if a micro-ingredient 
-       doesn't yield a meaningful pound fraction (like tiny chia seed dosages), preventing UI text clutter.
-  */}
                       {formatSmartWeight({
                         grams: item.grams,
                         category: item.category,

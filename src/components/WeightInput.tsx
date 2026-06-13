@@ -1,6 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
+import { InputLabel } from "./common/InputLabel";
 
 export const WeightInput = () => {
   const context = useContext(GlobalControlOptionsContext);
@@ -59,13 +60,7 @@ export const WeightInput = () => {
       ref={containerRef}
       className="relative flex w-full flex-col items-start font-sans select-none"
     >
-      <label
-        htmlFor="canine-exercise-trigger"
-        className="mb-2 text-[10px] font-black tracking-[0.25em] text-stone-800 uppercase
-          transition-colors duration-200 group-hover:text-stone-950"
-      >
-        Weight
-      </label>
+      <InputLabel htmlFor={"canine-weight-trigger"}>Weight</InputLabel>
 
       <button
         id="canine-weight-trigger"

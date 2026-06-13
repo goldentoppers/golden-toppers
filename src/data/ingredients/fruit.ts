@@ -92,8 +92,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Prevents rapid blood glucose spikes
     preparation: "Skin, Pit & Dice Flesh",
     preparationAlert: "Remove pit and skin.",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Eye Health", "Immune Boost"],
+    vitamins: ["Vitamin A", "B6", "E"],
   },
   {
     id: "pear",
@@ -105,8 +105,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     maxGramsCap: 25.0, // Safe fibrous flesh cutoff
     preparation: "Core, Seed & Finely Slice",
     preparationAlert: "Remove all seeds.",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Cellular Health", "Hydration Support"],
+    vitamins: ["Vitamin C", "K", "Potassium"],
   },
   {
     id: "dragonfruit",
@@ -117,8 +117,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "dragonfruit",
     maxGramsCap: 25.0, // Controlled exotic flesh ceiling
     preparation: "Peel Pink Skin & Cube",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Cellular Defense", "Immune Support"],
+    vitamins: ["Vitamin C", "Betalains", "Fiber"],
   },
   {
     id: "kiwi",
@@ -129,8 +129,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "kiwi",
     maxGramsCap: 15.0, // Restricts dense actinidain enzyme exposure
     preparation: "Peel Fuzzy Skin & Dice",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Cognitive Function", "Antioxidants"],
+    vitamins: ["Vitamin C", "K", "Fiber"],
   },
   {
     id: "pineapple",
@@ -141,8 +141,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "pineapple",
     maxGramsCap: 15.0, // Clamps heavy bromelain enzyme volumes
     preparation: "Core & Chop Flesh Fine",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Anti-Inflammatory Digestion"],
+    vitamins: ["Bromelain", "C", "Manganese"],
   },
   {
     id: "papaya",
@@ -153,8 +153,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "papaya",
     maxGramsCap: 20.0, // Clean papain enzyme limit
     preparation: "De-seed, Peel & Mash",
-    vitamins: [],
-    benefits: [],
+    benefits: ["Proteolytic Digestive Enzymes"],
+    vitamins: ["Papain", "A", "C", "Fiber"],
   },
 
   // --- ⚠️ TOXIC & PROHIBITED (Filtered out of Pantry, kept for Explore) ---

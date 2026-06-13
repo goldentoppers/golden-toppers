@@ -29,7 +29,6 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
   isNoneItem,
   color,
 }) => {
-  console.log("color: ", color);
   return (
     <button
       type="button"
@@ -44,7 +43,7 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
         borderColor: isSelected ? color : "rgba(120, 113, 108, 0.2)",
         backgroundColor: isSelected ? `${color}1A` : "#faf7f2",
       }}
-      className={`relative z-10 flex aspect-square h-40 w-40 flex-col items-center justify-between
+      className={`relative z-10 flex aspect-square h-48 w-40 flex-col items-center justify-between
         rounded-2xl p-3 text-center shadow-md transition-all duration-200 outline-none select-none
         focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 ${
           !isSelected && !isDisabled
@@ -68,20 +67,18 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
           <div className="mx-auto flex w-full flex-row justify-between border-t border-stone-800/10" />
         </div>
         <div
-          className={`flex max-h-[75%] w-full items-center justify-center bg-transparent
+          className={`flex h-full w-full items-center justify-center bg-transparent
             mix-blend-multiply transition-transform duration-200
             ${isSelected ? "scale-105 opacity-100" : "opacity-85"}`}
         >
           {isNoneItem ? (
-            <div className="pt-6">
-              <NoSymbolIcon
-                fill="none"
-                stroke={color}
-                strokeWidth={1.85}
-                className={`pointer-events-none h-10 w-10 transition-transform duration-200
-                  ${isSelected ? "text-stone-950" : "text-stone-600/80"}`}
-              />
-            </div>
+            <NoSymbolIcon
+              fill="none"
+              stroke={color}
+              strokeWidth={1.85}
+              className={`pointer-events-none mt-8 h-10 w-10 transition-transform duration-200
+                ${isSelected ? "text-stone-950" : "text-stone-600/80"}`}
+            />
           ) : (
             <AssetIcon
               name={ingredient.icon}

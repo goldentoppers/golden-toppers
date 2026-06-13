@@ -14,6 +14,7 @@ interface GlobalFormData {
   weight: number;
   activity: "low" | "moderate" | "high";
   servingSize: 1 | 2;
+  dogName: string;
 }
 
 interface GlobalContextType {
@@ -39,6 +40,7 @@ export const GlobalControlOptionsContext = createContext<GlobalContextType>({
     weight: 0,
     activity: "low",
     servingSize: 1,
+    dogName: "",
   },
   currentChapter: "proteins",
   setCurrentChapter: () => null,

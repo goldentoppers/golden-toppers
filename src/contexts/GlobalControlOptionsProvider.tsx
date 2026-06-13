@@ -11,6 +11,7 @@ export const GlobalControlOptionsProvider: React.FC<{
     weight: 65,
     activity: "moderate" as "low" | "moderate" | "high",
     servingSize: 1 as 1 | 2,
+    dogName: "",
   });
 
   const [currentChapter, setCurrentChapter] = useState<BookCategory>("proteins");

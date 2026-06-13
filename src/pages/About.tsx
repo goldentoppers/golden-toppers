@@ -8,7 +8,7 @@ export const About: React.FC = () => {
       className="mx-auto w-full max-w-4xl px-4 pb-16 text-left font-sans select-none"
       aria-labelledby="about-philosophy-title"
     >
-      <header className="mt-8 mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">
+      <header className="mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)] md:pt-24">
         <span
           className="block text-[9.5px] leading-none font-black tracking-[0.25em] text-amber-700
             uppercase"

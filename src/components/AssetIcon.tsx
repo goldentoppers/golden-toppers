@@ -102,7 +102,6 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
   style,
   ...props
 }) => {
-  // console.log("name: ", name);
   switch (name.toLowerCase()) {
     case "none":
     case "none-slash":

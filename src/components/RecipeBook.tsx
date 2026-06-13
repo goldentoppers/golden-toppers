@@ -34,7 +34,7 @@ export const RecipeBook: React.FC = () => {
 
   return (
     <div
-      className="min-h-6xl flex flex-col gap-4 select-none"
+      className="min-h-6xl flex flex-col gap-4 select-none md:pt-24"
       role="region"
       aria-label="Recipe Formulation"
     >

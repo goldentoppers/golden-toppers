@@ -7,8 +7,8 @@ export const DailyTargetDisplay: React.FC = () => {
 
   return (
     <div
-      className="animate-fade-in flex h-16.25 flex-col items-center justify-between text-center
-        select-none"
+      className="animate-fade-in flex h-16.25 flex-col items-center justify-between gap-1
+        text-center select-none"
       role="region"
       aria-live="polite"
       aria-label="Caloric Target Metrics Monitor"
