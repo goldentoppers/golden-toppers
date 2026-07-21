@@ -9,7 +9,7 @@ export const ExerciseInput = () => {
 
   const [localActivity, setLocalActivity] = useState<ActivityLevel>("moderate");
 
-  const hasContext = !!context;
+  const hasContext = Boolean(context);
   const currentActivity = hasContext ? context.formData.activity : localActivity;
 
   const options: { value: ActivityLevel; label: string; icon: string }[] = [

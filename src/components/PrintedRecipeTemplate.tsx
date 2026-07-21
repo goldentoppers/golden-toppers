@@ -56,7 +56,7 @@ export const PrintedRecipeTemplate = () => {
                   Dog Weight
                 </span>
                 <span className="text-lg font-black tracking-tight whitespace-nowrap text-stone-900">
-                  {formData.weight || 65} lbs
+                  {typeof formData.weight === 'number' ? formData.weight : 65} lbs
                 </span>
               </div>
 
@@ -90,8 +90,8 @@ export const PrintedRecipeTemplate = () => {
                     text-amber-950"
                 >
                   <span>
-                    {formData.servingSize || 1}{" "}
-                    {formData.servingSize === 2 ? "portions" : "portion"}
+                    {typeof formData.servingSize === 'number' ? formData.servingSize : 1}
+                    {(typeof formData.servingSize === 'number' ? formData.servingSize : 1) === 2 ? "portions" : "portion"}
                   </span>
                 </div>
               </div>
@@ -170,7 +170,7 @@ export const PrintedRecipeTemplate = () => {
                             category: item.category,
                             densityType: item.density,
                             role: item.role,
-                            servingSize: formData.servingSize || 1,
+                            servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                             ingredientId: item.id,
                           }).primary
                         }
@@ -181,7 +181,7 @@ export const PrintedRecipeTemplate = () => {
                         category: item.category,
                         densityType: item.density,
                         role: item.role,
-                        servingSize: formData.servingSize || 1,
+                        servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                         ingredientId: item.id,
                       }).subtext && (
                         <span
@@ -194,7 +194,7 @@ export const PrintedRecipeTemplate = () => {
                               category: item.category,
                               densityType: item.density,
                               role: item.role,
-                              servingSize: formData.servingSize || 1,
+                              servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                               ingredientId: item.id,
                             }).subtext
                           }

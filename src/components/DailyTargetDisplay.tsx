@@ -26,7 +26,11 @@ export const DailyTargetDisplay: React.FC = () => {
             className="inline-block text-left text-xl leading-none font-black tracking-tighter
               text-amber-600 md:text-2xl"
           >
-            {Math.round(nutritionResults.dailyCalorieTarget || 0)}
+            {Math.round(
+              typeof nutritionResults.dailyCalorieTarget === 'number'
+                ? nutritionResults.dailyCalorieTarget
+                : 0,
+            )}
           </span>
           <span
             className="pointer-events-none mt-2 block text-[11px] leading-none font-black

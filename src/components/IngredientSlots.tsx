@@ -73,7 +73,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                               category: item.category,
                               densityType: item.density,
                               role: item.role,
-                              servingSize: formData.servingSize || 1,
+                              servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                               ingredientId: item.id,
                             }).primary
                           }
@@ -83,7 +83,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                             category: item.category,
                             densityType: item.density,
                             role: item.role,
-                            servingSize: formData.servingSize || 1,
+                            servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                             ingredientId: item.id,
                           }).subtext && (
                             <span
@@ -97,7 +97,7 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                                   category: item.category,
                                   densityType: item.density,
                                   role: item.role,
-                                  servingSize: formData.servingSize || 1,
+                                  servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                                   ingredientId: item.id,
                                 }).subtext
                               }

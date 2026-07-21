@@ -25,7 +25,7 @@ export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeigh
             category: ingredient.category,
             densityType: ingredient.density,
             role: ingredient.role,
-            servingSize: formData.servingSize || 1,
+            servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
             ingredientId: ingredient.id,
           }).primary
         }
@@ -35,7 +35,7 @@ export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeigh
           category: ingredient.category,
           densityType: ingredient.density,
           role: ingredient.role,
-          servingSize: formData.servingSize || 1,
+          servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
           ingredientId: ingredient.id,
         }).subtext && (
           <span
@@ -48,7 +48,7 @@ export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeigh
                 category: ingredient.category,
                 densityType: ingredient.density,
                 role: ingredient.role,
-                servingSize: formData.servingSize || 1,
+                servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
                 ingredientId: ingredient.id,
               }).subtext
             }

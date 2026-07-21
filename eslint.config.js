@@ -18,5 +18,9 @@ export default defineConfig([
     languageOptions: {
       globals: globals.browser,
     },
+    rules: {
+      // discourage implicit coercions (e.g. +foo, !!foo, ~foo)
+      'no-implicit-coercion': ['error', { boolean: true, number: true, string: true, allow: [] }],
+    },
   },
 ])

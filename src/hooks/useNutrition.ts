@@ -25,13 +25,18 @@ export const useNutrition = (
     const rer = 70 * Math.pow(weightKg, 0.75);
     const multipliers = { low: 1.2, moderate: 1.6, high: 2.0 };
     const totalCalories = Math.round(rer * (multipliers[activityLevel] || 1.6));
-    const operationalTargetKcal = totalCalories * 0.1; // ONLY 10% TOPPER
+    // ONLY 10% TOPPER. Round to integer calories to keep buckets integer.
+    const operationalTargetKcal = Math.round(totalCalories * 0.1);
 
-    // The Golden Ratio Split (50% Veg/Fiber, 40% Meat/Protein, 10% Energy/Carbs)
+    // The Golden Ratio Split (50% Veg/Fiber, 40% Meat/Protein, remainder carbs)
+    const vegKcal = Math.round(operationalTargetKcal * 0.5);
+    const proteinKcal = Math.round(operationalTargetKcal * 0.4);
+    const carbsKcal = operationalTargetKcal - vegKcal - proteinKcal;
+
     const macroBuckets = {
-      vegetables: Math.round(operationalTargetKcal * 0.5),
-      protein: Math.round(operationalTargetKcal * 0.4),
-      carbs: Math.round(operationalTargetKcal * 0.1),
+      vegetables: vegKcal,
+      protein: proteinKcal,
+      carbs: carbsKcal,
     };
 
     if (selectedIngredients.length === 0) {
@@ -125,15 +130,23 @@ export const useNutrition = (
       }
 
       // Convert temporary state structures into final printable engine records
-      return workingItems.map((item) => ({
-        ...item.ingredient,
-        grams:
-          Math.round(
-            (item.grams || item.kcalAllocated / item.ingredient.kcalPerGram) *
-              10,
-          ) / 10,
-        kcalProvided: item.kcalAllocated,
-      }));
+      // NOTE: avoid using falsy checks for `item.grams` because 0 is a valid value.
+      return workingItems.map((item) => {
+        const gramsRaw =
+          typeof item.grams === 'number'
+            ? item.grams
+            : item.ingredient.kcalPerGram > 0
+            ? item.kcalAllocated / item.ingredient.kcalPerGram
+            : 0;
+
+        const roundedGrams = Math.round(gramsRaw * 10) / 10;
+
+        return {
+          ...item.ingredient,
+          grams: roundedGrams,
+          kcalProvided: item.kcalAllocated,
+        };
+      });
     };
 
     // Run the balanced data loops across your 3 core categories independently
