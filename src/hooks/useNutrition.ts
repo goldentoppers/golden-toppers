@@ -73,7 +73,7 @@ export const useNutrition = (
       // Initialize working array matching layout constraints
       let workingItems = items.map((item) => ({
         ingredient: item,
-        grams: 0,
+        grams: undefined as number | undefined,
         kcalAllocated: baseAllocationPerItem,
         isCapped: false,
       }));
@@ -133,11 +133,8 @@ export const useNutrition = (
       // NOTE: avoid using falsy checks for `item.grams` because 0 is a valid value.
       return workingItems.map((item) => {
         const gramsRaw =
-          typeof item.grams === 'number'
-            ? item.grams
-            : item.ingredient.kcalPerGram > 0
-            ? item.kcalAllocated / item.ingredient.kcalPerGram
-            : 0;
+          item.grams ??
+          (item.ingredient.kcalPerGram > 0 ? item.kcalAllocated / item.ingredient.kcalPerGram : 0);
 
         const roundedGrams = Math.round(gramsRaw * 10) / 10;
 

@@ -53,6 +53,28 @@ describe('useNutrition', () => {
     expect(p.kcalProvided).toBeGreaterThanOrEqual(0);
   });
 
+  it('computes grams from allocated calories when uncapped', () => {
+    const protein: Ingredient = {
+      id: 'p2',
+      name: 'Test Protein 2',
+      kcalPerGram: 2,
+      category: 'meat',
+      role: 'protein',
+      icon: 'x',
+      benefits: [],
+      vitamins: [],
+    };
+
+    render(<TestHarness weightLbs={100} activity="moderate" ingredients={[protein]} />);
+    const raw = screen.getByTestId('result').textContent || '';
+    const parsed = JSON.parse(raw);
+
+    const p = parsed.recipeItems.find((r: Record<string, unknown>) => String(r.id) === 'p2');
+    expect(p).toBeTruthy();
+    expect(p.grams).toBeGreaterThan(0);
+    expect(p.kcalProvided).toBeGreaterThan(0);
+  });
+
   it('zeroes out items that are toxic or have non-positive kcalPerGram', () => {
     const bad: Ingredient = {
       id: 'bad',
