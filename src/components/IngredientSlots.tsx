@@ -41,6 +41,14 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
         <div className="flex flex-col gap-4 font-sans select-none md:flex-row">
           {activeSelectedItems.map((item) => {
             const hasAlert = item.preparationAlert || item.preparation;
+            const formattedWeight = formatSmartWeight({
+              grams: item.grams,
+              category: item.category,
+              densityType: item.density,
+              role: item.role,
+              servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
+              ingredientId: item.id,
+            });
 
             return (
               <li key={item.id} className="w-full shrink-0 grow basis-0">
@@ -67,40 +75,15 @@ export const IngredientSlots: React.FC<IngredientSlotsProps> = ({
                             py-1 text-center font-mono text-sm leading-none font-black
                             text-stone-950"
                         >
-                          {
-                            formatSmartWeight({
-                              grams: item.grams,
-                              category: item.category,
-                              densityType: item.density,
-                              role: item.role,
-                              servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                              ingredientId: item.id,
-                            }).primary
-                          }
+                          {formattedWeight.primary}
 
-                          {formatSmartWeight({
-                            grams: item.grams,
-                            category: item.category,
-                            densityType: item.density,
-                            role: item.role,
-                            servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                            ingredientId: item.id,
-                          }).subtext && (
+                          {formattedWeight.subtext && (
                             <span
                               className="mt-1 block items-center pr-0.5 text-center font-mono
                                 text-xs leading-none font-black tracking-tight text-stone-700
                                 uppercase"
                             >
-                              {
-                                formatSmartWeight({
-                                  grams: item.grams,
-                                  category: item.category,
-                                  densityType: item.density,
-                                  role: item.role,
-                                  servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                                  ingredientId: item.id,
-                                }).subtext
-                              }
+                              {formattedWeight.subtext}
                             </span>
                           )}
                         </span>

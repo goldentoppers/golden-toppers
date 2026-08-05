@@ -109,9 +109,19 @@ export const PrintedRecipeTemplate = () => {
             <ul className="m-0 list-none space-y-4 p-0" role="list">
               {nutritionResults.recipeItems
                 .filter((item) => selectedIds.includes(item.id))
-                .map((item) => (
-                  <li
-                    key={item.id}
+                .map((item) => {
+                  const formattedWeight = formatSmartWeight({
+                    grams: item.grams,
+                    category: item.category,
+                    densityType: item.density,
+                    role: item.role,
+                    servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
+                    ingredientId: item.id,
+                  });
+
+                  return (
+                    <li
+                      key={item.id}
                     className="flex items-start justify-between border-b border-stone-100 py-3
                       print:break-inside-avoid"
                     role="listitem"
@@ -164,40 +174,15 @@ export const PrintedRecipeTemplate = () => {
                         className="block rounded-md border border-stone-200 bg-white px-2.5 py-1
                           font-mono text-xs font-black text-stone-950 shadow-2xs"
                       >
-                        {
-                          formatSmartWeight({
-                            grams: item.grams,
-                            category: item.category,
-                            densityType: item.density,
-                            role: item.role,
-                            servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                            ingredientId: item.id,
-                          }).primary
-                        }
+                        {formattedWeight.primary}
                       </span>
 
-                      {formatSmartWeight({
-                        grams: item.grams,
-                        category: item.category,
-                        densityType: item.density,
-                        role: item.role,
-                        servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                        ingredientId: item.id,
-                      }).subtext && (
+                      {formattedWeight.subtext && (
                         <span
                           className="mt-0.5 block pr-0.5 font-mono text-[10px] font-black
                             tracking-tight text-stone-500 uppercase"
                         >
-                          {
-                            formatSmartWeight({
-                              grams: item.grams,
-                              category: item.category,
-                              densityType: item.density,
-                              role: item.role,
-                              servingSize: typeof formData.servingSize === 'number' ? formData.servingSize : 1,
-                              ingredientId: item.id,
-                            }).subtext
-                          }
+                          {formattedWeight.subtext}
                         </span>
                       )}
                     </div>
