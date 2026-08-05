@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { IngredientFormattedWeightDisplay } from './IngredientFormattedWeightDisplay';
-import { GlobalControlOptionsContext } from '../contexts/GlobalControlOptionsContext';
+import { GlobalControlOptionsContext, type GlobalContextType } from '../contexts/GlobalControlOptionsContext';
 import type { RecipeResultItem } from '../types/nutrition';
 
 const makeIngredient = (overrides: Partial<RecipeResultItem> = {}): RecipeResultItem => ({
@@ -19,7 +19,7 @@ const makeIngredient = (overrides: Partial<RecipeResultItem> = {}): RecipeResult
   ...overrides,
 } as RecipeResultItem);
 
-const providerValue: any = {
+const providerValue: Partial<GlobalContextType> = {
   currentChapter: 'proteins',
   setCurrentChapter: () => null,
   isReviewOpen: false,
@@ -31,7 +31,7 @@ const providerValue: any = {
   toggleIngredient: () => null,
   clearAllSelections: () => null,
   nutritionResults: { macros: { vegetables: 0, protein: 0, carbs: 0 }, recipeItems: [], dailyCalorieTarget: 0 },
-};
+} as Partial<GlobalContextType>;
 
 describe('IngredientFormattedWeightDisplay', () => {
   it('renders primary metric from formatSmartWeight', () => {

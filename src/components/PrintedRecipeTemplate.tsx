@@ -122,72 +122,65 @@ export const PrintedRecipeTemplate = () => {
                   return (
                     <li
                       key={item.id}
-                    className="flex items-start justify-between border-b border-stone-100 py-3
-                      print:break-inside-avoid"
-                    role="listitem"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div
-                        className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-md border-2
-                          border-amber-500/40"
-                        aria-hidden="true"
-                      />
-
-                      <div className="h-8 w-8 flex-shrink-0 text-stone-700" aria-hidden="true">
-                        <AssetIcon name={item.icon} className="h-full w-full" />
-                      </div>
-
-                      <div className="flex flex-col text-left">
-                        <span className="text-xs font-black tracking-tight text-stone-900 uppercase">
-                          {item.name}
-                        </span>
-
-                        {item.preparation && (
-                          <span
-                            className="mt-0.5 text-[9px] font-bold tracking-wider text-stone-500
-                              uppercase"
-                          >
-                            Preparation: {item.preparation}
-                          </span>
-                        )}
-
-                        {item.preparationAlert && (
-                          <span
-                            className="mt-1.5 max-w-xl border-l-2 border-amber-400 bg-amber-50/50
-                              py-1 pl-2.5 text-[9px] leading-normal font-bold tracking-wider
-                              text-amber-800 uppercase"
-                            role="status"
-                          >
-                            <strong className="font-black text-amber-900">Warning:</strong>{" "}
-                            {item.preparationAlert}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    <div
-                      className="flex min-w-[70px] flex-shrink-0 flex-col items-end justify-center
-                        gap-1 text-right"
+                      className="flex items-start justify-between border-b border-stone-100 py-3 print:break-inside-avoid"
+                      role="listitem"
                     >
-                      {/* 1. PRIMARY METRIC BADGE (Grams / Tsp) */}
-                      <span
-                        className="block rounded-md border border-stone-200 bg-white px-2.5 py-1
-                          font-mono text-xs font-black text-stone-950 shadow-2xs"
-                      >
-                        {formattedWeight.primary}
-                      </span>
+                      <div className="flex items-center gap-4">
+                        <div
+                          className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-md border-2 border-amber-500/40"
+                          aria-hidden="true"
+                        />
 
-                      {formattedWeight.subtext && (
+                        <div className="h-8 w-8 flex-shrink-0 text-stone-700" aria-hidden="true">
+                          <AssetIcon name={item.icon} className="h-full w-full" />
+                        </div>
+
+                        <div className="flex flex-col text-left">
+                          <span className="text-xs font-black tracking-tight text-stone-900 uppercase">
+                            {item.name}
+                          </span>
+
+                          {item.preparation && (
+                            <span
+                              className="mt-0.5 text-[9px] font-bold tracking-wider text-stone-500 uppercase"
+                            >
+                              Preparation: {item.preparation}
+                            </span>
+                          )}
+
+                          {item.preparationAlert && (
+                            <span
+                              className="mt-1.5 max-w-xl border-l-2 border-amber-400 bg-amber-50/50 py-1 pl-2.5 text-[9px] leading-normal font-bold tracking-wider text-amber-800 uppercase"
+                              role="status"
+                            >
+                              <strong className="font-black text-amber-900">Warning:</strong>{" "}
+                              {item.preparationAlert}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div
+                        className="flex min-w-[70px] flex-shrink-0 flex-col items-end justify-center gap-1 text-right"
+                      >
+                        {/* 1. PRIMARY METRIC BADGE (Grams / Tsp) */}
                         <span
-                          className="mt-0.5 block pr-0.5 font-mono text-[10px] font-black
-                            tracking-tight text-stone-500 uppercase"
+                          className="block rounded-md border border-stone-200 bg-white px-2.5 py-1 font-mono text-xs font-black text-stone-950 shadow-2xs"
                         >
-                          {formattedWeight.subtext}
+                          {formattedWeight.primary}
                         </span>
-                      )}
-                    </div>
-                  </li>
-                ))}
+
+                        {formattedWeight.subtext && (
+                          <span
+                            className="mt-0.5 block pr-0.5 font-mono text-[10px] font-black tracking-tight text-stone-500 uppercase"
+                          >
+                            {formattedWeight.subtext}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
             </ul>
           </section>
 
