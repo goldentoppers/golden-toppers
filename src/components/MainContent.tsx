@@ -3,18 +3,12 @@ import { AppHeader } from "./AppHeader";
 
 export const MainContent: React.FC = () => {
   return (
-    <main
-      id="main-content"
-      className="relative z-10 flex w-full flex-1 flex-col justify-start"
-      role="main"
-    >
-      <div className="mx-auto w-full max-w-5xl space-y-5 px-8 pt-8">
-        <AppHeader />
+    <main id="main-content" className="relative z-10 mx-auto w-full max-w-5xl px-4 pt-4 sm:px-8">
+      <AppHeader />
 
-        <div className="w-full">
-          <div className="mx-auto mt-8 pb-2">
-            <Outlet />
-          </div>
+      <div className="relative z-20 mt-4 overflow-hidden px-4 ">
+        <div className="relative z-10 w-full">
+          <Outlet />
         </div>
       </div>
     </main>

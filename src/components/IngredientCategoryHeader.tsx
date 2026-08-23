@@ -23,7 +23,7 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
       className="relative flex w-full flex-col gap-2 text-left select-none md:flex-row md:gap-6"
     >
       <header
-        className="animate-fade-in flex w-full flex-col items-start justify-start pt-8 pb-4
+        className="animate-fade-in flex w-full flex-col items-start justify-start
           select-none"
         aria-labelledby={`${title}-category-title`}
       >

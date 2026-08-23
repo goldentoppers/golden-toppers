@@ -48,6 +48,7 @@ export const AppLayout: React.FC = () => {
       }
     };
   }, []);
+
   return (
     <div
       className="relative min-h-screen w-full overflow-x-hidden bg-[#f5f2eb] font-sans
@@ -57,8 +58,7 @@ export const AppLayout: React.FC = () => {
       <div
         className={`pointer-events-none fixed inset-0 z-50 hidden flex-col items-center
           justify-center space-y-4 bg-stone-50 text-center transition-all duration-700 ease-in-out
-          select-none md:flex ${
-            isAssetLoading ? "opacity-100" : "pointer-events-none scale-105 opacity-0"
+          select-none md:flex ${isAssetLoading ? "opacity-100" : "pointer-events-none scale-105 opacity-0"
           }`}
         role="status"
         aria-live="polite"
@@ -82,22 +82,27 @@ export const AppLayout: React.FC = () => {
       <div
         className="xs:h-64 pointer-events-none absolute top-0 left-0 z-0 h-72 w-full overflow-hidden
           select-none print:hidden"
-      >
-        <img
+      >        <img
           src={dogHero}
           onLoad={() => setIsImageDownloaded(true)}
           alt=""
-          className="h-full w-full object-cover object-[75%_15%] mix-blend-normal transition-all
-            duration-500"
+          className="h-full w-full object-cover object-[75%_15%] mix-blend-normal transition-all duration-500"
         />
 
         <div
-          className="absolute inset-0 h-full w-full bg-linear-to-b from-transparent via-[#f5f2eb]/30
-            to-[#f5f2eb]"
+          className="absolute inset-0 h-full w-full bg-gradient-to-b from-transparent via-[#f5f2eb]/30 to-[#f5f2eb]/60"
+          aria-hidden="true"
+        />
+
+        <div
+          className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-[#f5f2eb]"
           aria-hidden="true"
         />
       </div>
 
+      {/* ========================================================= */}
+      {/* 📦 APP MAIN STAGE CONTENT ROUTER GROUPS                    */}
+      {/* ========================================================= */}
       <div
         className="backdrop-blur-3xs relative z-10 flex w-full grow flex-col md:min-h-screen
           print:static print:block print:w-full print:bg-none print:p-0 print:backdrop-blur-none"

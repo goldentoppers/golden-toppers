@@ -4,6 +4,7 @@ import "./App.css";
 import { AppLayout } from "./components/AppLayout";
 import { About } from "./pages/About";
 import { RecipeBook } from "./components/RecipeBook";
+import { DesktopNav } from "./components/DesktopNav";
 
 // --- B. THE MULTI-PAGE ROUTE GRAPH ---
 const router = createBrowserRouter([
@@ -13,11 +14,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, // Defines the default home root path view
-        element: <RecipeBook />,
+        element: <div className="flex flex-col gap-8"><DesktopNav /><RecipeBook /></div>,
       },
       {
         path: "about",
-        element: <About />,
+        element: <div className="flex flex-col gap-8"><DesktopNav /><About /></div>,
       },
     ],
   },

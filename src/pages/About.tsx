@@ -1,34 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import kitchenHero from "../assets/hero-woman-and-dog-in-kitchen.jpg";
+import { PageHeading } from "../components/PageHeading";
 
 export const About: React.FC = () => {
-  return (
-    <section
-      className="mx-auto w-full max-w-4xl px-4 pb-16 text-left font-sans select-none"
-      aria-labelledby="about-philosophy-title"
-    >
-      <header className="mb-4 pt-12 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)] sm:pt-24">
-        <span
-          className="block text-[9.5px] leading-none font-black tracking-[0.25em] text-amber-700
-            uppercase"
-        >
-          The 10% Topper Philosophy
-        </span>
-        <h2
-          id="about-philosophy-title"
-          className="mt-3 font-serif text-3xl leading-tight font-black tracking-wide text-stone-900
-            italic"
-        >
-          Enriching the daily bowl, safely.
-        </h2>
-      </header>
 
-      <div
-        className="max-w-2xl space-y-4 pb-6 font-serif text-[14.5px] leading-relaxed font-medium
-          text-stone-700/95 italic select-text sm:text-[16px]"
-      >
-        {/* PARAGRAPH 1: THE CORE CONTEXT HOOK */}
+  return (<>
+    <PageHeading title="Enriching the daily bowl, safely." subtitle="The 10% Topper Philosophy" details={
+      () => (<>
         <p>
           We love our Golden Retrievers unconditionally, but navigating the world of canine
           nutrition can feel overwhelming. While formulating a 100% raw or home-cooked diet carries
@@ -36,14 +15,16 @@ export const About: React.FC = () => {
           supplemental mix-in is a simple, low-risk way to enhance their bowl.
         </p>
 
-        {/* PARAGRAPH 2: THE PRACTICAL APP SOLUTION */}
         <p>
           This tool was built to bridge that exact gap—giving you a beautiful, practical canvas to
           safely diversify your dog's daily bowl with vital nutrients and antioxidants, without
           unbalancing their core commercial diet.
-        </p>
-      </div>
-
+        </p></>
+      )} />
+    <section
+      className="mx-auto w-full max-w-4xl px-4 pb-16 text-left font-sans select-none"
+      aria-labelledby="about-philosophy-title"
+    >
       <div
         className="animate-fade-in pointer-events-none relative h-100 w-full overflow-hidden
           rounded-4xl border border-stone-900/4 border-b-white/60 bg-stone-900/2 opacity-90
@@ -200,5 +181,6 @@ export const About: React.FC = () => {
         </Link>
       </footer>
     </section>
+  </>
   );
 };
