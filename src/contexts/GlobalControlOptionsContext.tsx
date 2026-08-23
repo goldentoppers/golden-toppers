@@ -17,7 +17,7 @@ interface GlobalFormData {
   dogName: string;
 }
 
-interface GlobalContextType {
+export interface GlobalContextType {
   currentChapter: BookCategory;
   setCurrentChapter: React.Dispatch<React.SetStateAction<BookCategory>>;
   isReviewOpen: boolean;
