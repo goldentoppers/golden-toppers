@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 interface PageHeadingProps {
   title?: string;
-  details?: JSX.Element;
+  details?: React.ComponentType;
   subtitle?: string;
 }
 
