@@ -249,19 +249,4 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     preparation: "USE EXTREME CAUTION",
     preparationAlert: "Toxic in larger volumes. High concentration of thiosulfate compounds.",
   },
-  {
-    id: "avocado",
-    name: "Avocado",
-    kcalPerGram: 0,
-    role: "vegetable",
-    density: "rainbow",
-    category: "vegetable",
-    icon: "18-avocados",
-    vitamins: [],
-    benefits: [],
-    isHighRisk: true,
-    maxGramsCap: 0, // Blocked from active baseline loops
-    preparation: "STRICT RISK PROFILE",
-    preparationAlert: "Pit, bark, and skin contain persin, causing vomiting and diarrhea.",
-  },
 ];

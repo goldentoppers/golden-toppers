@@ -15,7 +15,7 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
     hexColor: "",
   },
 }) => {
-  const { title, target, icon, description, hexColor } = activeChapter;
+  const { title, target, hexColor } = activeChapter;
 
   return (
     <div
@@ -54,22 +54,37 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
           />
         </div>
 
-        <div className="w-full max-w-3xl text-left">
-          <p
-            className="w-full font-serif text-[13.5px] leading-relaxed font-medium tracking-wide
-              text-stone-600/95 italic select-text sm:text-[14.5px]"
-          >
-            <span
-              style={{ color: hexColor }}
-              className="float-left mr-4 flex items-center justify-center"
-              aria-hidden="true"
-            >
-              <AssetIcon name={icon} className="h-20 w-20" />
-            </span>
-            {description}
-          </p>
-        </div>
       </header>
+    </div>
+  );
+};
+
+export const IngredientCategoryDetails: React.FC<IngredientCategoryHeaderProps> = ({
+  activeChapter = {
+    title: "",
+    target: "",
+    icon: "",
+    description: "",
+    hexColor: "",
+  },
+}) => {
+  const { icon, description, hexColor } = activeChapter;
+
+  return (
+    <div className="w-full text-left">
+      <p
+        className="w-full font-serif text-[13.5px] leading-relaxed font-medium tracking-wide
+          text-stone-600/95 italic select-text sm:text-[14.5px]"
+      >
+        <span
+          style={{ color: hexColor }}
+          className="float-left mr-4 flex items-center justify-center"
+          aria-hidden="true"
+        >
+          <AssetIcon name={icon} className="h-20 w-20" />
+        </span>
+        {description}
+      </p>
     </div>
   );
 };

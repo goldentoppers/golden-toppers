@@ -2,7 +2,9 @@ import React, { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { IngredientPantry } from "./IngredientPantry";
 import { PrintButton } from "./buttons/PrintButton";
-import { IngredientCategoryHeader } from "./IngredientCategoryHeader";
+import {
+  IngredientCategoryDetails,
+} from "./IngredientCategoryHeader";
 import { ReviewRecipeDisplay } from "./ReviewRecipeDisplay";
 import { RestartButton } from "./buttons/RestartButton";
 import { chapterConfig } from "../data/chapter-config";
@@ -55,16 +57,14 @@ export const RecipeBook: React.FC = () => {
 
         <div className="flex flex-col gap-4">
           {!isReviewOpen && (
-            <div className="flex flex-col gap-4 transition-all duration-300 select-none">
-              <IngredientCategoryHeader activeChapter={activeChapter} />
-              <IngredientPantry
-                key={activeChapter.id}
-                selectedIds={selections[activeChapter.id]}
-                chapterConfig={activeChapter}
-                onToggle={(id: string) => toggleIngredient(id, currentChapter)}
-              />
-            </div>
 
+            <IngredientPantry
+              key={activeChapter.id}
+              selectedIds={selections[activeChapter.id]}
+              chapterConfig={activeChapter}
+              onToggle={(id: string) => toggleIngredient(id, currentChapter)}
+              details={<IngredientCategoryDetails activeChapter={activeChapter} />}
+            />
           )}
           <div
             className="pointer-events-none mt-4 mb-2 h-px w-full bg-stone-800/10"

@@ -150,9 +150,9 @@ export const About: React.FC = () => {
         className="flex flex-col items-center justify-center gap-4 border-t border-stone-200/60 pt-6
           sm:flex-row sm:justify-between"
       >
-        <div className="font-mono text-[10px] text-stone-400">
+        {/* <div className="font-mono text-[10px] text-stone-400">
           Golden Toppers Studio © {new Date().getFullYear()}
-        </div>
+        </div> */}
         <Link
           to="/"
           onClick={() => {

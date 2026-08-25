@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, type ReactNode } from "react";
 import { IngredientButton } from "./buttons/IngredientButton";
 import type { ChapterConfig } from "../data/chapter-config";
 
@@ -7,6 +7,7 @@ interface PantryProps {
   selectedIds: string[];
   chapterConfig: ChapterConfig;
   onClearCategory?: () => void;
+  details?: ReactNode;
 }
 
 export const IngredientPantry: React.FC<PantryProps> = ({
@@ -14,6 +15,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
   chapterConfig,
   onToggle,
   onClearCategory,
+  details,
 }) => {
   const { options, max: maxSlots } = chapterConfig;
 
@@ -37,7 +39,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
   const categoryIsEmpty = selectedIds.length === 0;
 
   return (
-    <div id="ingredient-pantry-section" className="flex w-full flex-col">
+    <div id="ingredient-pantry-section" className="flex min-w-0 w-full flex-col">
       <div
         className="xxs:flex-row mt-2 mb-6 flex flex-col items-center justify-between gap-3
           text-center"
@@ -72,9 +74,10 @@ export const IngredientPantry: React.FC<PantryProps> = ({
           aria-hidden="true"
         />
       </div>
+      {details}
       <ul
-        className="xs:grid-cols-3 xxs:grid-cols-2 grid list-none grid-cols-1 gap-4 sm:grid-cols-3
-          sm:px-4 md:grid-cols-4 lg:grid-cols-5"
+        className="xxs:grid-cols-3 xs:grid-cols-4 mt-6 grid list-none grid-cols-2 gap-1.5 sm:grid-cols-6
+          md:grid-cols-6 md:px-10"
         role="list"
         aria-label={`${chapterConfig.label}`}
       >
