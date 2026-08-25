@@ -57,7 +57,6 @@ export const RecipeBook: React.FC = () => {
 
         <div className="flex flex-col gap-4">
           {!isReviewOpen && (
-
             <IngredientPantry
               key={activeChapter.id}
               selectedIds={selections[activeChapter.id]}
