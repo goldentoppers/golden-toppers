@@ -76,7 +76,9 @@ export const IngredientPantry: React.FC<PantryProps> = ({
             </div>
 
             <div className="mt-6 grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:items-start">
-                <div>{details}</div>
+                <div className="flex flex-col gap-8">
+                    {details}
+                </div>
                 <ul
                     className="xxs:grid-cols-3 xs:grid-cols-4 grid list-none grid-cols-2 gap-1.5 sm:grid-cols-5
             md:grid-cols-5 lg:grid-cols-6"
@@ -112,7 +114,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     })}
                 </ul>
                 {action && (
-                    <div className="flex w-full flex-col gap-2 md:col-start-1 md:row-start-2 md:items-end xs:flex-row xs:justify-between">
+                    <div className="flex w-full flex-col gap-2 xs:flex-row xs:justify-between md:col-start-2 md:row-start-2">
                         {action}
                     </div>
                 )}

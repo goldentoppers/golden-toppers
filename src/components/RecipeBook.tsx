@@ -72,7 +72,7 @@ export const RecipeBook: React.FC = () => {
               onToggle={(id: string) => toggleIngredient(id, currentChapter)}
               details={<IngredientCategoryDetails activeChapter={activeChapter} />}
               action={
-                <div className="flex w-full flex-col gap-2 xs:flex-row xs:justify-between [&>button]:w-full xs:[&>button]:w-auto">
+                <>
                   <PreviousButton
                     disabled={currentIndex === 0}
                     color={currentIndex === 0 ? "transparent" : activeChapter.hexColor}
@@ -101,7 +101,7 @@ export const RecipeBook: React.FC = () => {
                       }}
                     />
                   )}
-                </div>
+                </>
               }
             />
           )}
