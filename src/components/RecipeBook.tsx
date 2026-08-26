@@ -13,6 +13,7 @@ import { PreviousButton } from "./buttons/PreviousButton";
 import { ReviewRecipeButton } from "./buttons/ReviewRecipeButton";
 import { AMBER_700 } from "../data/color-scheme";
 import { PageHeading } from "./PageHeading";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 export const RecipeBook: React.FC = () => {
   const {
@@ -28,6 +29,7 @@ export const RecipeBook: React.FC = () => {
 
   const currentIndex = chapterConfig.findIndex((c) => c.id === currentChapter);
   const activeChapter = chapterConfig[currentIndex];
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const resetToBeginning = () => {
     clearAllSelections();
@@ -37,7 +39,7 @@ export const RecipeBook: React.FC = () => {
 
   return (
     <>
-      {!isReviewOpen && currentIndex === 0 && (
+      {!isReviewOpen && (
         <PageHeading
           title="Build a better bowl."
           subtitle="The 10% Topper Method"
@@ -69,76 +71,79 @@ export const RecipeBook: React.FC = () => {
               chapterConfig={activeChapter}
               onToggle={(id: string) => toggleIngredient(id, currentChapter)}
               details={<IngredientCategoryDetails activeChapter={activeChapter} />}
-            />
-          )}
-          <div
-            className="pointer-events-none mt-4 mb-2 h-px w-full bg-stone-800/10"
-            aria-hidden="true"
-          />
-          <footer className="flex flex-col gap-4">
-            <div className="xs:flex-row flex flex-col justify-between gap-2">
-              <PreviousButton
-                disabled={currentIndex === 0}
-                color={
-                  currentIndex === 0
-                    ? "transparent"
-                    : isReviewOpen
-                      ? AMBER_700
-                      : activeChapter.hexColor
-                }
-                borderColor={
-                  currentIndex === 0
-                    ? "transparent"
-                    : isReviewOpen
-                      ? AMBER_700
-                      : activeChapter.hexColor
-                }
-                onPrevious={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: "smooth",
-                  });
-                  if (currentIndex > 0 && !isReviewOpen)
-                    setCurrentChapter(chapterConfig[currentIndex - 1].id);
-                  setIsReviewOpen(false);
-                }}
-              />
-
-              {currentIndex === chapterConfig.length - 1 && !isReviewOpen ? (
-                <ReviewRecipeButton
-                  color={activeChapter.hexColor}
-                  onReview={() => {
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    });
-                    setIsReviewOpen(true);
-                  }}
-                />
-              ) : (
-                <>
-                  {!isReviewOpen && (
+              action={
+                <div className="flex w-full flex-col gap-2 xs:flex-row xs:justify-between [&>button]:w-full xs:[&>button]:w-auto">
+                  <PreviousButton
+                    disabled={currentIndex === 0}
+                    color={currentIndex === 0 ? "transparent" : activeChapter.hexColor}
+                    borderColor={currentIndex === 0 ? "transparent" : activeChapter.hexColor}
+                    onPrevious={() => {
+                      if (!isDesktop) window.scrollTo({ top: 0, behavior: "smooth" });
+                      if (currentIndex > 0) {
+                        setCurrentChapter(chapterConfig[currentIndex - 1].id);
+                      }
+                    }}
+                  />
+                  {currentIndex === chapterConfig.length - 1 ? (
+                    <ReviewRecipeButton
+                      color={activeChapter.hexColor}
+                      onReview={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        setIsReviewOpen(true);
+                      }}
+                    />
+                  ) : (
                     <NextButton
                       color={activeChapter.hexColor}
                       onNext={() => {
                         setCurrentChapter(chapterConfig[currentIndex + 1]?.id);
-                        window.scrollTo({
-                          top: 0,
-                          behavior: "smooth",
-                        });
+                        if (!isDesktop) window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
                     />
                   )}
-                  {isReviewOpen && selectedIds.length > 0 && (
-                    <div className="flex flex-row gap-2">
-                      <RestartButton onRestart={resetToBeginning} />
-                      {selectedIds.length > 0 && <PrintButton disabled={false} />}
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </footer>
+                </div>
+              }
+            />
+          )}
+          {isReviewOpen && (
+            <footer className="flex flex-col gap-4">
+              <div className="xs:flex-row flex flex-col justify-between gap-2">
+                <PreviousButton
+                  disabled={currentIndex === 0}
+                  color={
+                    currentIndex === 0
+                      ? "transparent"
+                      : isReviewOpen
+                        ? AMBER_700
+                        : activeChapter.hexColor
+                  }
+                  borderColor={
+                    currentIndex === 0
+                      ? "transparent"
+                      : isReviewOpen
+                        ? AMBER_700
+                        : activeChapter.hexColor
+                  }
+                  onPrevious={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                    if (currentIndex > 0 && !isReviewOpen)
+                      setCurrentChapter(chapterConfig[currentIndex - 1].id);
+                    setIsReviewOpen(false);
+                  }}
+                />
+
+                {selectedIds.length > 0 && (
+                  <div className="flex flex-row gap-2">
+                    <RestartButton onRestart={resetToBeginning} />
+                    <PrintButton disabled={false} />
+                  </div>
+                )}
+              </div>
+            </footer>
+          )}
         </div>
       </div>
     </>
