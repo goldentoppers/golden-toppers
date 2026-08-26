@@ -11,20 +11,20 @@ export const About: React.FC = () => {
       subtitle="The 10% Topper Philosophy"
       align="left"
       details={
-      () => (<>
-        <p>
-          We love our Golden Retrievers unconditionally, but navigating the world of canine
-          nutrition can feel overwhelming. While formulating a 100% raw or home-cooked diet carries
-          complex mineral balancing risks, introducing fresh, living whole foods as an intentional
-          supplemental mix-in is a simple, low-risk way to enhance their bowl.
-        </p>
+        () => (<>
+          <p>
+            We love our Golden Retrievers unconditionally, but navigating the world of canine
+            nutrition can feel overwhelming. While formulating a 100% raw or home-cooked diet carries
+            complex mineral balancing risks, introducing fresh, living whole foods as an intentional
+            supplemental mix-in is a simple, low-risk way to enhance their bowl.
+          </p>
 
-        <p>
-          This tool was built to bridge that exact gap—giving you a beautiful, practical canvas to
-          safely diversify your dog's daily bowl with vital nutrients and antioxidants, without
-          unbalancing their core commercial diet.
-        </p></>
-      )} />
+          <p>
+            This tool was built to bridge that exact gap—giving you a beautiful, practical canvas to
+            safely diversify your dog's daily bowl with vital nutrients and antioxidants, without
+            unbalancing their core commercial diet.
+          </p></>
+        )} />
     <section
       className="w-full max-w-4xl pb-16 text-left font-sans select-none"
       aria-labelledby="about-philosophy-title"
