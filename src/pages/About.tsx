@@ -6,7 +6,11 @@ import { PageHeading } from "../components/PageHeading";
 export const About: React.FC = () => {
 
   return (<>
-    <PageHeading title="Enriching the daily bowl, safely." subtitle="The 10% Topper Philosophy" details={
+    <PageHeading
+      title="Enriching the daily bowl, safely."
+      subtitle="The 10% Topper Philosophy"
+      align="left"
+      details={
       () => (<>
         <p>
           We love our Golden Retrievers unconditionally, but navigating the world of canine
@@ -22,7 +26,7 @@ export const About: React.FC = () => {
         </p></>
       )} />
     <section
-      className="mx-auto w-full max-w-4xl px-4 pb-16 text-left font-sans select-none"
+      className="w-full max-w-4xl pb-16 text-left font-sans select-none"
       aria-labelledby="about-philosophy-title"
     >
       <div
@@ -148,7 +152,7 @@ export const About: React.FC = () => {
 
       <footer
         className="flex flex-col items-center justify-center gap-4 border-t border-stone-200/60 pt-6
-          sm:flex-row sm:justify-between"
+          sm:flex-row sm:justify-end"
       >
         {/* <div className="font-mono text-[10px] text-stone-400">
           Golden Toppers Studio © {new Date().getFullYear()}

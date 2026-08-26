@@ -38,15 +38,21 @@ export const RecipeBook: React.FC = () => {
   return (
     <>
       {!isReviewOpen && currentIndex === 0 && (
-        <PageHeading details={
-          () => (
-            <p>
-              Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
-              kibble with living ingredients introduces vital hydration, raw antioxidants,
-              and active nutrients. Browse our ingredient pantry to craft a safe, custom
-              topping plan tailored perfectly for your kitchen scale.
-            </p>)
-        } />
+        <PageHeading
+          title="Build a better bowl."
+          subtitle="The 10% Topper Method"
+          align="left"
+          details={
+            () => (
+              <p>
+                Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
+                kibble with living ingredients introduces vital hydration, raw antioxidants,
+                and active nutrients. Browse our ingredient pantry to craft a safe, custom
+                topping plan tailored perfectly for your kitchen scale.
+              </p>
+            )
+          }
+        />
       )}
       <div
         className="min-h-6xl flex flex-col gap-4 select-none"

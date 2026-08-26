@@ -5,6 +5,7 @@ import {
     XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { AssetIcon } from "../components/AssetIcon";
+import { PageHeading } from "../components/PageHeading";
 import { INGREDIENT_LIBRARY } from "../data/ingredients";
 import type { Ingredient } from "../types/nutrition";
 
@@ -136,16 +137,19 @@ export const IngredientSearch: React.FC = () => {
     );
 
     return (
-        <main className="mx-auto w-full max-w-6xl px-4 pb-20 sm:px-8" aria-labelledby="ingredient-search-title">
+        <main className="mx-auto w-full max-w-6xl pb-20" aria-labelledby="ingredient-search-title">
+            <PageHeading
+                title="Find the right topper."
+                subtitle="Ingredient Library"
+                headingId="ingredient-search-title"
+                align="left"
+                details={() => (
+                    <p>
+                        Search the whole-food ingredient library for nutrition, benefits, and preparation notes.
+                    </p>
+                )}
+            />
             <section className="mx-auto flex max-w-4xl flex-col items-center text-center">
-                <span className="text-[10px] font-black tracking-[0.3em] text-amber-700 uppercase">Ingredient Library</span>
-                <h1 id="ingredient-search-title" className="mt-3 font-serif text-4xl leading-tight font-black text-stone-900 italic sm:text-5xl">
-                    Find the right topper.
-                </h1>
-                <p className="mt-3 max-w-xl font-serif text-base leading-relaxed text-stone-600 italic">
-                    Search the whole-food ingredient library for nutrition, benefits, and preparation notes.
-                </p>
-
                 <form className="mt-8 w-full" onSubmit={(event) => event.preventDefault()} role="search">
                     <label className="sr-only" htmlFor="ingredient-search">
                         Search ingredients
