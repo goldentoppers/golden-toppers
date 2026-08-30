@@ -44,6 +44,7 @@ export const RecipeBook: React.FC = () => {
           title="Build a better bowl."
           subtitle="The 10% Topper Method"
           align="left"
+          // adSlot="builder-page-header"
           details={
             () => (
               <p>

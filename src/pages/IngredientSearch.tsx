@@ -143,6 +143,7 @@ export const IngredientSearch: React.FC = () => {
                 subtitle="Ingredient Library"
                 headingId="ingredient-search-title"
                 align="left"
+                // adSlot="ingredient-library-page-header"
                 details={() => (
                     <p>
                         Search the whole-food ingredient library for nutrition, benefits, and preparation notes.

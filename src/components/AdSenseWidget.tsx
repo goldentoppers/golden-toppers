@@ -25,7 +25,7 @@ const AdSenseWidget = ({ adSlot }: AdSenseWidgetProps) => {
         <div style={{ overflow: 'hidden', minHeight: '90px', margin: '15px 0' }}>
             <ins className="adsbygoogle"
                 style={{ display: 'block' }}
-                data-ad-client="ca-pub-5195245211762513" // 👈 Remember to add your real ID
+                data-ad-client="ca-pub-5195245211762513"
                 data-ad-slot={adSlot}
                 data-ad-format="auto"
                 data-full-width-responsive="true">

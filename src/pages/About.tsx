@@ -4,12 +4,14 @@ import kitchenHero from "../assets/hero-woman-and-dog-in-kitchen.jpg";
 import { PageHeading } from "../components/PageHeading";
 
 export const About: React.FC = () => {
+  const buyMeACoffeeUrl = import.meta.env.VITE_BUY_ME_A_COFFEE_URL?.trim();
 
   return (<>
     <PageHeading
       title="Enriching the daily bowl, safely."
       subtitle="The 10% Topper Philosophy"
       align="left"
+      // adSlot="about-page-header"
       details={
         () => (<>
           <p>
@@ -150,13 +152,7 @@ export const About: React.FC = () => {
         </article>
       </div>
 
-      <footer
-        className="flex flex-col items-center justify-center gap-4 border-t border-stone-200/60 pt-6
-          sm:flex-row sm:justify-end"
-      >
-        {/* <div className="font-mono text-[10px] text-stone-400">
-          Golden Toppers Studio © {new Date().getFullYear()}
-        </div> */}
+      <div className="mt-8 flex justify-end">
         <Link
           to="/"
           onClick={() => {
@@ -165,14 +161,14 @@ export const About: React.FC = () => {
               behavior: "smooth",
             });
           }}
-          className="flex flex-row items-center rounded-xl bg-amber-700 px-8 py-2.5 font-sans
-            text-[11px] font-black tracking-widest text-white uppercase shadow-2xs transition-all
+          className="flex flex-row items-center rounded-xl bg-amber-700 px-5 py-2.5 font-sans
+            text-[10px] font-black tracking-[0.22em] text-white uppercase shadow-2xs transition-all
             duration-200 outline-none hover:scale-[1.02] hover:brightness-105 focus-visible:ring-2
             focus-visible:ring-stone-500 focus-visible:ring-offset-1 active:scale-[0.97]"
         >
           Build Topper Recipe
           <svg
-            className="stroke-currentColor h-4 w-4 transition-transform duration-200
+            className="stroke-currentColor ml-2 h-3.5 w-3.5 transition-transform duration-200
               group-hover:translate-x-0.5"
             viewBox="0 0 24 24"
             fill="none"
@@ -183,7 +179,64 @@ export const About: React.FC = () => {
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </Link>
-      </footer>
+      </div>
+
+      <div
+        className="mx-auto mt-6 max-w-[1180px] rounded-[2rem] border border-stone-200/80 bg-[#f5f1eb]
+          px-4 py-5 shadow-[0_4px_24px_rgba(28,25,23,0.02)] sm:px-6 sm:py-7"
+      >
+        <div className="flex items-center justify-center gap-3">
+          <span
+            className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#b05a2a]
+              text-base text-white shadow-[0_2px_8px_rgba(176,90,42,0.35)]"
+            aria-hidden="true"
+          >
+            ♥
+          </span>
+          <h3 className="font-serif text-[2.15rem] leading-none font-black italic tracking-tight text-stone-900 sm:text-[2.6rem]">
+            Support the Mission
+          </h3>
+        </div>
+
+        <div className="mx-auto mt-5 max-w-5xl space-y-4 text-center text-stone-700">
+          <p className="mx-auto max-w-5xl text-[14px] leading-relaxed font-medium sm:text-[16px]">
+            This project was created to help dog lovers like you build healthier, more intentional
+            meals for their companions. If you've found value in this tool and want to support
+            ongoing development and refinement, consider buying me a coffee. Every cup helps me
+            dedicate more time to expanding features, adding new ingredients, and ensuring the most
+            accurate nutritional guidance.
+          </p>
+
+          <p className="text-[14px] italic text-stone-700/90 sm:text-[17px]">
+            Whether it's a $1 espresso or a $5 latte, your support means everything.
+          </p>
+        </div>
+
+        <div className="mt-6 flex justify-center">
+          {buyMeACoffeeUrl ? (
+            <a
+              href={buyMeACoffeeUrl}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center justify-center rounded-xl border border-amber-500/80
+                bg-[#f9f5ee] px-5 py-2.5 text-[13px] font-black font-serif italic text-[#8b4a1e]
+                shadow-[0_0_0_1px_rgba(214,153,93,0.3)] transition-transform duration-200
+                hover:scale-[1.01] hover:bg-[#fffaf3] focus-visible:outline-none
+                focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+            >
+              Buy me a coffee
+            </a>
+          ) : (
+            <div
+              className="w-full max-w-5xl rounded-xl border border-dashed border-amber-500/80
+                bg-[#f9f4ec] px-4 py-2.5 text-center text-[13px] font-black italic text-[#8b4a1e]
+                shadow-[inset_0_0_0_1px_rgba(214,153,93,0.2)]"
+            >
+              Add VITE_BUY_ME_A_COFFEE_URL to your environment variables to enable donations.
+            </div>
+          )}
+        </div>
+      </div>
     </section>
   </>
   );
