@@ -93,6 +93,32 @@ import { FancyChefHatIcon } from "../assets/art/react-icons/fancy-chef-hat";
 import { DogSleepingIcon } from "../assets/art/react-icons/dogs/sleeping";
 import { DogStaringAtBowlIcon } from "../assets/art/react-icons/dogs/dog-staring-at-bowl";
 import { PawPrintIcon } from "../assets/art/react-icons/paw-print";
+import { AlmondIcon } from "../assets/art/react-icons/seeds-and-nuts/almond";
+import { AvocadoIcon } from "../assets/art/react-icons/fruit/avocado";
+import { GrapesIcon } from "../assets/art/react-icons/fruit/grapes";
+import { LemonIcon } from "../assets/art/react-icons/fruit/lemon";
+import { CurrantIcon } from "../assets/art/react-icons/fruit/currant";
+import { GrapefruitIcon } from "../assets/art/react-icons/fruit/grapefruit";
+import { PomegranateIcon } from "../assets/art/react-icons/fruit/pomegranate";
+import { CheddarIcon } from "../assets/art/react-icons/dairy/cheddar";
+import { ParmesanCheeseIcon } from "../assets/art/react-icons/dairy/parmesan-cheese";
+import { MilkIcon } from "../assets/art/react-icons/dairy/20-milk";
+import { IceCreamIcon } from "../assets/art/react-icons/dairy/ice-cream";
+import { ButterIcon } from "../assets/art/react-icons/dairy/23-butter";
+import { RoquefortIcon } from "../assets/art/react-icons/dairy/roquefort";
+import { SoyaDrinkIcon } from "../assets/art/react-icons/dairy/soya-drink";
+import { BurgerMeatIcon } from "../assets/art/react-icons/meat/burger-meat";
+import { LiverIcon } from "../assets/art/react-icons/meat/liver";
+import { ChickenWingIcon } from "../assets/art/react-icons/meat/chicken-wing";
+import { BaconIcon } from "../assets/art/react-icons/meat/bacon";
+import { TunaIcon } from "../assets/art/react-icons/seafood/tuna";
+import { PufferFishIcon } from "../assets/art/react-icons/seafood/puffer-fish";
+import { MacadamiaIcon } from "../assets/art/react-icons/seeds-and-nuts/macadamia";
+import { WalnutIcon } from "../assets/art/react-icons/seeds-and-nuts/walnut";
+import { SunflowerSeedsIcon } from "../assets/art/react-icons/seeds-and-nuts/sunflower-seeds";
+import { PeanutButterIcon } from "../assets/art/react-icons/seeds-and-nuts/peanut-butter";
+import { OnionsIcon } from "../assets/art/react-icons/vegetables/15-onions";
+import { GarlicIcon } from "../assets/art/react-icons/vegetables/garlic";
 
 interface AssetIconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -325,6 +351,14 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
     case "salmon-fillets":
       return (
         <SalmonFilletIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "almond":
+      return (
+        <AlmondIcon
           className={`${className} transition-colors duration-200`}
           style={style}
           {...props}
@@ -863,6 +897,206 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
     case "raspberry":
       return (
         <RaspberryIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "avocado":
+      return (
+        <AvocadoIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "grapes":
+      return (
+        <GrapesIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "lemon":
+      return (
+        <LemonIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "currant":
+      return (
+        <CurrantIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "grapefruit":
+      return (
+        <GrapefruitIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "pomegranate":
+      return (
+        <PomegranateIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "cheddar":
+      return (
+        <CheddarIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "parmesan-cheese":
+      return (
+        <ParmesanCheeseIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "20-milk":
+      return (
+        <MilkIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "ice-cream":
+      return (
+        <IceCreamIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "23-butter":
+      return (
+        <ButterIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "roquefort":
+      return (
+        <RoquefortIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "soya-drink":
+      return (
+        <SoyaDrinkIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "burger-meat":
+      return (
+        <BurgerMeatIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "liver":
+      return (
+        <LiverIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "chicken-wing":
+      return (
+        <ChickenWingIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "bacon":
+      return (
+        <BaconIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "tuna":
+      return (
+        <TunaIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "puffer-fish":
+      return (
+        <PufferFishIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "macadamia":
+      return (
+        <MacadamiaIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "walnut":
+      return (
+        <WalnutIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "sunflower-seeds":
+      return (
+        <SunflowerSeedsIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "peanut-butter":
+      return (
+        <PeanutButterIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "15-onions":
+      return (
+        <OnionsIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "garlic":
+      return (
+        <GarlicIcon
           className={`${className} transition-colors duration-200`}
           style={style}
           {...props}

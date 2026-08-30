@@ -110,7 +110,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
   },
   {
     id: "walnuts",
-    name: "Black Walnuts",
+    name: "Walnuts",
     kcalPerGram: 0,
     role: "topper",
     category: "seeds-nuts",

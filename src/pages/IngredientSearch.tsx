@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import {
     ExclamationTriangleIcon,
     MagnifyingGlassIcon,
+    NoSymbolIcon,
     XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { AssetIcon } from "../components/AssetIcon";
@@ -50,7 +51,6 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
     ingredient,
     query,
 }) => {
-    const caution = ingredient.isToxic || ingredient.isHighRisk;
     const details = [ingredient.preparationAlert, ingredient.preparation].filter(Boolean);
     const safetyReason =
         ingredient.preparationAlert ||
@@ -58,6 +58,9 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
             ? "This ingredient contains compounds that are toxic to dogs."
             : "This ingredient carries a safety risk for dogs.");
     const categoryColor = rawCategoryColors[ingredient.category];
+    // Toxic ingredients are strictly prohibited; high-risk ones are still usable in tiny topper amounts.
+    const isForbidden = ingredient.isToxic;
+    const isLimitedUse = ingredient.isHighRisk && !ingredient.isToxic;
 
     return (
         <article className="relative flex min-h-52 flex-col rounded-2xl border border-stone-900/10 bg-white/55 p-4 shadow-[0_3px_12px_rgba(28,25,23,0.04)]">
@@ -84,40 +87,45 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
                 </div>
             </div>
 
-            {caution ? (
+            {isForbidden ? (
                 <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-red-900/15 bg-red-900/5 px-4 py-4 text-center text-red-900">
-                    <ExclamationTriangleIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                    <NoSymbolIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
                     <strong className="text-sm font-black leading-relaxed">Not safe for dogs. Do not serve.</strong>
                     <p className="max-w-lg text-xs leading-relaxed font-semibold text-red-900/80">
                         {safetyReason}
                     </p>
                 </div>
+            ) : isLimitedUse ? (
+                <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-amber-700/15 bg-amber-500/5 px-4 py-4 text-center text-amber-900">
+                    <ExclamationTriangleIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                    <strong className="text-sm font-black leading-relaxed">Use caution. Small amounts only.</strong>
+                    <p className="max-w-lg text-xs leading-relaxed font-semibold text-amber-900/80">
+                        {safetyReason}
+                    </p>
+                </div>
             ) : (
-                <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 border-t border-stone-900/8 pt-3 text-[10px] text-stone-600">
-                    <div>
-                        <dt className="font-black tracking-[0.12em] uppercase">Energy</dt>
-                        <dd className="mt-0.5 font-semibold">{ingredient.kcalPerGram} kcal/g</dd>
-                    </div>
-                    {ingredient.allergens?.length ? (
-                        <div>
-                            <dt className="font-black tracking-[0.12em] uppercase">Allergens</dt>
-                            <dd className="mt-0.5 font-semibold">{ingredient.allergens.join(", ")}</dd>
+                <div className="mt-6 flex flex-1 flex-col gap-3 rounded-xl border border-emerald-800/15 bg-emerald-500/5 px-4 py-4 text-emerald-950">
+                    <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px] text-stone-600">
+                        {ingredient.allergens?.length ? (
+                            <div>
+                                <dt className="font-black tracking-[0.12em] uppercase">Allergens</dt>
+                                <dd className="mt-0.5 font-semibold">{ingredient.allergens.join(", ")}</dd>
+                            </div>
+                        ) : null}
+                        <div className="col-span-2">
+                            <dt className="font-black tracking-[0.12em] uppercase">Benefits</dt>
+                            <dd className="mt-0.5 font-semibold text-emerald-800">{ingredient.benefits.join(", ")}</dd>
                         </div>
-                    ) : null}
-                    <div className="col-span-2">
-                        <dt className="font-black tracking-[0.12em] uppercase">Benefits</dt>
-                        <dd className="mt-0.5 font-semibold text-emerald-800">{ingredient.benefits.join(", ")}</dd>
-                    </div>
-                    <div className="col-span-2">
-                        <dt className="font-black tracking-[0.12em] uppercase">Vitamins</dt>
-                        <dd className="mt-0.5 font-semibold">{ingredient.vitamins.join(", ")}</dd>
-                    </div>
-                </dl>
-            )}
-
-            {!caution && details.length > 0 && (
-                <div className={`mt-auto flex gap-2 border-t pt-3 text-[10px] leading-relaxed font-semibold ${caution ? "border-red-900/10 text-red-900" : "border-amber-700/10 text-stone-700"}`}>
-                    <span>{details.join(" ")}</span>
+                        <div className="col-span-2">
+                            <dt className="font-black tracking-[0.12em] uppercase">Vitamins</dt>
+                            <dd className="mt-0.5 font-semibold">{ingredient.vitamins.join(", ")}</dd>
+                        </div>
+                    </dl>
+                    {details.length > 0 && (
+                        <p className="border-t border-emerald-800/10 pt-3 text-[10px] leading-relaxed font-semibold text-stone-700">
+                            {details.join(" ")}
+                        </p>
+                    )}
                 </div>
             )}
         </article>

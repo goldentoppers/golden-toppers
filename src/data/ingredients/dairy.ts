@@ -64,7 +64,7 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     kcalPerGram: 4.31,
     role: "topper",
     category: "dairy",
-    icon: "parmesan cheese",
+    icon: "parmesan-cheese",
     isHighRisk: true,
     maxGramsCap: 3.0, // ⚠️ CRITICAL SODIUM SHIELD: Limits sodium spike (~1 tsp max dusted powder)
     preparation: "Lightly Dust / Grate Sparingly",
