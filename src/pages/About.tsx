@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Coffee } from "lucide-react";
 import kitchenHero from "../assets/hero-woman-and-dog-in-kitchen.jpg";
 import { PageHeading } from "../components/PageHeading";
 
@@ -182,8 +183,8 @@ export const About: React.FC = () => {
       </div>
 
       <div
-        className="mx-auto mt-6 max-w-[1180px] rounded-[2rem] border border-stone-200/80 bg-[#f5f1eb]
-          px-4 py-5 shadow-[0_4px_24px_rgba(28,25,23,0.02)] sm:px-6 sm:py-7"
+        className="mx-auto mt-10 max-w-[1180px] rounded-[2rem] border-2 border-stone-200 bg-white
+          px-4 py-5 shadow-[0_2px_10px_rgba(28,25,23,0.06)] sm:px-6 sm:py-7"
       >
         <div className="flex items-center justify-center gap-3">
           <span
@@ -218,12 +219,13 @@ export const About: React.FC = () => {
               href={buyMeACoffeeUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center justify-center rounded-xl border border-amber-500/80
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-amber-500/80
                 bg-[#f9f5ee] px-5 py-2.5 text-[13px] font-black font-serif italic text-[#8b4a1e]
                 shadow-[0_0_0_1px_rgba(214,153,93,0.3)] transition-transform duration-200
                 hover:scale-[1.01] hover:bg-[#fffaf3] focus-visible:outline-none
                 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
             >
+              <Coffee className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
               Buy me a coffee
             </a>
           ) : (

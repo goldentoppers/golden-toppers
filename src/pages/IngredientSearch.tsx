@@ -6,6 +6,7 @@ import {
     XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { AssetIcon } from "../components/AssetIcon";
+import { IngredientFilters } from "../components/IngredientFilters";
 import { PageHeading } from "../components/PageHeading";
 import { INGREDIENT_LIBRARY } from "../data/ingredients";
 import type { Ingredient } from "../types/nutrition";
@@ -65,7 +66,7 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
     return (
         <article className="relative flex min-h-52 flex-col rounded-2xl border border-stone-900/10 bg-white/55 p-4 shadow-[0_3px_12px_rgba(28,25,23,0.04)]">
             <div className="flex items-start gap-3">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-stone-900/5">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl">
                     <AssetIcon name={ingredient.icon} className="h-14 w-14" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
@@ -134,14 +135,20 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
 
 export const IngredientSearch: React.FC = () => {
     const [query, setQuery] = useState("");
+    const [selectedBenefit, setSelectedBenefit] = useState("");
+    const [selectedVitamin, setSelectedVitamin] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("");
     const normalizedQuery = normalizeSearchText(query.trim());
 
     const results = useMemo(
         () =>
             [...INGREDIENT_LIBRARY]
                 .filter((ingredient) => normalizeSearchText(ingredient.name).includes(normalizedQuery))
+                .filter((ingredient) => !selectedCategory || ingredient.category === selectedCategory)
+                .filter((ingredient) => !selectedBenefit || ingredient.benefits.includes(selectedBenefit))
+                .filter((ingredient) => !selectedVitamin || ingredient.vitamins.includes(selectedVitamin))
                 .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" })),
-        [normalizedQuery],
+        [normalizedQuery, selectedCategory, selectedBenefit, selectedVitamin],
     );
 
     return (
@@ -185,6 +192,17 @@ export const IngredientSearch: React.FC = () => {
                         )}
                     </div>
                 </form>
+                <div className="mt-4">
+                    <IngredientFilters
+                        options={INGREDIENT_LIBRARY}
+                        selectedBenefit={selectedBenefit}
+                        setSelectedBenefit={setSelectedBenefit}
+                        selectedVitamin={selectedVitamin}
+                        setSelectedVitamin={setSelectedVitamin}
+                        selectedCategory={selectedCategory}
+                        setSelectedCategory={setSelectedCategory}
+                    />
+                </div>
             </section>
 
             <section className="mt-10" aria-live="polite" aria-label="Ingredient search results">

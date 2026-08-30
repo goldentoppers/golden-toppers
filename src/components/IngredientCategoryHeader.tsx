@@ -27,7 +27,7 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
           select-none"
         aria-labelledby={`${title}-category-title`}
       >
-        <div className="mb-4 flex w-full flex-row items-center justify-start gap-3">
+        <div className="mb-1 flex w-full flex-row items-center justify-start gap-3">
           <h2
             id={`${title}-category-title`}
             className="flex shrink-0 flex-row font-serif text-2xl leading-none font-black
@@ -48,10 +48,6 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
           >
             {target}
           </span>
-          <div
-            className="pointer-events-none ml-2 h-[1px] flex-1 bg-stone-800/10"
-            aria-hidden="true"
-          />
         </div>
 
       </header>
