@@ -157,7 +157,7 @@ export const IngredientSearch: React.FC = () => {
                 title="Find the right topper."
                 subtitle="Ingredient Library"
                 headingId="ingredient-search-title"
-                align="left"
+                // align="left"
                 // adSlot="ingredient-library-page-header"
                 details={() => (
                     <p>
