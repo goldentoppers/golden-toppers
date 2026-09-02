@@ -33,7 +33,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
     <div className="animate-fade-in mx-auto w-full max-w-4xl text-left select-none">
       {hasNoIngredients ? (
         <div
-          className="animate-fade-in flex w-full flex-col items-center justify-center rounded-3xl
+          className="animate-fade-in flex min-h-[48rem] w-full flex-col items-center justify-center rounded-3xl
             border border-stone-900/2 border-b-white/30 bg-stone-900/4 p-8 text-center
             shadow-[inset_0_4px_12px_rgba(28,25,23,0.12)] select-none"
         >
@@ -76,7 +76,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section
-            className="animate-fade-in space-y-4 rounded-lg border border-stone-900/10 bg-white/65 p-6
+            className="animate-fade-in space-y-4 rounded-2xl border border-stone-900/8 bg-white/60 p-6
               shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:p-10"
           >
             <header className="flex flex-col pb-4 select-text justify-center">
@@ -97,9 +97,9 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                 style={{ maxWidth: "500px" }}
               >
                 <DogNameInput />
-                <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-end sm:justify-between">
+                <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <ExerciseInput />
-                  <div className="flex items-end gap-4">
+                  <div className="flex items-start gap-4">
                     <WeightInput />
                     <ServingSelector />
                   </div>

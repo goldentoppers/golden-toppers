@@ -75,7 +75,7 @@ export const IngredientCategoryDetails: React.FC<IngredientCategoryHeaderProps> 
   const { description } = activeChapter;
 
   return (
-    <div className="w-full pb-3 text-center">
+    <div className="mx-auto w-full max-w-[500px] pb-3 text-center">
       <p
         className="w-full font-serif text-[13.5px] leading-relaxed font-medium tracking-wide
           text-stone-600/95 italic select-text sm:text-[14.5px]"

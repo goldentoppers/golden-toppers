@@ -16,7 +16,7 @@ export const About: React.FC = () => {
       details={
         () => (<>
           <p>
-            We love our Golden Retrievers unconditionally, but navigating the world of canine
+            We love our dogs unconditionally, but navigating the world of canine
             nutrition can feel overwhelming. While formulating a 100% raw or home-cooked diet carries
             complex mineral balancing risks, introducing fresh, living whole foods as an intentional
             supplemental mix-in is a simple, low-risk way to enhance their bowl.

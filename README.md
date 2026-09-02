@@ -1,6 +1,6 @@
 # 🐕 Golden Toppers | Wholefood Bowl Enrichment
 
-> A premium, tactile countertop calculator designed to safely diversify your Golden Retriever's daily bowl using the veterinary-approved 10% supplemental caloric rule. Live deployment at [goldentoppers.com](https://goldentoppers.com).
+> A premium, tactile countertop calculator designed to safely diversify your dog's daily bowl using the veterinary-approved 10% supplemental caloric rule. Live deployment at [goldentoppers.com](https://goldentoppers.com).
 
 ## 🎨 The Product Philosophy
 

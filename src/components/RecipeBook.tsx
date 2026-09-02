@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { IngredientPantry } from "./IngredientPantry";
 import { PrintButton } from "./buttons/PrintButton";
@@ -14,8 +14,10 @@ import { ReviewRecipeButton } from "./buttons/ReviewRecipeButton";
 import { AMBER_700 } from "../data/color-scheme";
 import { PageHeading } from "./PageHeading";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { AssetIcon } from "./AssetIcon";
 
 export const RecipeBook: React.FC = () => {
+  const [hasStartedBuilding, setHasStartedBuilding] = useState(false);
   const {
     selections,
     toggleIngredient,
@@ -39,25 +41,38 @@ export const RecipeBook: React.FC = () => {
 
   return (
     <>
-      {!isReviewOpen && (
-        <PageHeading
-          title="Build a better bowl."
-          subtitle="The 10% Topper Method"
-          // align="left"
-          // adSlot="builder-page-header"
-          details={
-            () => (
-              <p>
-                Swapping <span className="text-amber-700">10%</span> of your Golden’s daily
-                kibble with living ingredients introduces vital hydration, raw antioxidants,
-                and active nutrients. Browse our ingredient pantry to craft a safe, custom
-                topping plan tailored perfectly for your kitchen scale.
-              </p>
-            )
-          }
-        />
+      {!hasStartedBuilding && (
+        <section className="flex flex-col items-center" aria-labelledby="builder-intro-title">
+          <PageHeading
+            title="Build a better bowl."
+            subtitle="The 10% Topper Method"
+            headingId="builder-intro-title"
+            details={
+              () => (
+                <p>
+                  Swapping <span className="text-amber-700">10%</span> of your dog’s daily
+                  kibble with living ingredients introduces vital hydration, raw antioxidants,
+                  and active nutrients. Browse our ingredient pantry to craft a safe, custom
+                  topping plan tailored perfectly for your kitchen scale.
+                </p>
+              )
+            }
+          />
+          <AssetIcon name="fancy-chef-hat" className="h-40 w-40" />
+          <button
+            type="button"
+            onClick={() => setHasStartedBuilding(true)}
+            className="mt-2 cursor-pointer rounded-lg bg-amber-700 px-6 py-3 text-[11px] font-black
+              tracking-[0.2em] text-white uppercase shadow-[0_3px_8px_rgba(120,53,15,0.2)]
+              transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-800
+              focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700
+              focus-visible:ring-offset-2 active:translate-y-0"
+          >
+            Start Building a Bowl
+          </button>
+        </section>
       )}
-      <div
+      {hasStartedBuilding && <div
         className="min-h-6xl flex flex-col gap-4 select-none"
         role="region"
         aria-label="Recipe Formulation"
@@ -130,7 +145,7 @@ export const RecipeBook: React.FC = () => {
             />
           )}
         </div>
-      </div>
+      </div>}
     </>
   );
 };

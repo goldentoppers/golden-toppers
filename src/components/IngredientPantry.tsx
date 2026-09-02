@@ -50,9 +50,19 @@ export const IngredientPantry: React.FC<PantryProps> = ({
     return (
         <div id="ingredient-pantry-section" className="mx-auto flex min-w-0 w-full max-w-4xl flex-col">
             <div
-                className="flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
+                className="relative flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
             shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
             >
+                <div
+                    className="pointer-events-none absolute top-0 right-3 z-20 flex h-[3.25rem] w-9 items-start
+                                            justify-center shadow-md sm:right-5 sm:h-[4.5rem] sm:w-10 md:right-6 md:h-[5.75rem]
+                                            md:w-11 lg:right-7 lg:h-[7rem] lg:w-12"
+                    style={{
+                        backgroundColor: chapterConfig.hexColor,
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%)",
+                    }}
+                    aria-hidden="true"
+                />
                 <div className="flex flex-col gap-1">
                     <IngredientCategoryHeader activeChapter={chapterConfig} />
                     {details}
@@ -78,43 +88,49 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                             : `Select up to ${chapterConfig.max} (${selectedIds.length} chosen)`}
                     </span>
                 </div>
-                <ul
-                    className="xxs:grid-cols-3 xs:grid-cols-4 grid list-none grid-cols-2 gap-1.5
-            sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-7"
-                    role="list"
-                    aria-label={chapterConfig.label}
-                >
-                    {processedOptions.map((item) => {
-                        const isNoneItem = "isNonePlaceholder" in item;
-                        const isSelected = isNoneItem ? categoryIsEmpty : selectedIds.includes(item.id);
-                        const isDisabled = !isNoneItem && !isSelected && selectedIds.length >= maxSlots;
+                <div className="relative">
+                    <div
+                        className="pointer-events-none absolute top-8 bottom-8 left-1/2 z-20 w-px -translate-x-1/2
+                                                    bg-stone-900/10 sm:left-1/2 lg:left-1/2"
+                        aria-hidden="true"
+                    />
+                    <ul
+                        className="grid list-none grid-cols-2 gap-x-5 gap-y-1.5 sm:grid-cols-4 lg:grid-cols-6"
+                        role="list"
+                        aria-label={chapterConfig.label}
+                    >
+                        {processedOptions.map((item) => {
+                            const isNoneItem = "isNonePlaceholder" in item;
+                            const isSelected = isNoneItem ? categoryIsEmpty : selectedIds.includes(item.id);
+                            const isDisabled = !isNoneItem && !isSelected && selectedIds.length >= maxSlots;
 
-                        const handleItemClick = () => {
-                            if (isNoneItem) {
-                                if (onClearCategory) onClearCategory();
-                                else selectedIds.forEach((id) => onToggle(id));
-                            } else {
-                                onToggle(item.id);
-                            }
-                        };
+                            const handleItemClick = () => {
+                                if (isNoneItem) {
+                                    if (onClearCategory) onClearCategory();
+                                    else selectedIds.forEach((id) => onToggle(id));
+                                } else {
+                                    onToggle(item.id);
+                                }
+                            };
 
-                        return (
-                            <li key={item.id} role="listitem">
-                                <IngredientButton
-                                    ingredient={item}
-                                    isSelected={isSelected}
-                                    isDisabled={isDisabled}
-                                    onClick={handleItemClick}
-                                    isNoneItem={isNoneItem}
-                                    color={chapterConfig.hexColor}
-                                />
-                            </li>
-                        );
-                    })}
-                    {Array.from({ length: maxOptionsCount - processedOptions.length }).map((_, idx) => (
-                        <li key={`filler-${idx}`} aria-hidden="true" className="hidden h-24 md:block" />
-                    ))}
-                </ul>
+                            return (
+                                <li key={item.id} role="listitem">
+                                    <IngredientButton
+                                        ingredient={item}
+                                        isSelected={isSelected}
+                                        isDisabled={isDisabled}
+                                        onClick={handleItemClick}
+                                        isNoneItem={isNoneItem}
+                                        color={chapterConfig.hexColor}
+                                    />
+                                </li>
+                            );
+                        })}
+                        {Array.from({ length: maxOptionsCount - processedOptions.length }).map((_, idx) => (
+                            <li key={`filler-${idx}`} aria-hidden="true" className="hidden h-24 md:block" />
+                        ))}
+                    </ul>
+                </div>
 
                 {action && (
                     <div className="flex w-full flex-col gap-2 xs:flex-row xs:justify-between">
