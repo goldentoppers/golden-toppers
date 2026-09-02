@@ -7,7 +7,7 @@ export const WeightInput = () => {
   const context = useContext(GlobalControlOptionsContext);
 
   const formData = context?.formData ?? { weight: 65 };
-  const setFormData = context?.setFormData ?? (() => {});
+  const setFormData = context?.setFormData ?? (() => { });
 
   const [isOpen, setIsOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
@@ -70,9 +70,9 @@ export const WeightInput = () => {
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
         className="flex w-35 cursor-pointer items-center justify-between rounded-full border
-          border-white/40 bg-white/40 px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm
-          backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-300/80
-          hover:bg-white/60 focus-visible:ring-2 focus-visible:ring-stone-400"
+          border-stone-300/80 bg-white/55 px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm
+          backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-400
+          hover:bg-white/75 focus-visible:ring-2 focus-visible:ring-stone-400"
       >
         <span className="font-medium text-stone-700/90">
           {formData.weight ? `${formData.weight}` : "Select Weight"}
@@ -124,11 +124,10 @@ export const WeightInput = () => {
                   // ✅ Fixes click fighting issues perfectly
                   onMouseDown={(e) => handleOptionSelect(e, wt)}
                   className={`block w-full cursor-pointer rounded-xl px-4 py-2 text-left text-sm
-                  font-medium transition-colors duration-150 ${
-                    isSelected
+                  font-medium transition-colors duration-150 ${isSelected
                       ? "bg-stone-950/10 font-bold text-stone-950"
                       : "text-stone-600 hover:bg-stone-900/5 hover:text-stone-900"
-                  } `}
+                    } `}
                 >
                   {wt} lbs
                 </li>

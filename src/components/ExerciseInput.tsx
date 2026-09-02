@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import type { ActivityLevel } from "../types/nutrition";
 import { AssetIcon } from "./AssetIcon";
-import { AMBER_700 } from "../data/color-scheme";
 
 export const ExerciseInput = () => {
   const context = useContext(GlobalControlOptionsContext);
@@ -30,12 +29,12 @@ export const ExerciseInput = () => {
   };
 
   return (
-    <div className="animate-fade-in relative flex w-full flex-col font-sans select-none">
+    <div className="animate-fade-in relative flex w-auto flex-col font-sans select-none">
       <span className="mb-2 text-[10px] font-black tracking-[0.25em] text-stone-800 uppercase">
         Activity Level
       </span>
 
-      <div className="flex w-full flex-row items-center justify-start gap-4 sm:gap-6">
+      <div className="flex flex-row items-center justify-start gap-2">
         {options.map((opt) => {
           const isSelected = currentActivity === opt.value;
 
@@ -45,32 +44,22 @@ export const ExerciseInput = () => {
               type="button"
               onClick={() => handleSelect(opt.value)}
               aria-pressed={isSelected}
-              style={{
-                borderWidth: isSelected ? "2px" : "1px",
-                borderColor: isSelected ? AMBER_700 : "rgba(120, 113, 108)",
-                backgroundColor: isSelected ? `${AMBER_700}1A` : "#faf7f2",
-                color: isSelected ? AMBER_700 : "#44403b",
-              }}
-              className={`relative flex aspect-square h-20 w-20 cursor-pointer flex-col items-center
-              justify-center rounded-full border p-2 text-center transition-all duration-150
-              outline-none sm:h-22 sm:w-22 ${
-                !isSelected
-                  ? `border-stone-400 bg-[#faf7f2] text-stone-400
-                    shadow-[0_4px_12px_rgba(28,25,23,0.02)] hover:-translate-y-0.5
-                    hover:border-stone-400 hover:bg-white`
-                  : `scale-[0.96] border-amber-600 bg-amber-600/[0.05] font-black text-stone-900
-                    shadow-[inset_0_4px_10px_rgba(28,25,23,0.08)]`
-              }`}
+              className={`relative flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md px-2 py-1
+                text-center transition-colors duration-150 outline-none focus-visible:ring-2
+                focus-visible:ring-amber-700 focus-visible:ring-offset-2 ${isSelected
+                  ? "bg-amber-700/10 text-amber-700"
+                  : "text-stone-600 hover:bg-stone-900/5 hover:text-stone-900"
+                }`}
             >
-              <AssetIcon className="h-14 w-14" name={opt.icon} />
-              <span className="block text-[12px] leading-none font-black tracking-wide">
+              <AssetIcon className="h-10 w-10" name={opt.icon} />
+              <span className="block text-[11px] leading-none font-black tracking-wide">
                 {opt.label}
               </span>
 
               {isSelected && (
                 <div
-                  className="animate-fade-in absolute -top-0.5 -right-0.5 flex h-4.5 w-4.5
-                    items-center justify-center rounded-full border-2 border-white bg-amber-600
+                  className="animate-fade-in absolute top-0 right-0 flex h-3.5 w-3.5
+                    items-center justify-center rounded-full border border-white bg-amber-600
                     font-sans text-[8px] font-black text-white shadow-xs"
                 >
                   ✓

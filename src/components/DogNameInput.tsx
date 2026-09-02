@@ -6,7 +6,7 @@ export const DogNameInput = () => {
   const context = useContext(GlobalControlOptionsContext);
 
   const formData = context?.formData ?? { dogName: "" };
-  const setFormData = context?.setFormData ?? (() => {});
+  const setFormData = context?.setFormData ?? (() => { });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Allows standard alphabet characters and spaces to keep summaries clean
@@ -15,12 +15,12 @@ export const DogNameInput = () => {
   };
 
   return (
-    <div className="relative flex w-full min-w-[250px] flex-col items-start font-sans select-none">
+    <div className="relative flex w-full flex-col items-start font-sans select-none">
       <InputLabel htmlFor="canine-name-field">Dog's Name</InputLabel>
       <div
-        className="flex w-full items-center justify-between rounded-full border border-white/40
-          bg-white/40 px-5 py-2.5 shadow-sm backdrop-blur-md transition-all duration-300
-          focus-within:border-stone-300/80 focus-within:bg-white/60 focus-within:shadow-md"
+        className="flex w-full items-center justify-between rounded-full border border-stone-300/80
+          bg-white/55 px-5 py-2.5 shadow-sm backdrop-blur-md transition-all duration-300
+          focus-within:border-stone-500 focus-within:bg-white/75 focus-within:shadow-md"
       >
         <input
           id="canine-name-field"
