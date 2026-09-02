@@ -43,6 +43,7 @@ export const RecipeBook: React.FC = () => {
     <>
       {!hasStartedBuilding && (
         <section className="flex flex-col items-center" aria-labelledby="builder-intro-title">
+          <AssetIcon name="fancy-chef-hat" className="h-40 w-40" />
           <PageHeading
             title="Build a better bowl."
             subtitle="The 10% Topper Method"
@@ -58,11 +59,10 @@ export const RecipeBook: React.FC = () => {
               )
             }
           />
-          <AssetIcon name="fancy-chef-hat" className="h-40 w-40" />
           <button
             type="button"
             onClick={() => setHasStartedBuilding(true)}
-            className="mt-2 cursor-pointer rounded-lg bg-amber-700 px-6 py-3 text-[11px] font-black
+            className="mt-8 cursor-pointer rounded-lg bg-amber-700 px-6 py-3 text-[11px] font-black
               tracking-[0.2em] text-white uppercase shadow-[0_3px_8px_rgba(120,53,15,0.2)]
               transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-800
               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700
