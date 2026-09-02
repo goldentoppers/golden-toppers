@@ -10,8 +10,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "steak",
     allergens: ["Beef"],
-    benefits: ["Muscle Building"],
-    vitamins: ["Iron", "B12"],
+    benefits: ["Protein Support"],
+    vitamins: ["Iron", "B Vitamins"],
     preparation: "Trim Fat & Sear Gently",
     preparationAlert: "Trim excess fat and cook thoroughly to avoid digestive upset.",
   },
@@ -24,7 +24,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "ground-beef",
     allergens: ["Beef"],
     benefits: ["Iron-Rich"],
-    vitamins: ["Zinc", "B12"],
+    vitamins: ["Zinc", "B Vitamins"],
     preparation: "Brown & Drain Excess Fat",
   },
   {
@@ -50,7 +50,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "liver",
     isHighRisk: true,
     benefits: ["Nutrient Powerhouse"],
-    vitamins: ["A", "Copper"],
+    vitamins: ["Vitamin A", "Copper"],
     maxGramsCap: 15.0, // ⚠️ CRITICAL VITAMIN A CEILING: Clamps volume to avoid nutrient toxicity
     preparation: "Boil Lightly & Dice Fine",
     preparationAlert: "Limit to small topper amounts to prevent Vitamin A toxicity.",
@@ -65,8 +65,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "chicken-breast",
     allergens: ["Poultry"],
-    benefits: ["Lean Protein"],
-    vitamins: ["B6"],
+    benefits: ["Protein Support"],
+    vitamins: ["B Vitamins"],
     preparation: "Poach & Shred (165°F)",
     preparationAlert: "Must be cooked to 165°F. Remove all bones before serving.",
   },
@@ -104,7 +104,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "ground-turkey",
     allergens: ["Poultry"],
-    benefits: ["Easy Digestion"],
+    benefits: ["Digestive Health"],
     vitamins: ["Selenium"],
     preparation: "Pan-cook Till Fully Opaque",
   },
@@ -129,7 +129,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein",
     category: "meat",
     icon: "pork-chops",
-    benefits: ["Amino Acid Rich"],
+    benefits: ["Protein Support"],
     vitamins: ["Thiamine (B1)"],
     preparation: "Trim Bone, Dice & Sauté",
   },
@@ -141,8 +141,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "venison",
     isNovelProtein: true,
-    benefits: ["Novel Protein"],
-    vitamins: ["B12"],
+    benefits: ["Protein Support"],
+    vitamins: ["B Vitamins"],
     preparation: "Cube Fine & Quick Sear",
   },
   {
@@ -153,8 +153,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "rabbit",
     isNovelProtein: true,
-    benefits: ["Leanest Choice"],
-    vitamins: ["B12"],
+    benefits: ["Protein Support"],
+    vitamins: ["B Vitamins"],
     preparation: "Debone & Grind / Cube Small",
   },
   {
@@ -164,8 +164,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein", // ✅ Aligned perfectly with your active types!
     category: "meat", // ✅ Matches your native meat category filters.
     icon: "ground-chicken",
-    benefits: ["Lean Muscle", "Tissue Repair"],
-    vitamins: ["Vitamin B6", "Phosphorus", "Selenium"],
+    benefits: ["Protein Support", "Tissue Repair"],
+    vitamins: ["B Vitamins", "Phosphorus", "Selenium"],
     preparation: "Gently Sear / Serve Plain",
   },
   {
@@ -176,7 +176,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat", // ✅ Matches your native meat category filters.
     icon: "lamb",
     benefits: ["Joint Health", "Iron Synthesis"],
-    vitamins: ["Vitamin B12", "Zinc", "Iron"],
+    vitamins: ["B Vitamins", "Zinc", "Iron"],
     preparation: "Lightly Steam / Cook Plain",
   },
   {
@@ -186,7 +186,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein",
     category: "meat",
     icon: "egg",
-    benefits: ["Perfect Protein"],
+    benefits: ["Protein Support"],
     vitamins: ["Biotin", "Riboflavin"],
     maxGramsCap: 100.0, // Limits excess fat volumes (~2 medium eggs max)
     preparation: "Hard Boil or Scramble Plain",

@@ -12,7 +12,7 @@ export const OIL_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "oil",
     icon: "oil-pouring-cup",
-    benefits: ["Medium-Chain Fats", "Brain Support"],
+    benefits: ["Energy Support", "Brain Health"],
     vitamins: ["Lauric Acid", "MCTs"],
     maxGramsCap: 14.0, // ⚠️ CRITICAL DIGESTIVE SHIELD: Limits pure saturated fat load (~1 tbsp max)
     preparation: "Melt & Drizzle Warm",
@@ -41,8 +41,8 @@ export const OIL_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "oil",
     icon: "shrimp",
-    benefits: ["Cellular Support"],
-    vitamins: ["EPA / DHA", "Astaxanthin"],
+    benefits: ["Cellular Health"],
+    vitamins: ["Omega-3", "Astaxanthin"],
     maxGramsCap: 2.0, // Standard therapeutic gel capsule dosage volume cap
     preparation: "Pierce Capsule Over Food",
   },
@@ -54,7 +54,7 @@ export const OIL_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "oil",
     icon: "hemp-oil",
-    benefits: ["Skin Barrier Health"],
+    benefits: ["Skin Health"],
     vitamins: ["Omega-6 to Omega-3 3:1 Ratio"],
     maxGramsCap: 9.0, // Safe therapeutic omega balance envelope (~2 tsp max)
     preparation: "Drizzle Fresh Raw",
@@ -66,8 +66,8 @@ export const OIL_INGREDIENTS: Ingredient[] = [
     role: "carbohydrate",
     category: "oil",
     icon: "salmon",
-    benefits: ["Radiant Coat", "Joint Comfort", "Heart Health"],
-    vitamins: ["Omega-3 (EPA/DHA)", "Vitamin D", "Astaxanthin"],
+    benefits: ["Coat Health", "Joint Health", "Heart Health"],
+    vitamins: ["Omega-3", "Vitamin D", "Astaxanthin"],
     maxGramsCap: 9.0, // Safe anti-inflammatory ceiling parameter (~2 tsp max)
     preparation: "Drizzle Fresh Over Bowl",
     preparationAlert: "Store in a cool, dark place. Oxidation can reduce potency.",

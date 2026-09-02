@@ -10,7 +10,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "seeds-nuts",
     icon: "flax-seed",
-    benefits: ["Radiant Skin", "Digestive Flow"],
+    benefits: ["Skin Health", "Digestive Health"],
     vitamins: ["Omega-3 (ALA)", "Lignans", "Fiber"],
     maxGramsCap: 7.0, // Safe micro-dose threshold mapping (~1 tbsp max ground powder)
     preparation: "Dust into Bowl",
@@ -24,7 +24,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "seeds-nuts",
     icon: "chia-seed",
-    benefits: ["Hydration Support", "Joint Comfort"],
+    benefits: ["Hydration", "Joint Health"],
     vitamins: ["Omega-3", "Calcium", "Antioxidants"],
     maxGramsCap: 6.0, // Limits maximum water absorption volume expansion in stomach (~0.5 tbsp max)
     preparation: "Soak in Water 10 Mins",
@@ -39,7 +39,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "seeds-nuts",
     icon: "hemp-hearts",
-    benefits: ["Immune Support", "Coat Glow"],
+    benefits: ["Immune Support", "Coat Health"],
     vitamins: ["GLA", "Omega-6", "Omega-3"],
     maxGramsCap: 10.0, // Tight cap (~1 tbsp max) due to high fat density
     preparation: "Sprinkle Raw as Topper",
@@ -70,7 +70,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     icon: "peanut-butter",
     isHighRisk: true,
     benefits: ["High Value Reward"],
-    vitamins: ["B3", "E", "Healthy Fats"],
+    vitamins: ["B Vitamins", "Vitamin E", "Healthy Fats"],
     maxGramsCap: 16.0, // ⚠️ CRITICAL PANCREAS SHIELD: Strict weight limit cutoff (~1 tbsp max)
     preparation: "Dollop Plain / Xylitol-Free",
     preparationAlert:
@@ -84,7 +84,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     category: "seeds-nuts",
     icon: "sunflower-seeds",
     isHighRisk: true,
-    benefits: ["Energy Booster"],
+    benefits: ["Energy Support"],
     vitamins: ["Vitamin E", "Selenium"],
     maxGramsCap: 8.0, // Limits concentrated oil accumulation (~1 tbsp max)
     preparation: "De-shell & Grind Raw",
@@ -150,7 +150,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "seeds-nuts",
     icon: "sesame-seed",
-    benefits: ["Bone & Joint Shield"],
+    benefits: ["Joint Health"],
     vitamins: ["Calcium", "Copper", "Sesamin"],
     maxGramsCap: 6.0, // Precise micro-mineral volume envelope (~1 tsp max ground)
     preparation: "Grind Whole Raw Seeds",
@@ -164,7 +164,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     category: "seeds-nuts",
     icon: "seed-butter",
     isHighRisk: true,
-    benefits: ["High Energy Boost"],
+    benefits: ["Energy Support"],
     vitamins: ["Vitamin E", "Magnesium"],
     maxGramsCap: 15.0, // ⚠️ CRITICAL HIGH-LIPID CEILING: Protects fragile metabolic pathways (~1 tbsp max)
     preparation: "Spoon Raw (Unsalted Only)",

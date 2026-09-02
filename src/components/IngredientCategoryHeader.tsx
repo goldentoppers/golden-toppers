@@ -15,22 +15,30 @@ export const IngredientCategoryHeader: React.FC<IngredientCategoryHeaderProps> =
     hexColor: "",
   },
 }) => {
-  const { title, target, hexColor } = activeChapter;
+  const { title, target, icon, hexColor } = activeChapter;
 
   return (
     <div
       id="ingredient-category-header-section"
-      className="relative flex w-full flex-col gap-2 text-left select-none md:flex-row md:gap-6"
+      className="relative flex w-full flex-col gap-1 text-left select-none md:flex-row md:gap-6"
     >
       <header
-        className="animate-fade-in flex w-full flex-col items-start justify-start
+        className="animate-fade-in flex w-full flex-col items-center justify-center
           select-none"
         aria-labelledby={`${title}-category-title`}
       >
-        <div className="mb-1 flex w-full flex-row items-center justify-start gap-3">
+        <div className="mb-1 flex w-full flex-row items-center justify-center gap-3">
+          <span
+            style={{ color: hexColor }}
+            className="flex shrink-0 items-center justify-center"
+            aria-hidden="true"
+          >
+            <AssetIcon name={icon} className="h-12 w-12 sm:h-14 sm:w-14" />
+          </span>
+
           <h2
             id={`${title}-category-title`}
-            className="flex shrink-0 flex-row font-serif text-2xl leading-none font-black
+            className="flex shrink-0 flex-row items-center justify-center font-serif text-2xl leading-none font-black
               tracking-wide text-stone-900 sm:text-3xl"
           >
             <div style={{ color: hexColor }}>{title.split(" ")[0]}</div>
@@ -64,21 +72,14 @@ export const IngredientCategoryDetails: React.FC<IngredientCategoryHeaderProps> 
     hexColor: "",
   },
 }) => {
-  const { icon, description, hexColor } = activeChapter;
+  const { description } = activeChapter;
 
   return (
-    <div className="w-full text-left">
+    <div className="w-full pb-3 text-center">
       <p
         className="w-full font-serif text-[13.5px] leading-relaxed font-medium tracking-wide
           text-stone-600/95 italic select-text sm:text-[14.5px]"
       >
-        <span
-          style={{ color: hexColor }}
-          className="float-left mr-4 flex items-center justify-center"
-          aria-hidden="true"
-        >
-          <AssetIcon name={icon} className="h-20 w-20" />
-        </span>
         {description}
       </p>
     </div>

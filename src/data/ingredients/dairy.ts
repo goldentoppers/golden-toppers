@@ -9,8 +9,8 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "kefir",
-    benefits: ["Probiotic Power", "Gut Health"],
-    vitamins: ["B12", "Calcium", "Probiotics"],
+    benefits: ["Digestive Health"],
+    vitamins: ["B Vitamins", "Calcium", "Probiotics"],
     maxGramsCap: 45.0, // Safe ceiling for a large golden retriever (~3 tbsp max probiotic dose)
     preparation: "Swirl Raw into Bowl",
     preparationAlert: "Fermentation makes this much easier to digest than plain milk.",
@@ -22,7 +22,7 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "greek-yogurt",
-    benefits: ["Digestive Support"],
+    benefits: ["Digestive Health"],
     vitamins: ["Calcium", "Protein"],
     maxGramsCap: 45.0, // Safe volumetric cap (~3 tbsp max)
     preparation: "Dollop Raw Over Food",
@@ -35,7 +35,7 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "cottage",
-    benefits: ["Easily Digestible Protein"],
+    benefits: ["Protein Support", "Digestive Health"],
     vitamins: ["Calcium", "Selenium"],
     maxGramsCap: 30.0, // Safe soft curd limit (~2 tbsp max)
     preparation: "Spoon into Mix",

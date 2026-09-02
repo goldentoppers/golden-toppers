@@ -6,7 +6,7 @@ export const AppHeader = () => {
       <Link
         to="/"
         aria-label="Golden Toppers home"
-        className="flex w-full max-w-4xl flex-col rounded-lg outline-none focus-visible:ring-2
+        className="mx-auto flex w-full max-w-4xl flex-col items-start rounded-lg outline-none focus-visible:ring-2
           focus-visible:ring-white focus-visible:ring-offset-2"
       >
         <h1 className="font-serif text-5xl italic tracking-tight text-white drop-shadow-xl lg:text-6xl leading-[0.85]">

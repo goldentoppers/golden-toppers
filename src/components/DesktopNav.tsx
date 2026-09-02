@@ -12,7 +12,7 @@ export const DesktopNav = () => {
   return (
     <nav
       aria-label="Desktop View Selection"
-      className="inline-flex items-center gap-3"
+      className="mx-auto inline-flex w-full max-w-4xl items-center gap-3"
     >
       <NavLink
         to="/"

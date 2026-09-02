@@ -29,7 +29,7 @@ export const About: React.FC = () => {
           </p></>
         )} />
     <section
-      className="w-full margin-automax-w-4xl pb-16 text-left font-sans select-none"
+      className="mx-auto w-full max-w-4xl pb-16 text-left font-sans select-none"
       aria-labelledby="about-philosophy-title"
     >
       <div

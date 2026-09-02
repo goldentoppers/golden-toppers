@@ -29,7 +29,7 @@ export const chapterConfig: ChapterConfig[] = [
     max: 3,
     options: INGREDIENT_LIBRARY.filter((i) => i.role === "protein" && !i.isToxic && !i.isHighRisk),
     description:
-      "Essential raw amino acids required to maintain lean muscle mass, support rapid cellular repair, and protect your Golden's structural tissue health. These complete protein building blocks form the nutritional baseline of your supplemental recipe bowl.",
+      "Essential raw amino acids that maintain lean muscle mass, cellular repair, and tissue health.",
   },
 
   // =========================================================
@@ -48,7 +48,7 @@ export const chapterConfig: ChapterConfig[] = [
       (i) => i.role === "vegetable" && i.density === "base" && !i.isToxic && !i.isHighRisk,
     ),
     description:
-      "Complex whole grains and high-density starches serving as stabilizing calorie anchors. These clean, fibrous carbohydrate structures supply long-sustained glucose pathways to fuel daily energy cycles without overloading digestion.",
+      "Whole grains and starches serve as calorie anchors to fuel daily energy cycles without overloading digestion.",
   },
 
   // =========================================================
@@ -67,7 +67,7 @@ export const chapterConfig: ChapterConfig[] = [
       (i) => i.role === "vegetable" && i.density !== "base" && !i.isToxic && !i.isHighRisk,
     ),
     description:
-      "Vibrant, sun-ripened garden vegetables rich in raw plant antioxidants, living food hydration, and active phytonutrients. These colorful selection rows support intestinal regularity and guard long-term metabolic health.",
+      "Vibrant, sun-ripened garden vegetables support intestinal regularity and guard long-term metabolic health.",
   },
 
   // =========================================================
@@ -87,7 +87,7 @@ export const chapterConfig: ChapterConfig[] = [
         (i.role === "carbohydrate" || i.category === "seeds-nuts") && !i.isToxic && !i.isHighRisk,
     ),
     description:
-      "Therapeutic whole lipids and concentrated fatty acids designed to fuel cellular metabolism. This functional tier is loaded with organic Omega-3 paths to nourish the skin barrier and maintain deep, glossy coat hydration.",
+      "Fatty acids designed to fuel cellular metabolism with Omega-3 to nourish the skin barrier and maintain deep, glossy coat hydration.",
   },
 
   // =========================================================
@@ -104,6 +104,6 @@ export const chapterConfig: ChapterConfig[] = [
     max: 3,
     options: INGREDIENT_LIBRARY.filter((i) => i.role === "topper" && !i.isToxic && !i.isHighRisk),
     description:
-      "Elite, biological macro-booster supplements designed to supercharge immune vitality. Handpicked target enzymes and functional trace elements provide a final layer of protection to complete the perfect supplemental bowl blueprint.",
+      "Supplements designed to supercharge immune vitality.",
   },
 ];

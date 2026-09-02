@@ -107,7 +107,7 @@ export const RecipeBook: React.FC = () => {
             />
           )}
           {isReviewOpen && (
-            <footer className="flex flex-col gap-4">
+            <footer className="mx-auto flex w-full max-w-4xl flex-col gap-4">
               <div className="xs:flex-row flex flex-col justify-between gap-2">
                 <PreviousButton
                   disabled={currentIndex === 0}

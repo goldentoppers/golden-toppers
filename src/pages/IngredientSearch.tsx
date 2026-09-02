@@ -205,7 +205,11 @@ export const IngredientSearch: React.FC = () => {
                 </div>
             </section>
 
-            <section className="mt-10" aria-live="polite" aria-label="Ingredient search results">
+            <section
+                className="mx-auto mt-10 w-full max-w-4xl"
+                aria-live="polite"
+                aria-label="Ingredient search results"
+            >
                 <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-stone-900/10 pb-3">
                     <h2 className="font-sans text-[11px] font-black tracking-[0.22em] text-stone-900 uppercase">
                         {normalizedQuery ? "Matching ingredients" : "All ingredients"}

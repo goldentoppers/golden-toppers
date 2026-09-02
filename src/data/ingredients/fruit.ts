@@ -9,8 +9,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "blueberries",
-    benefits: ["Cognitive Function", "Antioxidants"],
-    vitamins: ["Vitamin C", "K", "Fiber"],
+    benefits: ["Brain Health", "Antioxidants"],
+    vitamins: ["Vitamin C", "Vitamin K", "Fiber"],
     maxGramsCap: 30.0, // Healthy handful ceiling (~2 tbsp max)
     preparation: "Wash & Serve Whole or slightly mashed",
   },
@@ -22,7 +22,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     role: "topper",
     icon: "apple",
     benefits: ["Dental Health", "Fresh Breath"],
-    vitamins: ["Vitamin A", "C", "Fiber"],
+    vitamins: ["Vitamin A", "Vitamin C", "Fiber"],
     maxGramsCap: 25.0, // Limits excess sugars (~2 small slices fine-sliced)
     preparation: "Core, Seed & Cube Fine",
     preparationAlert:
@@ -61,8 +61,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "banana",
-    benefits: ["Muscle Function", "Energy"],
-    vitamins: ["Potassium", "B6", "C"],
+    benefits: ["Energy Support"],
+    vitamins: ["Potassium", "B Vitamins", "Vitamin C"],
     maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Restricts high starch load to ~1-2 slices max
     preparation: "Peel & Mash into Mix",
     preparationAlert: "High in sugar. Feed in moderation to prevent weight gain.",
@@ -74,8 +74,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "watermelon",
-    benefits: ["Hydration Support"],
-    vitamins: ["Lycopene", "Vitamin A", "C"],
+    benefits: ["Hydration"],
+    vitamins: ["Lycopene", "Vitamin A", "Vitamin C"],
     maxGramsCap: 40.0, // High-hydration ceiling allowance
     preparation: "Slice Core & De-seed",
     preparationAlert: "Remove all seeds and the rind to prevent intestinal blockages.",
@@ -92,8 +92,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Prevents rapid blood glucose spikes
     preparation: "Skin, Pit & Dice Flesh",
     preparationAlert: "Remove pit and skin.",
-    benefits: ["Eye Health", "Immune Boost"],
-    vitamins: ["Vitamin A", "B6", "E"],
+    benefits: ["Eye Health", "Immune Support"],
+    vitamins: ["Vitamin A", "B Vitamins", "Vitamin E"],
   },
   {
     id: "pear",
@@ -105,8 +105,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     maxGramsCap: 25.0, // Safe fibrous flesh cutoff
     preparation: "Core, Seed & Finely Slice",
     preparationAlert: "Remove all seeds.",
-    benefits: ["Cellular Health", "Hydration Support"],
-    vitamins: ["Vitamin C", "K", "Potassium"],
+    benefits: ["Cellular Health", "Hydration"],
+    vitamins: ["Vitamin C", "Vitamin K", "Potassium"],
   },
   {
     id: "dragonfruit",
@@ -117,7 +117,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "dragonfruit",
     maxGramsCap: 25.0, // Controlled exotic flesh ceiling
     preparation: "Peel Pink Skin & Cube",
-    benefits: ["Cellular Defense", "Immune Support"],
+    benefits: ["Cellular Health", "Immune Support"],
     vitamins: ["Vitamin C", "Betalains", "Fiber"],
   },
   {
@@ -129,8 +129,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "kiwi",
     maxGramsCap: 15.0, // Restricts dense actinidain enzyme exposure
     preparation: "Peel Fuzzy Skin & Dice",
-    benefits: ["Cognitive Function", "Antioxidants"],
-    vitamins: ["Vitamin C", "K", "Fiber"],
+    benefits: ["Brain Health", "Antioxidants"],
+    vitamins: ["Vitamin C", "Vitamin K", "Fiber"],
   },
   {
     id: "pineapple",
@@ -141,8 +141,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "pineapple",
     maxGramsCap: 15.0, // Clamps heavy bromelain enzyme volumes
     preparation: "Core & Chop Flesh Fine",
-    benefits: ["Anti-Inflammatory Digestion"],
-    vitamins: ["Bromelain", "C", "Manganese"],
+    benefits: ["Anti-Inflammatory"],
+    vitamins: ["Bromelain", "Vitamin C", "Manganese"],
   },
   {
     id: "papaya",
@@ -153,8 +153,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "papaya",
     maxGramsCap: 20.0, // Clean papain enzyme limit
     preparation: "De-seed, Peel & Mash",
-    benefits: ["Proteolytic Digestive Enzymes"],
-    vitamins: ["Papain", "A", "C", "Fiber"],
+    benefits: ["Digestive Health"],
+    vitamins: ["Papain", "Vitamin A", "Vitamin C", "Fiber"],
   },
 
   // --- ⚠️ TOXIC & PROHIBITED (Filtered out of Pantry, kept for Explore) ---
@@ -211,7 +211,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "apricot",
-    benefits: ["Cellular Support"],
+    benefits: ["Cellular Health"],
     vitamins: ["Beta-Carotene", "Potassium"],
     maxGramsCap: 20.0, // Controlled stone fruit flesh cutoff
     preparation: "Skin, Pit & Dice Flesh",
@@ -226,8 +226,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "blackberry",
-    benefits: ["Brain Health Support"],
-    vitamins: ["Vitamin C", "K", "Manganese"],
+    benefits: ["Brain Health"],
+    vitamins: ["Vitamin C", "Vitamin K", "Manganese"],
     maxGramsCap: 30.0, // Standard berry cap mapping
     preparation: "Wash & Serve Whole",
   },
@@ -254,7 +254,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "coconut",
-    benefits: ["Immune Booster", "Coat Shine"],
+    benefits: ["Immune Support", "Coat Health"],
     vitamins: ["Lauric Acid", "Manganese"],
     maxGramsCap: 10.0, // ⚠️ CRITICAL HIGH-FAT CEILING: Protects pancreatic tissue health
     preparation: "Remove Shell & Shred Fine",
@@ -284,7 +284,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "fig",
-    benefits: ["Digestive Support"],
+    benefits: ["Digestive Health"],
     vitamins: ["Fiber", "Calcium", "Potassium"],
     maxGramsCap: 15.0, // ⚠️ CRITICAL CLINICAL CEILING: Prevents acute digestive diarrhea flare-ups
     preparation: "Chop Fine or Mash Raw",
@@ -314,8 +314,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "melon",
-    benefits: ["Vision Support", "Hydration"],
-    vitamins: ["Vitamin A", "C", "B6"],
+    benefits: ["Eye Health", "Hydration"],
+    vitamins: ["Vitamin A", "Vitamin C", "B Vitamins"],
     maxGramsCap: 35.0, // Generous clean melon hydration weight
     preparation: "De-seed, Rind Off & Cube",
   },
@@ -327,7 +327,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "orange",
-    benefits: ["Immune Flush"],
+    benefits: ["Immune Support"],
     vitamins: ["Vitamin C", "Potassium"],
     maxGramsCap: 20.0, // Clamps dense citric acid load to prevent gastric pain
     preparation: "Peel, Seed & Slice Flesh",
@@ -341,8 +341,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "peach",
-    benefits: ["Skin Barrier Health"],
-    vitamins: ["Vitamin A", "C"],
+    benefits: ["Skin Health"],
+    vitamins: ["Vitamin A", "Vitamin C"],
     maxGramsCap: 25.0, // Safe stone fruit flesh limit
     preparation: "Skin, Pit & Dice Flesh",
     preparationAlert: "CRITICAL: The pit contains cyanide and is a fatal choking/blockage hazard.",
@@ -355,7 +355,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit", // 👈 Clean, honest database classification!
     icon: "goji-berry",
-    benefits: ["Eye Longevity", "Immune Defense"],
+    benefits: ["Eye Health", "Immune Support"],
     vitamins: ["Zeaxanthin", "Vitamin C", "Polysaccharides"],
     maxGramsCap: 5.0, // Best in small superfood doses
     preparation: "Soak in Warm Water & Mash",
@@ -368,8 +368,8 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "plum",
-    benefits: ["Cellular Support"],
-    vitamins: ["Vitamin C", "K"],
+    benefits: ["Cellular Health"],
+    vitamins: ["Vitamin C", "Vitamin K"],
     maxGramsCap: 20.0, // Safe stone fruit flesh limit
     preparation: "Skin, Pit & Cube Flesh",
     preparationAlert: "CRITICAL: Pit contains toxic cyanide and must be discarded completely.",
@@ -398,7 +398,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "fruit",
     icon: "tangerine",
-    benefits: ["Antioxidant Flush"],
+    benefits: ["Antioxidants"],
     vitamins: ["Vitamin C"],
     maxGramsCap: 20.0, // Clamps dense citric acid levels identically to Orange
     preparation: "Peel, Seed & Segment",
