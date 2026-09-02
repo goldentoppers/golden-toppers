@@ -62,7 +62,30 @@ export const RecipeBook: React.FC = () => {
         role="region"
         aria-label="Recipe Formulation"
       >
-        {isReviewOpen && <ReviewRecipeDisplay goToStart={resetToBeginning} />}
+        {isReviewOpen && (
+          <ReviewRecipeDisplay
+            goToStart={resetToBeginning}
+            actions={
+              <>
+                <PreviousButton
+                  disabled={currentIndex === 0}
+                  color={currentIndex === 0 ? "transparent" : AMBER_700}
+                  borderColor={currentIndex === 0 ? "transparent" : AMBER_700}
+                  onPrevious={() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                    setIsReviewOpen(false);
+                  }}
+                />
+                {selectedIds.length > 0 && (
+                  <div className="flex flex-row gap-2">
+                    <RestartButton onRestart={resetToBeginning} />
+                    <PrintButton disabled={false} />
+                  </div>
+                )}
+              </>
+            }
+          />
+        )}
 
         <div className="flex flex-col gap-4">
           {!isReviewOpen && (
@@ -105,45 +128,6 @@ export const RecipeBook: React.FC = () => {
                 </>
               }
             />
-          )}
-          {isReviewOpen && (
-            <footer className="mx-auto flex w-full max-w-4xl flex-col gap-4">
-              <div className="xs:flex-row flex flex-col justify-between gap-2">
-                <PreviousButton
-                  disabled={currentIndex === 0}
-                  color={
-                    currentIndex === 0
-                      ? "transparent"
-                      : isReviewOpen
-                        ? AMBER_700
-                        : activeChapter.hexColor
-                  }
-                  borderColor={
-                    currentIndex === 0
-                      ? "transparent"
-                      : isReviewOpen
-                        ? AMBER_700
-                        : activeChapter.hexColor
-                  }
-                  onPrevious={() => {
-                    window.scrollTo({
-                      top: 0,
-                      behavior: "smooth",
-                    });
-                    if (currentIndex > 0 && !isReviewOpen)
-                      setCurrentChapter(chapterConfig[currentIndex - 1].id);
-                    setIsReviewOpen(false);
-                  }}
-                />
-
-                {selectedIds.length > 0 && (
-                  <div className="flex flex-row gap-2">
-                    <RestartButton onRestart={resetToBeginning} />
-                    <PrintButton disabled={false} />
-                  </div>
-                )}
-              </div>
-            </footer>
           )}
         </div>
       </div>

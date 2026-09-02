@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, type ReactNode } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import { AssetIcon } from "./AssetIcon";
 import { DogStaringAtBowlIcon } from "../assets/art/react-icons/dogs/dog-staring-at-bowl";
@@ -12,9 +12,10 @@ import { DailyTargetDisplay } from "./DailyTargetDisplay";
 
 interface ReviewRecipeDisplayProps {
   goToStart: () => void;
+  actions?: ReactNode;
 }
 
-export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToStart }) => {
+export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToStart, actions }) => {
   const context = useContext(GlobalControlOptionsContext);
 
   const { nutritionResults, selectedIds, formData } = context || {
@@ -75,11 +76,14 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
         </div>
       ) : (
         <>
-          <section className="animate-fade-in space-y-4 select-text">
+          <section
+            className="animate-fade-in space-y-4 rounded-lg border border-stone-900/10 bg-white/65 p-5
+              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:p-8"
+          >
             <section
               className="mb-2 flex w-full flex-col border-b border-stone-800/10 pb-6 select-none"
             >
-              <div className="flex flex-col items-center justify-between gap-8 lg:flex-row">
+              <div className="flex flex-col items-center gap-8">
                 <div className="flex flex-col items-center gap-4 sm:flex-row">
                   <DogNameInput />
                   <div className="flex flex-row items-center gap-4">
@@ -174,6 +178,11 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
             <div className="pt-4">
               <TopperOnlyWarning />
             </div>
+            {actions && (
+              <footer className="xs:flex-row flex flex-col justify-between gap-2 pt-4">
+                {actions}
+              </footer>
+            )}
           </section>
         </>
       )}
