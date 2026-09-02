@@ -166,7 +166,11 @@ export const IngredientSearch: React.FC = () => {
                 )}
             />
             <section className="mx-auto flex max-w-4xl flex-col items-center text-center">
-                <form className="mt-8 w-full" onSubmit={(event) => event.preventDefault()} role="search">
+                <form
+                    className="mt-8 w-full max-w-[600px]"
+                    onSubmit={(event) => event.preventDefault()}
+                    role="search"
+                >
                     <label className="sr-only" htmlFor="ingredient-search">
                         Search ingredients
                     </label>

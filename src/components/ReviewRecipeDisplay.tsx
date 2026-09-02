@@ -94,7 +94,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
             <section className="mb-2 flex w-full flex-col pb-6 select-none">
               <div
                 className="mx-auto flex w-full flex-col items-center gap-6"
-                style={{ maxWidth: "500px" }}
+                style={{ maxWidth: "600px" }}
               >
                 <DogNameInput />
                 <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">

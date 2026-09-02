@@ -48,7 +48,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
 
         {Details && (
           <div
-            className={`${detailsPositionClass} mt-3 max-w-2xl space-y-4 ${alignmentClass} font-serif text-[14.5px]
+            className={`${detailsPositionClass} mt-3 max-w-[600px] space-y-4 ${alignmentClass} font-serif text-[14.5px]
                         leading-relaxed font-medium p-y-5 text-stone-700/95 italic select-text sm:text-[16px]`}
           >
             <Details />
