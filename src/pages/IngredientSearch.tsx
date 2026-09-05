@@ -140,22 +140,24 @@ export const IngredientSearch: React.FC = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     const normalizedQuery = normalizeSearchText(query.trim());
 
-    const matchesSearchAndCategory = (ingredient: Ingredient) =>
-        normalizeSearchText(ingredient.name).includes(normalizedQuery) &&
-        (!selectedCategory || ingredient.category === selectedCategory);
-    const matchesBenefits = (ingredient: Ingredient) =>
-        selectedBenefits.length === 0 ||
-        selectedBenefits.some((benefit) => ingredient.benefits.includes(benefit));
-    const matchesVitamins = (ingredient: Ingredient) =>
-        selectedVitamins.length === 0 ||
-        selectedVitamins.some((vitamin) => ingredient.vitamins.includes(vitamin));
-
     const results = useMemo(
         () =>
             [...INGREDIENT_LIBRARY]
-                .filter(matchesSearchAndCategory)
-                .filter(matchesBenefits)
-                .filter(matchesVitamins)
+                .filter(
+                    (ingredient) =>
+                        normalizeSearchText(ingredient.name).includes(normalizedQuery) &&
+                        (!selectedCategory || ingredient.category === selectedCategory),
+                )
+                .filter(
+                    (ingredient) =>
+                        selectedBenefits.length === 0 ||
+                        selectedBenefits.some((benefit) => ingredient.benefits.includes(benefit)),
+                )
+                .filter(
+                    (ingredient) =>
+                        selectedVitamins.length === 0 ||
+                        selectedVitamins.some((vitamin) => ingredient.vitamins.includes(vitamin)),
+                )
                 .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" })),
         [normalizedQuery, selectedCategory, selectedBenefits, selectedVitamins],
     );
