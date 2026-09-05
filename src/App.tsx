@@ -6,6 +6,7 @@ import { About } from "./pages/About";
 import { RecipeBook } from "./components/RecipeBook";
 import { DesktopNav } from "./components/DesktopNav";
 import { IngredientSearch } from "./pages/IngredientSearch";
+import { Recipes } from "./pages/Recipes";
 
 // --- B. THE MULTI-PAGE ROUTE GRAPH ---
 const router = createBrowserRouter([
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "ingredients",
         element: <div className="flex flex-col gap-8"><DesktopNav /><IngredientSearch /></div>,
+      },
+      {
+        path: "recipes",
+        element: <div className="flex flex-col gap-8"><DesktopNav /><Recipes /></div>,
       },
     ],
   },

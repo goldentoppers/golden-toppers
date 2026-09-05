@@ -33,7 +33,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
     <div className="animate-fade-in mx-auto w-full max-w-4xl text-left select-none">
       {hasNoIngredients ? (
         <div
-          className="animate-fade-in flex min-h-[48rem] w-full flex-col items-center justify-center rounded-3xl
+          className="animate-fade-in flex w-full flex-col items-center justify-center rounded-3xl
             border border-stone-900/2 border-b-white/30 bg-stone-900/4 p-8 text-center
             shadow-[inset_0_4px_12px_rgba(28,25,23,0.12)] select-none"
         >
@@ -76,30 +76,27 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section
-            className="animate-fade-in space-y-4 rounded-2xl border border-stone-900/8 bg-white/60 p-6
-              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:p-10"
+            className="animate-fade-in space-y-4 rounded-lg border border-stone-900/10 bg-white/65 p-12
+              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text"
           >
             <header className="flex flex-col pb-4 select-text justify-center">
               <h1
-                className="text-center font-serif text-4xl leading-tight font-black tracking-wide
-                    text-stone-900 italic"
+                className="max-w-full break-words text-center font-serif text-4xl leading-tight font-black
+                    tracking-wide text-stone-900 italic"
               >
-                <div className="inline text-amber-700">
+                <span className="text-amber-700">
                   {formData.dogName ? `${formData.dogName}'s ` : "Golden "}
-                </div>
+                </span>
                 Topper Plan
               </h1>
             </header>
 
             <section className="mb-2 flex w-full flex-col pb-6 select-none">
-              <div
-                className="mx-auto flex w-full flex-col items-center gap-6"
-                style={{ maxWidth: "600px" }}
-              >
+              <div className="mx-auto flex w-full max-w-[650px] flex-col items-center gap-6">
                 <DogNameInput />
-                <div className="flex w-full flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex w-full flex-col items-center gap-5 px-2 sm:flex-row sm:items-start sm:justify-center sm:gap-3 sm:px-0">
                   <ExerciseInput />
-                  <div className="flex items-start gap-4">
+                  <div className="flex w-full items-start justify-between gap-2 sm:w-auto sm:gap-3">
                     <WeightInput />
                     <ServingSelector />
                   </div>

@@ -90,6 +90,7 @@ export const GlobalControlOptionsProvider: React.FC<{
         formData,
         setFormData,
         selections,
+        setSelections,
         selectedIds,
         toggleIngredient,
         clearAllSelections,

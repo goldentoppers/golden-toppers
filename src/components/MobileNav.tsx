@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
+  BookOpenIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
   WrenchScrewdriverIcon,
@@ -12,7 +13,7 @@ export const MobileNav: React.FC = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const activeBackingTint = `${AMBER_600}14`;
+  const activeBackingTint = `${AMBER_600}2E`;
 
   return (
     <nav
@@ -42,7 +43,7 @@ export const MobileNav: React.FC = () => {
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
           justify-center overflow-hidden rounded-xl shadow-none outline-none
-          aria-[current=page]:shadow-[0_2px_8px_rgba(28,25,23,0.08)]"
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
         <div
           className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5
@@ -65,8 +66,6 @@ export const MobileNav: React.FC = () => {
         </div>
       </button>
 
-      <div className="pointer-events-none h-10 w-px shrink-0 bg-stone-800/20" aria-hidden="true" />
-
       <button
         type="button"
         onClick={() => {
@@ -81,7 +80,7 @@ export const MobileNav: React.FC = () => {
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
           justify-center overflow-hidden rounded-xl shadow-none outline-none
-          aria-[current=page]:shadow-[0_2px_8px_rgba(28,25,23,0.08)]"
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
         <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none">
           <MagnifyingGlassIcon
@@ -101,8 +100,39 @@ export const MobileNav: React.FC = () => {
         </div>
       </button>
 
-      {/* 🔘 VERTICAL FINE LINE COMPONENT SEPARATOR */}
-      <div className="pointer-events-none h-10 w-px shrink-0 bg-stone-800/20" aria-hidden="true" />
+      <button
+        type="button"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          navigate("/recipes");
+        }}
+        aria-current={currentPath === "/recipes" ? "page" : undefined}
+        role="tab"
+        style={{
+          backgroundColor: currentPath === "/recipes" ? activeBackingTint : "transparent",
+          color: currentPath === "/recipes" ? AMBER_700 : "#57534e",
+        }}
+        className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
+          justify-center overflow-hidden rounded-xl shadow-none outline-none
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
+      >
+        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none">
+          <BookOpenIcon
+            className={`h-5 w-5 stroke-[2.5] ${currentPath === "/recipes"
+              ? "scale-105 opacity-100"
+              : "opacity-75 group-hover/tab:scale-105"
+              }`}
+          />
+          <span
+            className={`mt-1.5 text-[9.5px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${currentPath === "/recipes"
+              ? "text-stone-900"
+              : "font-bold text-stone-600 group-hover/tab:text-stone-800"
+              }`}
+          >
+            Recipes
+          </span>
+        </div>
+      </button>
 
       {/* ========================================================= */}
       {/* ⚙️ TAB 2: THE INTERACTIVE ABOUT GUIDANCE ROUTE              */}
@@ -124,7 +154,7 @@ export const MobileNav: React.FC = () => {
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
           justify-center overflow-hidden rounded-xl shadow-none outline-none
-          aria-[current=page]:shadow-[0_2px_8px_rgba(28,25,23,0.08)]"
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
         <div
           className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5

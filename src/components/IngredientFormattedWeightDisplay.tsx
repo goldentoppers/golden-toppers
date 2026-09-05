@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
-import type { RecipeResultItem } from "../types/nutrition";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 
 interface IngredientFormattedWeightDisplayProps {
-  ingredient: RecipeResultItem;
+  ingredient: {
+    id: string;
+    grams: number;
+    category: string;
+    density?: "base" | "rainbow";
+    role: string;
+  };
 }
 
 export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeightDisplayProps> = ({
@@ -12,7 +17,7 @@ export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeigh
 }) => {
   const context = useContext(GlobalControlOptionsContext);
   const { formData } = context || { formData: { servingSize: 1 } };
-
+  console.log("ingredient: ", ingredient);
   const formattedWeight = formatSmartWeight({
     grams: ingredient.grams,
     category: ingredient.category,

@@ -89,13 +89,8 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     </span>
                 </div>
                 <div className="relative">
-                    <div
-                        className="pointer-events-none absolute top-8 bottom-8 left-1/2 z-20 w-px -translate-x-1/2
-                                                    bg-stone-900/10 sm:left-1/2 lg:left-1/2"
-                        aria-hidden="true"
-                    />
                     <ul
-                        className="grid list-none grid-cols-2 gap-x-5 gap-y-1.5 sm:grid-cols-4 lg:grid-cols-6"
+                        className="grid list-none grid-cols-2 sm:grid-cols-4 lg:grid-cols-6"
                         role="list"
                         aria-label={chapterConfig.label}
                     >

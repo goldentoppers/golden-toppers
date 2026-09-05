@@ -34,7 +34,7 @@ export const ExerciseInput = () => {
         Activity Level
       </span>
 
-      <div className="flex flex-row items-center justify-start gap-2">
+      <div className="flex flex-row items-center justify-start gap-1 md:gap-2">
         {options.map((opt) => {
           const isSelected = currentActivity === opt.value;
 
@@ -44,9 +44,9 @@ export const ExerciseInput = () => {
               type="button"
               onClick={() => handleSelect(opt.value)}
               aria-pressed={isSelected}
-              className={`relative flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md px-2 py-1
+              className={`relative flex aspect-square h-16 w-16 cursor-pointer flex-col items-center justify-center gap-1 rounded-md p-1
                 text-center transition-colors duration-150 outline-none focus-visible:ring-2
-                focus-visible:ring-amber-700 focus-visible:ring-offset-2 ${isSelected
+                focus-visible:ring-amber-700 focus-visible:ring-offset-2 md:h-24 md:w-24 md:p-2 ${isSelected
                   ? "bg-amber-700/10 text-amber-700"
                   : "text-stone-600 hover:bg-stone-900/5 hover:text-stone-900"
                 }`}

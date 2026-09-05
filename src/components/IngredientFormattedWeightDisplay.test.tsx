@@ -27,6 +27,7 @@ const providerValue: GlobalContextType = {
   formData: { weight: 65, activity: 'low', servingSize: 1, dogName: '' },
   setFormData: () => null,
   selections: { proteins: [], heartyBases: [], freshColors: [], energyBoosts: [], toppers: [] },
+  setSelections: () => null,
   selectedIds: [],
   toggleIngredient: () => null,
   clearAllSelections: () => null,

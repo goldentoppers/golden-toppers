@@ -91,7 +91,7 @@ export const PrintedRecipeTemplate = () => {
                 >
                   <span>
                     {typeof formData.servingSize === 'number' ? formData.servingSize : 1}
-                    {(typeof formData.servingSize === 'number' ? formData.servingSize : 1) === 2 ? "portions" : "portion"}
+                    {(typeof formData.servingSize === 'number' ? formData.servingSize : 1) === 2 ? " SERVINGS" : " SERVING"}
                   </span>
                 </div>
               </div>

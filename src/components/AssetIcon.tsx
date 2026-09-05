@@ -119,6 +119,10 @@ import { SunflowerSeedsIcon } from "../assets/art/react-icons/seeds-and-nuts/sun
 import { PeanutButterIcon } from "../assets/art/react-icons/seeds-and-nuts/peanut-butter";
 import { OnionsIcon } from "../assets/art/react-icons/vegetables/15-onions";
 import { GarlicIcon } from "../assets/art/react-icons/vegetables/garlic";
+import { PeasIcon } from "../assets/art/react-icons/vegetables/peas";
+import { GreenBeansIcon } from "../assets/art/react-icons/vegetables/green-beans";
+import { RolledOatsIcon } from "../assets/art/react-icons/bases/rolled-oats";
+import { DillIcon } from "../assets/art/react-icons/herbs/dill";
 
 interface AssetIconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -295,6 +299,14 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
     case "blueberries":
       return (
         <BlueberriesIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "oats":
+      return (
+        <RolledOatsIcon
           className={`${className} transition-colors duration-200`}
           style={style}
           {...props}
@@ -749,7 +761,14 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           {...props}
         />
       );
-    case "cucumbers":
+    case "dill": return (
+      <DillIcon
+        className={`${className} transition-colors duration-200`}
+        style={style}
+        {...props}
+      />
+    )
+    case "cucumber":
       return (
         <CucumberIcon
           className={`${className} transition-colors duration-200`}
@@ -760,6 +779,22 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
     case "peach":
       return (
         <PeachIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "peas":
+      return (
+        <PeasIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "green-beans":
+      return (
+        <GreenBeansIcon
           className={`${className} transition-colors duration-200`}
           style={style}
           {...props}

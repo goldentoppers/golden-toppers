@@ -92,7 +92,7 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     role: "vegetable",
     density: "rainbow",
     category: "vegetable",
-    icon: "cucumbers",
+    icon: "cucumber",
     benefits: ["Hydration"],
     vitamins: ["Vitamin K", "Vitamin C", "Potassium"],
     maxGramsCap: 100.0, // High ceiling for ultra-low calorie hydrating crunch
@@ -248,5 +248,33 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     maxGramsCap: 0, // Blocked from active baseline loops
     preparation: "USE EXTREME CAUTION",
     preparationAlert: "Toxic in larger volumes. High concentration of thiosulfate compounds.",
+  },
+  {
+    id: "peas",
+    name: "Green Peas",
+    kcalPerGram: 0.81,
+    role: "vegetable",
+    density: "rainbow",
+    category: "vegetable",
+    icon: "peas",
+    benefits: ["Energy Support", "Muscle Maintenance"],
+    vitamins: ["Vitamin C", "Vitamin K", "B Vitamins", "Protein"],
+    maxGramsCap: 50.0, // Safe purine/fiber ceiling to balance dense legume starch loops
+    preparation: "Steam Soft & Mash / Thaw Frozen Plain",
+    preparationAlert: "Ensure they are plain. Avoid pre-seasoned varieties or pods for small dogs.",
+  },
+  {
+    id: "green-beans",
+    name: "Green Beans",
+    kcalPerGram: 0.31,
+    role: "vegetable",
+    density: "rainbow",
+    category: "vegetable",
+    icon: "green-beans",
+    benefits: ["Weight Management", "Digestive Health"],
+    vitamins: ["Vitamin C", "Vitamin K", "Vitamin A", "Fiber"],
+    maxGramsCap: 100.0, // High moisture and lower starch content allows for a larger volumetric volume than peas
+    preparation: "Wash, Trim Ends, Chop & Steam / Raw Crunchy",
+    preparationAlert: "Always serve plain. Never feed canned varieties with added sodium, or garlic/onion mixtures.",
   },
 ];

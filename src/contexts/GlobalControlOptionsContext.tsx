@@ -25,6 +25,7 @@ export interface GlobalContextType {
   formData: GlobalFormData;
   setFormData: React.Dispatch<React.SetStateAction<GlobalFormData>>;
   selections: SelectionsState;
+  setSelections: React.Dispatch<React.SetStateAction<SelectionsState>>;
   selectedIds: string[];
   toggleIngredient: (id: string, category: keyof SelectionsState) => void;
   clearAllSelections: () => void;
@@ -54,6 +55,7 @@ export const GlobalControlOptionsContext = createContext<GlobalContextType>({
     energyBoosts: [],
     toppers: [],
   },
+  setSelections: () => null,
   selectedIds: [],
   toggleIngredient: () => null,
   clearAllSelections: () => null,

@@ -10,8 +10,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "steak",
     allergens: ["Beef"],
-    benefits: ["Protein Support"],
-    vitamins: ["Iron", "B Vitamins"],
+    benefits: ["Muscle Building"],
+    vitamins: ["Iron", "B12"],
     preparation: "Trim Fat & Sear Gently",
     preparationAlert: "Trim excess fat and cook thoroughly to avoid digestive upset.",
   },
@@ -24,7 +24,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "ground-beef",
     allergens: ["Beef"],
     benefits: ["Iron-Rich"],
-    vitamins: ["Zinc", "B Vitamins"],
+    vitamins: ["Zinc", "B12"],
     preparation: "Brown & Drain Excess Fat",
   },
   {
@@ -50,7 +50,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "liver",
     isHighRisk: true,
     benefits: ["Nutrient Powerhouse"],
-    vitamins: ["Vitamin A", "Copper"],
+    vitamins: ["A", "Copper"],
     maxGramsCap: 15.0, // ⚠️ CRITICAL VITAMIN A CEILING: Clamps volume to avoid nutrient toxicity
     preparation: "Boil Lightly & Dice Fine",
     preparationAlert: "Limit to small topper amounts to prevent Vitamin A toxicity.",
@@ -58,15 +58,15 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
 
   // --- POULTRY ---
   {
-    id: "chick-breast",
+    id: "chicken-breast",
     name: "Chicken Breast",
     kcalPerGram: 1.65,
     role: "protein",
     category: "meat",
     icon: "chicken-breast",
     allergens: ["Poultry"],
-    benefits: ["Protein Support"],
-    vitamins: ["B Vitamins"],
+    benefits: ["Lean Protein"],
+    vitamins: ["B6"],
     preparation: "Poach & Shred (165°F)",
     preparationAlert: "Must be cooked to 165°F. Remove all bones before serving.",
   },
@@ -104,7 +104,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "ground-turkey",
     allergens: ["Poultry"],
-    benefits: ["Digestive Health"],
+    benefits: ["Easy Digestion"],
     vitamins: ["Selenium"],
     preparation: "Pan-cook Till Fully Opaque",
   },
@@ -129,7 +129,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein",
     category: "meat",
     icon: "pork-chops",
-    benefits: ["Protein Support"],
+    benefits: ["Amino Acid Rich"],
     vitamins: ["Thiamine (B1)"],
     preparation: "Trim Bone, Dice & Sauté",
   },
@@ -141,8 +141,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "venison",
     isNovelProtein: true,
-    benefits: ["Protein Support"],
-    vitamins: ["B Vitamins"],
+    benefits: ["Novel Protein"],
+    vitamins: ["B12"],
     preparation: "Cube Fine & Quick Sear",
   },
   {
@@ -153,8 +153,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat",
     icon: "rabbit",
     isNovelProtein: true,
-    benefits: ["Protein Support"],
-    vitamins: ["B Vitamins"],
+    benefits: ["Leanest Choice"],
+    vitamins: ["B12"],
     preparation: "Debone & Grind / Cube Small",
   },
   {
@@ -164,8 +164,8 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein", // ✅ Aligned perfectly with your active types!
     category: "meat", // ✅ Matches your native meat category filters.
     icon: "ground-chicken",
-    benefits: ["Protein Support", "Tissue Repair"],
-    vitamins: ["B Vitamins", "Phosphorus", "Selenium"],
+    benefits: ["Lean Muscle", "Tissue Repair"],
+    vitamins: ["Vitamin B6", "Phosphorus", "Selenium"],
     preparation: "Gently Sear / Serve Plain",
   },
   {
@@ -176,7 +176,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     category: "meat", // ✅ Matches your native meat category filters.
     icon: "lamb",
     benefits: ["Joint Health", "Iron Synthesis"],
-    vitamins: ["B Vitamins", "Zinc", "Iron"],
+    vitamins: ["Vitamin B12", "Zinc", "Iron"],
     preparation: "Lightly Steam / Cook Plain",
   },
   {
@@ -186,7 +186,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     role: "protein",
     category: "meat",
     icon: "egg",
-    benefits: ["Protein Support"],
+    benefits: ["Perfect Protein"],
     vitamins: ["Biotin", "Riboflavin"],
     maxGramsCap: 100.0, // Limits excess fat volumes (~2 medium eggs max)
     preparation: "Hard Boil or Scramble Plain",

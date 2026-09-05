@@ -135,20 +135,29 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
 
 export const IngredientSearch: React.FC = () => {
     const [query, setQuery] = useState("");
-    const [selectedBenefit, setSelectedBenefit] = useState("");
-    const [selectedVitamin, setSelectedVitamin] = useState("");
+    const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
+    const [selectedVitamins, setSelectedVitamins] = useState<string[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("");
     const normalizedQuery = normalizeSearchText(query.trim());
+
+    const matchesSearchAndCategory = (ingredient: Ingredient) =>
+        normalizeSearchText(ingredient.name).includes(normalizedQuery) &&
+        (!selectedCategory || ingredient.category === selectedCategory);
+    const matchesBenefits = (ingredient: Ingredient) =>
+        selectedBenefits.length === 0 ||
+        selectedBenefits.some((benefit) => ingredient.benefits.includes(benefit));
+    const matchesVitamins = (ingredient: Ingredient) =>
+        selectedVitamins.length === 0 ||
+        selectedVitamins.some((vitamin) => ingredient.vitamins.includes(vitamin));
 
     const results = useMemo(
         () =>
             [...INGREDIENT_LIBRARY]
-                .filter((ingredient) => normalizeSearchText(ingredient.name).includes(normalizedQuery))
-                .filter((ingredient) => !selectedCategory || ingredient.category === selectedCategory)
-                .filter((ingredient) => !selectedBenefit || ingredient.benefits.includes(selectedBenefit))
-                .filter((ingredient) => !selectedVitamin || ingredient.vitamins.includes(selectedVitamin))
+                .filter(matchesSearchAndCategory)
+                .filter(matchesBenefits)
+                .filter(matchesVitamins)
                 .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" })),
-        [normalizedQuery, selectedCategory, selectedBenefit, selectedVitamin],
+        [normalizedQuery, selectedCategory, selectedBenefits, selectedVitamins],
     );
 
     return (
@@ -167,7 +176,7 @@ export const IngredientSearch: React.FC = () => {
             />
             <section className="mx-auto flex max-w-4xl flex-col items-center text-center">
                 <form
-                    className="mt-8 w-full max-w-[600px]"
+                    className="mt-8 w-full max-w-[650px]"
                     onSubmit={(event) => event.preventDefault()}
                     role="search"
                 >
@@ -199,10 +208,10 @@ export const IngredientSearch: React.FC = () => {
                 <div className="mt-4">
                     <IngredientFilters
                         options={INGREDIENT_LIBRARY}
-                        selectedBenefit={selectedBenefit}
-                        setSelectedBenefit={setSelectedBenefit}
-                        selectedVitamin={selectedVitamin}
-                        setSelectedVitamin={setSelectedVitamin}
+                        selectedBenefits={selectedBenefits}
+                        setSelectedBenefits={setSelectedBenefits}
+                        selectedVitamins={selectedVitamins}
+                        setSelectedVitamins={setSelectedVitamins}
                         selectedCategory={selectedCategory}
                         setSelectedCategory={setSelectedCategory}
                     />

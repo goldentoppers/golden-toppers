@@ -39,7 +39,7 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
         isNoneItem ? "Clear all selections" : `${isSelected ? "Remove" : "Add"} ${ingredient.name}`
       }
       className={`relative z-10 flex h-24 w-full flex-col items-center justify-center gap-1 border-0
-        bg-transparent p-2 text-center shadow-none transition-all duration-200 outline-none
+        bg-transparent text-center shadow-none transition-all duration-200 outline-none
         select-none
         focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 ${!isSelected && !isDisabled
           ? "cursor-pointer hover:-translate-y-0.5 active:translate-y-0"

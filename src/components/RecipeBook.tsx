@@ -17,7 +17,6 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import { AssetIcon } from "./AssetIcon";
 
 export const RecipeBook: React.FC = () => {
-  const [hasStartedBuilding, setHasStartedBuilding] = useState(false);
   const {
     selections,
     toggleIngredient,
@@ -28,6 +27,7 @@ export const RecipeBook: React.FC = () => {
     isReviewOpen,
     setIsReviewOpen,
   } = useContext(GlobalControlOptionsContext);
+  const [hasStartedBuilding, setHasStartedBuilding] = useState(selectedIds.length > 0);
 
   const currentIndex = chapterConfig.findIndex((c) => c.id === currentChapter);
   const activeChapter = chapterConfig[currentIndex];
@@ -43,6 +43,7 @@ export const RecipeBook: React.FC = () => {
     <>
       {!hasStartedBuilding && (
         <section className="flex flex-col items-center" aria-labelledby="builder-intro-title">
+
           <AssetIcon name="fancy-chef-hat" className="h-40 w-40" />
           <PageHeading
             title="Build a better bowl."

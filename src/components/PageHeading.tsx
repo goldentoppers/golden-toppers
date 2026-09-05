@@ -23,7 +23,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   const sectionWidthClass = align === 'left' ? 'w-full' : 'mx-auto w-full max-w-4xl px-4';
 
   return (
-    <section className={`${sectionWidthClass} font-sans select-none`} aria-labelledby={headingId}>
+    <section className={`${sectionWidthClass}  font-sans select-none`} aria-labelledby={headingId}>
       {/* <div className="grid grid-cols-2"> */}
       <div className="min-w-0 flex-1">
         <header className={`${alignmentClass} drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]`}>
@@ -48,7 +48,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
 
         {Details && (
           <div
-            className={`${detailsPositionClass} mt-3 max-w-[600px] space-y-4 ${alignmentClass} font-serif text-[14.5px]
+            className={`${detailsPositionClass} mt-3 max-w-2xl space-y-4 ${alignmentClass} font-serif text-[14.5px]
                         leading-relaxed font-medium p-y-5 text-stone-700/95 italic select-text sm:text-[16px]`}
           >
             <Details />
