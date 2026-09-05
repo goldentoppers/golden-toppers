@@ -1,7 +1,7 @@
-import React, { useMemo, type ReactNode } from "react";
+import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { IngredientButton } from "./buttons/IngredientButton";
 import { IngredientCategoryHeader } from "./IngredientCategoryHeader";
-import { chapterConfig as allChapters, type ChapterConfig } from "../data/chapter-config";
+import type { ChapterConfig } from "../data/chapter-config";
 
 interface PantryProps {
     onToggle: (id: string) => void;
@@ -39,17 +39,31 @@ export const IngredientPantry: React.FC<PantryProps> = ({
         return [noneOption, ...alphabetized];
     }, [options, chapterConfig.id]);
 
-    // Includes the "None" slot so every chapter grid pads out to the same tallest row count.
-    const maxOptionsCount = useMemo(
-        () => Math.max(...allChapters.map((c) => c.options.length + 1)),
-        [],
-    );
-
     const categoryIsEmpty = selectedIds.length === 0;
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [cardHeight, setCardHeight] = useState<number>();
+
+    useEffect(() => {
+        if (!cardRef.current) return;
+
+        const updateCardHeight = () => {
+            if (cardRef.current) setCardHeight(cardRef.current.getBoundingClientRect().height);
+        };
+
+        updateCardHeight();
+        const observer = new ResizeObserver(updateCardHeight);
+        observer.observe(cardRef.current);
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div id="ingredient-pantry-section" className="mx-auto flex min-w-0 w-full max-w-4xl flex-col">
             <div
+                className="overflow-hidden transition-[height] duration-500 ease-in-out"
+                style={{ height: cardHeight ? `${cardHeight}px` : undefined }}
+            >
+            <div
+                ref={cardRef}
                 className="relative flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
             shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
             >
@@ -121,9 +135,6 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                                 </li>
                             );
                         })}
-                        {Array.from({ length: maxOptionsCount - processedOptions.length }).map((_, idx) => (
-                            <li key={`filler-${idx}`} aria-hidden="true" className="hidden h-24 md:block" />
-                        ))}
                     </ul>
                 </div>
 
@@ -132,6 +143,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                         {action}
                     </div>
                 )}
+            </div>
             </div>
         </div>
     );

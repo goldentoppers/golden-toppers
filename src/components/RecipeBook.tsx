@@ -13,7 +13,6 @@ import { PreviousButton } from "./buttons/PreviousButton";
 import { ReviewRecipeButton } from "./buttons/ReviewRecipeButton";
 import { AMBER_700 } from "../data/color-scheme";
 import { PageHeading } from "./PageHeading";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { AssetIcon } from "./AssetIcon";
 
 export const RecipeBook: React.FC = () => {
@@ -31,12 +30,12 @@ export const RecipeBook: React.FC = () => {
 
   const currentIndex = chapterConfig.findIndex((c) => c.id === currentChapter);
   const activeChapter = chapterConfig[currentIndex];
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const resetToBeginning = () => {
     clearAllSelections();
     setIsReviewOpen(false);
     setCurrentChapter("proteins");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -106,7 +105,6 @@ export const RecipeBook: React.FC = () => {
         <div className="flex flex-col gap-4">
           {!isReviewOpen && (
             <IngredientPantry
-              key={activeChapter.id}
               selectedIds={selections[activeChapter.id]}
               chapterConfig={activeChapter}
               onToggle={(id: string) => toggleIngredient(id, currentChapter)}
@@ -118,7 +116,7 @@ export const RecipeBook: React.FC = () => {
                     color={currentIndex === 0 ? "transparent" : activeChapter.hexColor}
                     borderColor={currentIndex === 0 ? "transparent" : activeChapter.hexColor}
                     onPrevious={() => {
-                      if (!isDesktop) window.scrollTo({ top: 0, behavior: "smooth" });
+                      window.scrollTo({ top: 0, behavior: "smooth" });
                       if (currentIndex > 0) {
                         setCurrentChapter(chapterConfig[currentIndex - 1].id);
                       }
@@ -137,7 +135,7 @@ export const RecipeBook: React.FC = () => {
                       color={activeChapter.hexColor}
                       onNext={() => {
                         setCurrentChapter(chapterConfig[currentIndex + 1]?.id);
-                        if (!isDesktop) window.scrollTo({ top: 0, behavior: "smooth" });
+                        window.scrollTo({ top: 0, behavior: "smooth" });
                       }}
                     />
                   )}
