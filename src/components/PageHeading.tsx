@@ -7,6 +7,7 @@ interface PageHeadingProps {
   subtitle?: string;
   headingId?: string;
   align?: "left" | "center";
+  className?: string;
   // adSlot?: string;
 }
 
@@ -16,6 +17,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   details: Details,
   headingId = 'about-philosophy-title',
   align = 'center',
+  className = '',
   // adSlot,
 }) => {
   const alignmentClass = align === 'left' ? 'text-left' : 'text-center';
@@ -23,7 +25,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   const sectionWidthClass = align === 'left' ? 'w-full' : 'mx-auto w-full max-w-4xl px-4';
 
   return (
-    <section className={`${sectionWidthClass}  font-sans select-none`} aria-labelledby={headingId}>
+    <section className={`${sectionWidthClass} ${className} font-sans select-none`} aria-labelledby={headingId}>
       {/* <div className="grid grid-cols-2"> */}
       <div className="min-w-0 flex-1">
         <header className={`${alignmentClass} drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]`}>

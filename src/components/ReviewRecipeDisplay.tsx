@@ -96,7 +96,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                 <DogNameInput />
                 <div className="flex w-full flex-col items-center gap-5 px-2 sm:flex-row sm:items-start sm:justify-center sm:gap-3 sm:px-0">
                   <ExerciseInput />
-                  <div className="flex w-full items-start justify-between gap-2 sm:w-auto sm:gap-3">
+                  <div className="mx-auto flex w-fit items-start justify-center gap-4">
                     <WeightInput />
                     <ServingSelector />
                   </div>

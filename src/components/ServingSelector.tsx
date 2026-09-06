@@ -7,7 +7,7 @@ export default function ServingSelector(): React.JSX.Element {
 
   // Safe default fallback props to prevent rendering breakage inside sandbox pipelines
   const formData = context?.formData ?? { servingSize: 1 };
-  const setFormData = context?.setFormData ?? (() => {});
+  const setFormData = context?.setFormData ?? (() => { });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const value = parseInt(e.target.value, 10);
@@ -23,11 +23,11 @@ export default function ServingSelector(): React.JSX.Element {
     <div className="relative flex flex-col items-start font-sans select-none">
       <fieldset className="m-0 border-none p-0">
         <legend className="sr-only">Number of active recipe servings</legend>
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col gap-1 md:gap-4">
           <InputLabel htmlFor="servings">Servings</InputLabel>
 
           <div
-            className="inline-flex items-center justify-center gap-1 rounded-4xl border
+            className="inline-flex h-14 items-center justify-center gap-1 rounded-4xl border
               border-stone-900/3 border-b-white/40 bg-stone-900/4 p-1
               shadow-[inset_0_4px_12px_rgba(28,25,23,0.12),inset_0_1px_4px_rgba(28,25,23,0.08)]
               transition-all duration-300 select-none"
@@ -49,13 +49,7 @@ export default function ServingSelector(): React.JSX.Element {
                 checked={formData.servingSize === 1}
                 onChange={handleChange}
               />
-              {/* Foreground content rows */}
               <span className="text-sm leading-none font-black">1</span>
-              {/* <span
-                className="mt-0.5 text-[9.5px] leading-none font-black tracking-[0.2em] uppercase"
-              >
-                Dog
-              </span> */}
             </label>
 
             <label
@@ -74,11 +68,6 @@ export default function ServingSelector(): React.JSX.Element {
                 onChange={handleChange}
               />
               <span className="text-sm leading-none font-black">2</span>
-              {/* <span
-                className="mt-0.5 text-[9.5px] leading-none font-black tracking-[0.2em] uppercase"
-              >
-                Dogs
-              </span> */}
             </label>
           </div>
         </div>

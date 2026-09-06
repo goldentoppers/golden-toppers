@@ -58,7 +58,7 @@ export const WeightInput = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex w-full flex-col items-start font-sans select-none"
+      className="relative flex w-auto flex-col items-start font-sans select-none gap-1 md:gap-4"
     >
       <InputLabel htmlFor={"canine-weight-trigger"}>Weight</InputLabel>
 
@@ -69,9 +69,9 @@ export const WeightInput = () => {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-35 cursor-pointer items-center justify-between rounded-full border
-          border-stone-300/80 bg-white/55 px-5 py-2.5 text-sm font-semibold text-stone-800 shadow-sm
-          backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-400
+        className="flex h-14 w-35 cursor-pointer items-center justify-between rounded-full border
+          border-stone-300/80 bg-white/55 px-5 text-sm font-semibold text-stone-800
+          shadow-[0_2px_5px_rgba(28,25,23,0.08)] backdrop-blur-md transition-all duration-300 outline-none hover:border-stone-400
           hover:bg-white/75 focus-visible:ring-2 focus-visible:ring-stone-400"
       >
         <span className="font-medium text-stone-700/90">

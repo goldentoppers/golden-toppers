@@ -168,6 +168,7 @@ export const IngredientSearch: React.FC = () => {
                 title="Find the right topper."
                 subtitle="Ingredient Library"
                 headingId="ingredient-search-title"
+                className="pt-12 md:pt-0"
                 // align="left"
                 // adSlot="ingredient-library-page-header"
                 details={() => (
