@@ -158,7 +158,7 @@ export const About: React.FC = () => {
         <div className="flex items-center justify-center gap-3">
           <AssetIcon name="dog-with-pumpkin" className="h-16 w-16 text-amber-700" />
           <h2 className="text-center font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic">
-            <span className="text-amber-700">Support</span> the Mission
+            Support the Mission
           </h2>
         </div>
 

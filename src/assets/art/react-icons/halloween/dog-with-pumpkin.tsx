@@ -1,4 +1,12 @@
 import type { SVGProps } from "react";
-import DogWithPumpkin from "../../halloween/dog-with-pumpkin.svg?react";
+import dogWithPumpkin from "../../halloween/dog-with-pumpkin.svg";
 
-export const DogWithPumpkinIcon = (props: SVGProps<SVGSVGElement>) => <DogWithPumpkin {...props} />;
+export const DogWithPumpkinIcon = ({ className, style, ...props }: SVGProps<SVGSVGElement>) => (
+    <img
+        src={dogWithPumpkin}
+        alt=""
+        className={className}
+        style={style}
+        aria-hidden={props["aria-hidden"]}
+    />
+);
