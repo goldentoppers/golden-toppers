@@ -10,7 +10,7 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     category: "dairy",
     icon: "kefir",
     benefits: ["Digestive Health"],
-    vitamins: ["B Vitamins", "Calcium", "Probiotics"],
+    vitamins: ["B Complex", "Calcium", "Probiotics"],
     maxGramsCap: 45.0, // Safe ceiling for a large golden retriever (~3 tbsp max probiotic dose)
     preparation: "Swirl Raw into Bowl",
     preparationAlert: "Fermentation makes this much easier to digest than plain milk.",

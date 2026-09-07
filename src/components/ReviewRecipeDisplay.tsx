@@ -79,7 +79,16 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
             className="animate-fade-in space-y-4 rounded-lg border border-stone-900/10 bg-white/65 p-12
               shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text"
           >
-            <header className="flex flex-col pb-4 select-text justify-center">
+            <header className="relative flex flex-col items-center justify-center overflow-hidden pb-5 pt-2 select-text">
+              <div
+                className="mb-5 flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em]
+                  text-amber-800/75 uppercase"
+                aria-hidden="true"
+              >
+                <span className="h-px flex-1 bg-amber-700/25" />
+                <span className="shrink-0">Golden Toppers · Recipe Book</span>
+                <span className="h-px flex-1 bg-amber-700/25" />
+              </div>
               <h1
                 className="max-w-full break-words text-center font-serif text-4xl leading-tight font-black
                     tracking-wide text-stone-900 italic"

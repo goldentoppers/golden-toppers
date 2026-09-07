@@ -70,7 +70,7 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     icon: "peanut-butter",
     isHighRisk: true,
     benefits: ["High Value Reward"],
-    vitamins: ["B Vitamins", "Vitamin E", "Healthy Fats"],
+    vitamins: ["B Complex", "Vitamin E", "Healthy Fats"],
     maxGramsCap: 16.0, // ⚠️ CRITICAL PANCREAS SHIELD: Strict weight limit cutoff (~1 tbsp max)
     preparation: "Dollop Plain / Xylitol-Free",
     preparationAlert:

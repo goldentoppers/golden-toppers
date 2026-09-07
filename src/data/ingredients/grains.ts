@@ -13,7 +13,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "brown-rice",
     benefits: ["Energy Support", "Digestive Health"],
-    vitamins: ["B Vitamins", "Magnesium", "Fiber"],
+    vitamins: ["B Complex", "Magnesium", "Fiber"],
     preparation: "Fully Cook / Steam Soft",
     // No maxGramsCap: Acts as an unconstrained calorie re-routing cushion
   },
@@ -63,7 +63,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "vegetable",
     icon: "potato",
     benefits: ["Energy Support"],
-    vitamins: ["B Vitamins", "Potassium", "Vitamin C"],
+    vitamins: ["B Complex", "Potassium", "Vitamin C"],
     preparation: "Bake or Boil (No Skin)",
     preparationAlert: "DANGEROUS RAW. Contains solanine. Must be fully cooked; discard all skins.",
   },
@@ -88,7 +88,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "bulgur",
     benefits: ["Energy Support", "Digestive Health"],
-    vitamins: ["Manganese", "B Vitamins", "Iron"],
+    vitamins: ["Manganese", "B Complex", "Iron"],
     preparation: "Soak & Simmer thoroughly",
   },
   {
@@ -124,7 +124,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "oatmeal",
     benefits: ["Nervous System Calm", "Skin Health"],
-    vitamins: ["B Vitamins", "Iron", "Fiber"],
+    vitamins: ["B Complex", "Iron", "Fiber"],
     preparation: "Cook with Water Only",
     preparationAlert: "Ensure it contains zero sugar, flavorings, cream, or milk additives.",
   },
@@ -137,7 +137,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "rice",
     benefits: ["Energy Support", "Digestive Health"],
-    vitamins: ["Iron", "B Vitamins"],
+    vitamins: ["Iron", "B Complex"],
     preparation: "Over-cook Fully Till Soft",
     // preparationAlert: "Exceptional for soothing active diarrhea or loose stools.",
   },
@@ -163,7 +163,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "wheat",
     benefits: ["Structural Tissue Support"],
-    vitamins: ["B Vitamins", "Zinc", "Fiber"],
+    vitamins: ["B Complex", "Zinc", "Fiber"],
     preparation: "Boil Fully Until Tender",
     preparationAlert:
       "Common allergen. Skip entirely if your dog shows signs of skin scratching or redness.",
@@ -177,7 +177,7 @@ export const GRAIN_INGREDIENTS: Ingredient[] = [
     category: "grain",
     icon: "sorghum", // Inherits the sorghum stalk vector asset illustration
     benefits: ["Digestive Health", "Energy Support"],
-    vitamins: ["Iron", "B Vitamins", "Magnesium"],
+    vitamins: ["Iron", "B Complex", "Magnesium"],
     maxGramsCap: 25.0, // Roomier cap appropriate for a starchy grain foundation base
     preparation: "Cooked & Cooled to Serve", // Vital safety adjustment for canine digestion
   },

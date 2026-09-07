@@ -122,7 +122,20 @@ import { GarlicIcon } from "../assets/art/react-icons/vegetables/garlic";
 import { PeasIcon } from "../assets/art/react-icons/vegetables/peas";
 import { GreenBeansIcon } from "../assets/art/react-icons/vegetables/green-beans";
 import { RolledOatsIcon } from "../assets/art/react-icons/bases/rolled-oats";
+import { PumpkinBundleIcon } from "../assets/art/react-icons/fall/pumpkin-bundle";
+import { AppleBasketIcon } from "../assets/art/react-icons/fall/apple-basket";
+import { PumpkinSpiceLatteIcon } from "../assets/art/react-icons/fall/pumpkin-spice-latte";
 import { DillIcon } from "../assets/art/react-icons/herbs/dill";
+import { DogBatIcon } from "../assets/art/react-icons/halloween/dog-bat";
+import { DogCarvedPumpkinIcon } from "../assets/art/react-icons/halloween/dog-carved-pumpkin";
+import { DogGhostIcon } from "../assets/art/react-icons/halloween/dog-ghost";
+import { DogMummyIcon } from "../assets/art/react-icons/halloween/dog-mummy";
+import { DogPrisonerIcon } from "../assets/art/react-icons/halloween/dog-prisoner";
+import { DogVampireIcon } from "../assets/art/react-icons/halloween/dog-vampire";
+import { DogWitchIcon } from "../assets/art/react-icons/halloween/dog-witch";
+import { DogWitchBroomIcon } from "../assets/art/react-icons/halloween/dog-witch-broom";
+import { DogWithGhostsIcon } from "../assets/art/react-icons/halloween/dog-with-ghosts";
+import { DogWithPumpkinIcon } from "../assets/art/react-icons/halloween/dog-with-pumpkin";
 
 interface AssetIconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -160,6 +173,44 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           {...props}
         />
       );
+    case "apple-basket":
+      return (
+        <AppleBasketIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "pumpkin-bundle":
+      return (
+        <PumpkinBundleIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
+    case "pumpkin-spice-latte":
+      return <PumpkinSpiceLatteIcon className={className} style={style} {...props} />;
+    case "dog-bat":
+      return <DogBatIcon className={className} style={style} {...props} />;
+    case "dog-carved-pumpkin":
+      return <DogCarvedPumpkinIcon className={className} style={style} {...props} />;
+    case "dog-ghost":
+      return <DogGhostIcon className={className} style={style} {...props} />;
+    case "dog-mummy":
+      return <DogMummyIcon className={className} style={style} {...props} />;
+    case "dog-prisoner":
+      return <DogPrisonerIcon className={className} style={style} {...props} />;
+    case "dog-vampire":
+      return <DogVampireIcon className={className} style={style} {...props} />;
+    case "dog-witch":
+      return <DogWitchIcon className={className} style={style} {...props} />;
+    case "dog-witch-broom":
+      return <DogWitchBroomIcon className={className} style={style} {...props} />;
+    case "dog-with-ghosts":
+      return <DogWithGhostsIcon className={className} style={style} {...props} />;
+    case "dog-with-pumpkin":
+      return <DogWithPumpkinIcon className={className} style={style} {...props} />;
     case "sleeping":
       return (
         <DogSleepingIcon

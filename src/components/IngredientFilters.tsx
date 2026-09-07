@@ -190,7 +190,6 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
-  console.log("options: ", options)
   const toggleSelection = (
     value: string,
     setValues: React.Dispatch<React.SetStateAction<string[]>>,

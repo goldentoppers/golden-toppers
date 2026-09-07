@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 
-export const DailyTargetDisplay: React.FC = () => {
+interface DailyTargetDisplayProps {
+  className?: string;
+}
+
+export const DailyTargetDisplay: React.FC<DailyTargetDisplayProps> = ({ className = "" }) => {
   const context = useContext(GlobalControlOptionsContext);
   const { nutritionResults } = context || { nutritionResults: { dailyCalorieTarget: 142 } };
 
   return (
     <div
-      className="animate-fade-in flex h-16.25 flex-col items-center justify-between gap-1
-        text-center select-none"
+      className={`animate-fade-in flex h-16.25 flex-col items-center justify-between gap-1
+        text-center select-none ${className}`}
       role="region"
       aria-live="polite"
       aria-label="Caloric Target Metrics Monitor"

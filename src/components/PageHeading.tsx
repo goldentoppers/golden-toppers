@@ -1,5 +1,5 @@
 import React from 'react';
-// import AdSenseWidget from './AdSenseWidget';
+import { AssetIcon } from './AssetIcon';
 
 interface PageHeadingProps {
   title?: string;
@@ -21,49 +21,48 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   // adSlot,
 }) => {
   const alignmentClass = align === 'left' ? 'text-left' : 'text-center';
-  const detailsPositionClass = align === 'left' ? '' : 'mx-auto';
-  const sectionWidthClass = align === 'left' ? 'w-full' : 'mx-auto w-full max-w-4xl px-4';
+  const sectionWidthClass = 'mx-auto w-full max-w-4xl px-4';
 
   return (
     <section className={`${sectionWidthClass} ${className} font-sans select-none`} aria-labelledby={headingId}>
-      {/* <div className="grid grid-cols-2"> */}
-      <div className="min-w-0 flex-1">
-        <header className={`${alignmentClass} drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]`}>
-          {subtitle && (
+      <div className="flex flex-col">
+        {subtitle && (
+          <div className="flex w-full items-center justify-center text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
+            <span className="mr-4 h-px w-16 shrink-0 bg-amber-700/25" />
             <span
               className="block text-[9.5px] leading-none font-black tracking-[0.25em] text-amber-700
                 uppercase"
             >
               {subtitle}
             </span>
-          )}
-          {title && (
-            <h2
-              id={headingId}
-              className="mt-3 font-serif text-3xl leading-tight font-black tracking-wide text-stone-900
-                italic"
-            >
-              {title}
-            </h2>
-          )}
-        </header>
-
-        {Details && (
-          <div
-            className={`${detailsPositionClass} mt-3 max-w-2xl space-y-4 ${alignmentClass} font-serif text-[14.5px]
-                        leading-relaxed font-medium p-y-5 text-stone-700/95 italic select-text sm:text-[16px]`}
-          >
-            <Details />
+            <span className="ml-4 h-px w-16 shrink-0 bg-amber-700/25" />
           </div>
         )}
-      </div>
 
-      {/* {adSlot && (
-          <aside className="w-full shrink-0 lg:w-64" aria-label="Advertisement">
-            <AdSenseWidget adSlot={adSlot} />
-          </aside>
-        )} */}
-      {/* </div> */}
-    </section >
-  )
+        <div className="flex flex-col">
+          {title && (
+            <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
+              <AssetIcon
+                name="pumpkin-bundle"
+                className="h-20 w-20 shrink-0 text-amber-700"
+              />
+              <h2
+                id={headingId}
+                className="text-left font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic sm:text-center"
+              >
+                {title}
+              </h2>
+            </header>
+          )}
+
+          {Details && (
+            <div className={`${alignmentClass} font-serif text-[14.5px] leading-relaxed font-medium p-y-5 text-stone-700/95 italic select-text sm:text-[16px]`}>
+              <Details />
+            </div>
+          )}
+        </div>
+
+      </div>
+    </section>
+  );
 };

@@ -16,37 +16,36 @@ export const PrintedRecipeTemplate = () => {
           print:w-full print:p-0"
       >
         <div className="mx-auto max-w-[800px] p-12">
-          <header className="mb-8 flex items-end justify-between border-b-2 border-amber-400 pb-6">
+          <header className="mb-8 flex flex-col items-center border-b border-stone-200 pb-6 text-center">
+            <div className="mb-4 flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
+              <span className="h-px flex-1 bg-amber-700/25" />
+              <span className="shrink-0">Golden Toppers · Recipe Book</span>
+              <span className="h-px flex-1 bg-amber-700/25" />
+            </div>
             <div>
               <h1
-                className="font-serif text-4xl leading-tight font-black tracking-wide text-stone-900
-                  italic"
+                className="font-serif text-4xl leading-tight font-black tracking-wide text-stone-900 italic"
               >
-                <div className="text-amber-700">
-                  {formData.dogName ? `${formData.dogName}'s` : "Golden"}
-                </div>
+                <span className="text-amber-700">
+                  {formData.dogName ? `${formData.dogName}'s ` : "Golden "}
+                </span>
                 Topper Plan
               </h1>
-              <div className="mt-1.5 flex items-center gap-2">
-                <span
-                  className="rounded-md border border-amber-200/60 bg-amber-50 px-2.5 py-1
-                    text-[9px] font-black tracking-[0.2em] text-amber-800 uppercase"
-                >
-                  Dietary Strategy: 10% Fresh Food Supplemental Bowl Booster
-                </span>
-              </div>
             </div>
-            <div className="text-right font-mono text-[10px] text-stone-400">
+            <div className="mt-3 rounded-md border border-amber-200/60 bg-amber-50 px-2.5 py-1 text-[9px] font-black tracking-[0.2em] text-amber-800 uppercase">
+              Dietary Strategy: 10% Fresh Food Supplemental Bowl Booster
+            </div>
+            <div className="mt-3 font-mono text-[10px] text-stone-400">
               Generated: {new Date().toLocaleDateString()}
             </div>
           </header>
 
           <section className="mb-8 flex gap-8 rounded-2xl border border-stone-100 bg-stone-50 p-6">
             <div
-              className="flex w-full flex-row flex-wrap items-center justify-between gap-y-4
+              className="flex w-full flex-row flex-wrap items-start justify-between gap-y-4
                 font-sans select-none"
             >
-              <DailyTargetDisplay />
+              <DailyTargetDisplay className="print:h-auto print:items-start print:justify-start print:text-left" />
 
               <div className="flex min-w-[80px] flex-col items-start leading-tight">
                 <span

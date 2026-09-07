@@ -62,7 +62,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     role: "topper",
     icon: "banana",
     benefits: ["Energy Support"],
-    vitamins: ["Potassium", "B Vitamins", "Vitamin C"],
+    vitamins: ["Potassium", "B Complex", "Vitamin C"],
     maxGramsCap: 20.0, // ⚠️ CRITICAL SUGAR CEILING: Restricts high starch load to ~1-2 slices max
     preparation: "Peel & Mash into Mix",
     preparationAlert: "High in sugar. Feed in moderation to prevent weight gain.",
@@ -93,7 +93,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     preparation: "Skin, Pit & Dice Flesh",
     preparationAlert: "Remove pit and skin.",
     benefits: ["Eye Health", "Immune Support"],
-    vitamins: ["Vitamin A", "B Vitamins", "Vitamin E"],
+    vitamins: ["Vitamin A", "B Complex", "Vitamin E"],
   },
   {
     id: "pear",
@@ -315,7 +315,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     icon: "melon",
     benefits: ["Eye Health", "Hydration"],
-    vitamins: ["Vitamin A", "Vitamin C", "B Vitamins"],
+    vitamins: ["Vitamin A", "Vitamin C", "B Complex"],
     maxGramsCap: 35.0, // Generous clean melon hydration weight
     preparation: "De-seed, Rind Off & Cube",
   },

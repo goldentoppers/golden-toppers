@@ -27,7 +27,7 @@ export const AppFooter: React.FC<AppFooterProps> = ({ backgroundImage }) => (
         text-center md:pb-4"
     >
       <div className="flex items-center justify-center gap-1 text-stone-900">
-        <AssetIcon name="laying-down-head-up-side-profile" className="h-16 w-16" />
+        <AssetIcon name="dog-witch-broom" className="p-1 h-16 w-16" />
         <span className="text-[11px] font-black tracking-[0.25em] text-stone-900 uppercase">
           Golden Toppers
         </span>

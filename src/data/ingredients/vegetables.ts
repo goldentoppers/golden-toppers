@@ -27,7 +27,7 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     category: "vegetable",
     icon: "sweet-potato",
     benefits: ["Digestive Health"],
-    vitamins: ["Beta-Carotene", "Vitamin C", "B Vitamins"],
+    vitamins: ["Beta-Carotene", "Vitamin C", "B Complex"],
     maxGramsCap: 80.0, // Caps dense root starches to keep macros balanced
     preparation: "Bake or Steam (No Skin)",
     preparationAlert: "DANGEROUS RAW. Raw sweet potato is a severe intestinal blockage hazard.",
@@ -107,7 +107,7 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     category: "vegetable",
     icon: "bell-peppers",
     benefits: ["Immune Support"],
-    vitamins: ["Vitamin C", "Vitamin A", "B Vitamins"],
+    vitamins: ["Vitamin C", "Vitamin A", "B Complex"],
     maxGramsCap: 40.0, // Safe parameters for nighttime nightshade varieties
     preparation: "Remove Seeds & Chop Fine",
   },
@@ -258,7 +258,7 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     category: "vegetable",
     icon: "peas",
     benefits: ["Energy Support", "Muscle Maintenance"],
-    vitamins: ["Vitamin C", "Vitamin K", "B Vitamins", "Protein"],
+    vitamins: ["Vitamin C", "Vitamin K", "B Complex", "Protein"],
     maxGramsCap: 50.0, // Safe purine/fiber ceiling to balance dense legume starch loops
     preparation: "Steam Soft & Mash / Thaw Frozen Plain",
     preparationAlert: "Ensure they are plain. Avoid pre-seasoned varieties or pods for small dogs.",

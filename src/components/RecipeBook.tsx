@@ -13,7 +13,6 @@ import { PreviousButton } from "./buttons/PreviousButton";
 import { ReviewRecipeButton } from "./buttons/ReviewRecipeButton";
 import { AMBER_700 } from "../data/color-scheme";
 import { PageHeading } from "./PageHeading";
-import { AssetIcon } from "./AssetIcon";
 
 export const RecipeBook: React.FC = () => {
   const {
@@ -41,9 +40,11 @@ export const RecipeBook: React.FC = () => {
   return (
     <>
       {!hasStartedBuilding && (
-        <section className="flex flex-col items-center" aria-labelledby="builder-intro-title">
-
-          <AssetIcon name="fancy-chef-hat" className="h-40 w-40" />
+        <section
+          className="mx-auto flex w-full max-w-4xl flex-col items-center rounded-2xl border border-stone-900/10
+            bg-white/70 px-5 py-10 shadow-[0_8px_28px_rgba(28,25,23,0.08)] sm:px-10 sm:py-12"
+          aria-labelledby="builder-intro-title"
+        >
           <PageHeading
             title="Build a better bowl."
             subtitle="The 10% Topper Method"

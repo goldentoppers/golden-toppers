@@ -42,7 +42,7 @@ export const MobileNav: React.FC = () => {
           color: currentPath === "/" ? AMBER_700 : "#57534e",
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
-          justify-center overflow-hidden rounded-xl shadow-none outline-none
+          justify-center overflow-hidden rounded-none shadow-none outline-none
           aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
         <div
@@ -79,10 +79,12 @@ export const MobileNav: React.FC = () => {
           color: currentPath === "/ingredients" ? AMBER_700 : "#57534e",
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
-          justify-center overflow-hidden rounded-xl shadow-none outline-none
+          justify-center overflow-hidden rounded-none shadow-none outline-none
           aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
-        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none">
+        <div
+          className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none"
+        >
           <MagnifyingGlassIcon
             className={`h-5 w-5 stroke-[2.5] ${currentPath === "/ingredients"
               ? "scale-105 opacity-100"
@@ -113,10 +115,12 @@ export const MobileNav: React.FC = () => {
           color: currentPath === "/recipes" ? AMBER_700 : "#57534e",
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
-          justify-center overflow-hidden rounded-xl shadow-none outline-none
+          justify-center overflow-hidden rounded-none shadow-none outline-none
           aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
-        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none">
+        <div
+          className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none"
+        >
           <BookOpenIcon
             className={`h-5 w-5 stroke-[2.5] ${currentPath === "/recipes"
               ? "scale-105 opacity-100"
@@ -153,7 +157,7 @@ export const MobileNav: React.FC = () => {
           color: currentPath === "/about" ? AMBER_700 : "#57534e",
         }}
         className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
-          justify-center overflow-hidden rounded-xl shadow-none outline-none
+          justify-center overflow-hidden rounded-none shadow-none outline-none
           aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
       >
         <div

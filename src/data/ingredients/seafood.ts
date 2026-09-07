@@ -22,7 +22,7 @@ export const SEAFOOD_INGREDIENTS: Ingredient[] = [
     category: "seafood",
     icon: "sardine",
     benefits: ["Heart Health", "Skin Health"],
-    vitamins: ["B Vitamins", "Omega-3", "Calcium"],
+    vitamins: ["B Complex", "Omega-3", "Calcium"],
     preparation: "Serve Canned in Water",
   },
   {
@@ -33,7 +33,7 @@ export const SEAFOOD_INGREDIENTS: Ingredient[] = [
     category: "seafood",
     icon: "fish-fillet",
     benefits: ["Protein Support", "Digestive Health"],
-    vitamins: ["Iodine", "B Vitamins"],
+    vitamins: ["Iodine", "B Complex"],
     preparation: "Poach & Check for Bones",
   },
   // {
@@ -70,7 +70,7 @@ export const SEAFOOD_INGREDIENTS: Ingredient[] = [
     category: "seafood",
     icon: "clams",
     benefits: ["Energy Support"],
-    vitamins: ["Iron", "B Vitamins"],
+    vitamins: ["Iron", "B Complex"],
     maxGramsCap: 20.0, // Controlled trace element portioning
     preparation: "Fully Cook & Chop Fine",
   },

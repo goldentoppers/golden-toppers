@@ -11,7 +11,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "steak",
     allergens: ["Beef"],
     benefits: ["Muscle Building"],
-    vitamins: ["Iron", "B12"],
+    vitamins: ["Iron", "Vitamin B12"],
     preparation: "Trim Fat & Sear Gently",
     preparationAlert: "Trim excess fat and cook thoroughly to avoid digestive upset.",
   },
@@ -24,7 +24,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "ground-beef",
     allergens: ["Beef"],
     benefits: ["Iron-Rich"],
-    vitamins: ["Zinc", "B12"],
+    vitamins: ["Zinc", "Vitamin B12"],
     preparation: "Brown & Drain Excess Fat",
   },
   {
@@ -50,7 +50,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "liver",
     isHighRisk: true,
     benefits: ["Nutrient Powerhouse"],
-    vitamins: ["A", "Copper"],
+    vitamins: ["Vitamin A", "Copper"],
     maxGramsCap: 15.0, // ⚠️ CRITICAL VITAMIN A CEILING: Clamps volume to avoid nutrient toxicity
     preparation: "Boil Lightly & Dice Fine",
     preparationAlert: "Limit to small topper amounts to prevent Vitamin A toxicity.",
@@ -66,7 +66,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "chicken-breast",
     allergens: ["Poultry"],
     benefits: ["Lean Protein"],
-    vitamins: ["B6"],
+    vitamins: ["Vitamin B6"],
     preparation: "Poach & Shred (165°F)",
     preparationAlert: "Must be cooked to 165°F. Remove all bones before serving.",
   },
@@ -142,7 +142,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "venison",
     isNovelProtein: true,
     benefits: ["Novel Protein"],
-    vitamins: ["B12"],
+    vitamins: ["Vitamin B12"],
     preparation: "Cube Fine & Quick Sear",
   },
   {
@@ -154,7 +154,7 @@ export const MEAT_INGREDIENTS: Ingredient[] = [
     icon: "rabbit",
     isNovelProtein: true,
     benefits: ["Leanest Choice"],
-    vitamins: ["B12"],
+    vitamins: ["Vitamin B12"],
     preparation: "Debone & Grind / Cube Small",
   },
   {
