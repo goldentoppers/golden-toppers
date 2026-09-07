@@ -208,49 +208,50 @@ export const IngredientSearch: React.FC = () => {
                         )}
                     </div>
                 </form>
-                <div className="mt-4">
-                    <IngredientFilters
-                        options={INGREDIENT_LIBRARY}
-                        selectedBenefits={selectedBenefits}
-                        setSelectedBenefits={setSelectedBenefits}
-                        selectedVitamins={selectedVitamins}
-                        setSelectedVitamins={setSelectedVitamins}
-                        selectedCategory={selectedCategory}
-                        setSelectedCategory={setSelectedCategory}
-                    />
-                </div>
             </section>
 
-            <section
-                className="mx-auto mt-10 w-full max-w-4xl"
-                aria-live="polite"
-                aria-label="Ingredient search results"
-            >
-                <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-stone-900/10 pb-3">
-                    <h2 className="font-sans text-[11px] font-black tracking-[0.22em] text-stone-900 uppercase">
-                        {normalizedQuery ? "Matching ingredients" : "All ingredients"}
-                    </h2>
-                    <span className="shrink-0 text-[10px] font-bold tracking-wider text-stone-500 uppercase">
-                        {results.length} {results.length === 1 ? "result" : "results"}
-                    </span>
-                </div>
+            <div className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-stretch gap-6 lg:flex-row lg:items-start">
+                <IngredientFilters
+                    options={INGREDIENT_LIBRARY}
+                    resultCount={results.length}
+                    selectedBenefits={selectedBenefits}
+                    setSelectedBenefits={setSelectedBenefits}
+                    selectedVitamins={selectedVitamins}
+                    setSelectedVitamins={setSelectedVitamins}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                />
+                <section
+                    className="min-w-0 flex-1"
+                    aria-live="polite"
+                    aria-label="Ingredient search results"
+                >
+                    <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-stone-900/10 pb-3">
+                        <h2 className="font-sans text-[11px] font-black tracking-[0.22em] text-stone-900 uppercase">
+                            {normalizedQuery ? "Matching ingredients" : "All ingredients"}
+                        </h2>
+                        <span className="shrink-0 text-[10px] font-bold tracking-wider text-stone-500 uppercase">
+                            {results.length} {results.length === 1 ? "result" : "results"}
+                        </span>
+                    </div>
 
-                {results.length > 0 ? (
-                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
-                        {results.map((ingredient) => (
-                            <div key={ingredient.id} role="listitem">
-                                <IngredientCard ingredient={ingredient} query={query} />
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="flex min-h-48 flex-col items-center justify-center rounded-2xl border border-dashed border-stone-900/15 bg-white/35 px-6 text-center">
-                        <MagnifyingGlassIcon className="h-8 w-8 text-stone-400" aria-hidden="true" />
-                        <p className="mt-3 font-serif text-lg font-bold text-stone-700 italic">No ingredients found.</p>
-                        <p className="mt-1 text-[11px] text-stone-500">Try a broader search.</p>
-                    </div>
-                )}
-            </section>
+                    {results.length > 0 ? (
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+                            {results.map((ingredient) => (
+                                <div key={ingredient.id} role="listitem">
+                                    <IngredientCard ingredient={ingredient} query={query} />
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex min-h-48 flex-col items-center justify-center rounded-2xl border border-dashed border-stone-900/15 bg-white/35 px-6 text-center">
+                            <MagnifyingGlassIcon className="h-8 w-8 text-stone-400" aria-hidden="true" />
+                            <p className="mt-3 font-serif text-lg font-bold text-stone-700 italic">No ingredients found.</p>
+                            <p className="mt-1 text-[11px] text-stone-500">Try a broader search.</p>
+                        </div>
+                    )}
+                </section>
+            </div>
         </main>
     );
 };

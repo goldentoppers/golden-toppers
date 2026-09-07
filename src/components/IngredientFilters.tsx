@@ -1,178 +1,15 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import type { Ingredient } from "../types/nutrition";
 
-const formatLabel = (value: string) => value.replace(/-/g, " ");
-
-interface FilterOption {
-  value: string;
-  label: string;
-}
-
-interface FilterSelectProps {
-  label: string;
-  value: string | string[];
-  onChange: (value: string) => void;
-  options: FilterOption[];
-  isMultiSelect?: boolean;
-}
-
-const FilterSelect: React.FC<FilterSelectProps> = ({
-  label,
-  value,
-  onChange,
-  options,
-  isMultiSelect = false,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [search, setSearch] = useState("");
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const selectedValues = Array.isArray(value) ? value : [value];
-  const selectedLabel = isMultiSelect && selectedValues.length > 0
-    ? `${selectedValues.length} ${selectedValues.length === 1 ? "item" : "items"} selected`
-    : isMultiSelect
-      ? options[0]?.label ?? ""
-      : options.find((option) => option.value === value)?.label ?? "";
-
-  const filteredOptions = useMemo(() => {
-    const query = search.trim().toLocaleLowerCase();
-    if (!query) return options;
-    return options.filter((option) => option.label.toLocaleLowerCase().includes(query));
-  }, [options, search]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-        setSearch("");
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen]);
-
-  const handleSelect = (optionValue: string) => {
-    if (isMultiSelect) {
-      onChange(optionValue);
-      return;
-    }
-    onChange(optionValue);
-    setIsOpen(false);
-    setSearch("");
-  };
-
-  return (
-    <div ref={containerRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setIsOpen((open) => !open)}
-        aria-label={label}
-        aria-haspopup="listbox"
-        aria-expanded={isOpen}
-        className="flex cursor-pointer items-center gap-2 rounded-xl border border-stone-800/5
-          bg-stone-900/[0.04] py-1.5 pr-8 pl-3 font-sans text-[10px] font-black tracking-wider
-          text-stone-700 uppercase transition-all duration-150 outline-none
-          hover:bg-stone-900/[0.08] focus-visible:ring-2 focus-visible:ring-stone-400"
-      >
-        {selectedLabel}
-      </button>
-      <div
-        className="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 text-stone-500"
-        aria-hidden="true"
-      >
-        <svg className="h-3 w-3 stroke-current stroke-[2.5]" viewBox="0 0 24 24" fill="none">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </div>
-
-      {isOpen && (
-        <div
-          className={`absolute top-full z-20 mt-1.5 overflow-hidden rounded-xl border border-stone-800/10
-            bg-white shadow-[0_8px_24px_rgba(28,25,23,0.12)] ${isMultiSelect
-              ? "left-1/2 w-max max-w-[calc(100vw-2rem)] -translate-x-1/2 sm:left-0 sm:translate-x-0"
-              : "left-0 w-max max-w-[calc(100vw-2rem)]"
-            }`}
-        >
-          {isMultiSelect && selectedValues.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 border-b border-stone-800/10 bg-stone-900/[0.025] p-2">
-              {selectedValues.map((selectedValue) => {
-                const selectedOption = options.find((option) => option.value === selectedValue);
-                if (!selectedOption) return null;
-
-                return (
-                  <button
-                    key={selectedValue}
-                    type="button"
-                    onClick={() => onChange(selectedValue)}
-                    className="inline-flex cursor-pointer items-center gap-1 rounded-md border border-amber-700/20 bg-amber-700/8 px-2 py-1 text-[9px] font-black tracking-wide text-amber-800 uppercase transition-colors hover:bg-amber-700/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700"
-                    aria-label={`Remove ${selectedOption.label} filter`}
-                  >
-                    {selectedOption.label}
-                    <XMarkIcon className="h-3 w-3" aria-hidden="true" />
-                  </button>
-                );
-              })}
-              <button
-                type="button"
-                onClick={() => onChange("")}
-                className="ml-auto cursor-pointer px-1 text-[9px] font-black tracking-[0.12em] text-stone-500 uppercase transition-colors hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-500"
-              >
-                Clear
-              </button>
-            </div>
-          )}
-          <input
-            type="text"
-            value={search}
-            onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search…"
-            autoFocus
-            className="min-w-56 w-full border-b border-stone-800/10 bg-transparent px-3 py-2 font-sans
-              text-xs text-stone-800 outline-none placeholder:text-stone-400"
-          />
-          <ul role="listbox" aria-label={label} className="max-h-52 list-none overflow-y-auto py-1">
-            {filteredOptions.length === 0 ? (
-              <li className="px-3 py-2 font-sans text-xs text-stone-400">No matches</li>
-            ) : (
-              filteredOptions.map((option) => (
-                <li key={option.value} role="option" aria-selected={selectedValues.includes(option.value)}>
-                  <button
-                    type="button"
-                    onClick={() => handleSelect(option.value)}
-                    className={`flex w-full cursor-pointer items-center gap-2 whitespace-nowrap px-3 py-1.5 text-left font-sans text-xs
-                      capitalize transition-colors hover:bg-stone-900/5 ${selectedValues.includes(option.value)
-                        ? "font-black text-amber-800"
-                        : "text-stone-700"
-                      }`}
-                  >
-                    {isMultiSelect && option.value && (
-                      <span
-                        className={`inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-sm border text-[10px] ${selectedValues.includes(option.value)
-                          ? "border-amber-700 bg-amber-700 text-white"
-                          : "border-stone-400 bg-white text-transparent"
-                          }`}
-                      >
-                        ✓
-                      </span>
-                    )}
-                    {option.label}
-                  </button>
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-};
+const formatLabel = (value: string) =>
+  value
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (character) => character.toUpperCase());
 
 interface IngredientFiltersProps {
   options: Ingredient[];
+  resultCount: number;
   selectedBenefits: string[];
   setSelectedBenefits: React.Dispatch<React.SetStateAction<string[]>>;
   selectedVitamins: string[];
@@ -183,6 +20,7 @@ interface IngredientFiltersProps {
 
 export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
   options,
+  resultCount,
   selectedBenefits,
   setSelectedBenefits,
   selectedVitamins,
@@ -190,6 +28,22 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
   selectedCategory,
   setSelectedCategory,
 }) => {
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [categorySearch, setCategorySearch] = useState("");
+  const [benefitSearch, setBenefitSearch] = useState("");
+  const [vitaminSearch, setVitaminSearch] = useState("");
+
+  useEffect(() => {
+    if (!isMobileOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileOpen]);
+
   const toggleSelection = (
     value: string,
     setValues: React.Dispatch<React.SetStateAction<string[]>>,
@@ -221,44 +75,201 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
     return Array.from(categoriesSet).sort();
   }, [options]);
 
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="flex flex-wrap items-center justify-center gap-2">
-        {/* FILTER DROPDOWN: CATEGORY MAP */}
-        <FilterSelect
-          label="Filter ingredients by category"
-          value={selectedCategory}
-          onChange={setSelectedCategory}
-          options={[
-            { value: "", label: "All Categories" },
-            ...uniqueCategories.map((category) => ({ value: category, label: formatLabel(category) })),
-          ]}
-        />
+  const activeFilterCount =
+    (selectedCategory ? 1 : 0) + selectedBenefits.length + selectedVitamins.length;
 
-        {/* FILTER DROPDOWN: HEALTH BENEFITS MAP */}
-        <FilterSelect
-          label="Filter ingredients by clinical health benefit"
-          value={selectedBenefits}
-          onChange={(value) => toggleSelection(value, setSelectedBenefits)}
-          isMultiSelect
-          options={[
-            { value: "", label: "All Benefits" },
-            ...uniqueBenefits.map((benefit) => ({ value: benefit, label: benefit })),
-          ]}
-        />
+  const clearAll = () => {
+    setSelectedCategory("");
+    setSelectedBenefits([]);
+    setSelectedVitamins([]);
+  };
 
-        {/* FILTER DROPDOWN: VITAMIN STREAMS MAP */}
-        <FilterSelect
-          label="Filter ingredients by vitamin compound profile"
-          value={selectedVitamins}
-          onChange={(value) => toggleSelection(value, setSelectedVitamins)}
-          isMultiSelect
-          options={[
-            { value: "", label: "All Vitamins" },
-            ...uniqueVitamins.map((vitamin) => ({ value: vitamin, label: vitamin })),
-          ]}
+  const filterGroup = (
+    title: string,
+    options: string[],
+    selected: string[],
+    onToggle: (value: string) => void,
+    search: string,
+    setSearch: React.Dispatch<React.SetStateAction<string>>,
+  ) => (
+    <fieldset className="border-t border-stone-900/10 pt-4 first:border-t-0 first:pt-0">
+      <legend className="mb-3 text-[10px] font-black tracking-[0.18em] text-stone-900 uppercase">
+        {title}
+      </legend>
+      <input
+        type="search"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+        placeholder={`Search ${title.toLocaleLowerCase()}`}
+        className="mb-2 w-full rounded-md border border-stone-900/12 bg-white/70 px-2.5 py-2 text-xs text-stone-800 outline-none placeholder:text-stone-400 focus:border-amber-700/50 focus:ring-2 focus:ring-amber-700/10"
+        aria-label={`Search ${title}`}
+      />
+      <div className="max-h-44 space-y-1 overflow-y-auto pr-1">
+        {options
+          .filter((option) => option.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase()))
+          .map((option) => (
+            <label
+              key={option}
+              className="flex cursor-pointer items-center gap-2 rounded-md px-1.5 py-1.5 text-xs text-stone-700 transition-colors hover:bg-amber-50 hover:text-stone-900"
+            >
+              <input
+                type="checkbox"
+                checked={selected.includes(option)}
+                onChange={() => onToggle(option)}
+                className="h-4 w-4 cursor-pointer accent-amber-700"
+              />
+              <span>{option}</span>
+            </label>
+          ))}
+      </div>
+    </fieldset>
+  );
+
+  const filterOptions = (
+    <div id="ingredient-filter-options" className="space-y-5">
+      <fieldset>
+        <legend className="mb-3 text-[10px] font-black tracking-[0.18em] text-stone-900 uppercase">
+          Categories
+        </legend>
+        <input
+          type="search"
+          value={categorySearch}
+          onChange={(event) => setCategorySearch(event.target.value)}
+          placeholder="Search categories"
+          className="mb-2 w-full rounded-md border border-stone-900/12 bg-white/70 px-2.5 py-2 text-xs text-stone-800 outline-none placeholder:text-stone-400 focus:border-amber-700/50 focus:ring-2 focus:ring-amber-700/10"
+          aria-label="Search categories"
         />
+        <div className="space-y-1">
+          <label
+            className={`flex cursor-pointer items-center gap-2 rounded-md px-2.5 py-2 text-xs font-bold transition-colors ${!selectedCategory ? "bg-stone-900/5 text-stone-900" : "text-stone-700 hover:bg-amber-50"}`}
+          >
+            <input
+              type="radio"
+              name="ingredient-category"
+              checked={!selectedCategory}
+              onChange={() => setSelectedCategory("")}
+              className="sr-only"
+            />
+            <span
+              className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 bg-white ${!selectedCategory ? "border-amber-700" : "border-stone-400"}`}
+              aria-hidden="true"
+            >
+              {!selectedCategory && <span className="h-2.5 w-2.5 rounded-full bg-amber-700" />}
+            </span>
+            <span>All ingredients</span>
+          </label>
+          {uniqueCategories
+            .filter((category) => formatLabel(category).toLocaleLowerCase().includes(categorySearch.trim().toLocaleLowerCase()))
+            .map((category) => (
+              <label
+                key={category}
+                className={`flex cursor-pointer items-center gap-2 rounded-md px-2.5 py-2 text-xs transition-colors hover:bg-amber-50 ${selectedCategory === category ? "bg-amber-100 font-bold text-amber-950" : "text-stone-700"}`}
+              >
+                <input
+                  type="radio"
+                  name="ingredient-category"
+                  checked={selectedCategory === category}
+                  onChange={() => setSelectedCategory(category)}
+                  className="sr-only"
+                />
+                <span
+                  className={`inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 bg-white ${selectedCategory === category ? "border-amber-700" : "border-stone-400"}`}
+                  aria-hidden="true"
+                >
+                  {selectedCategory === category && <span className="h-2.5 w-2.5 rounded-full bg-amber-700" />}
+                </span>
+                <span className="capitalize">{formatLabel(category)}</span>
+              </label>
+            ))}
+        </div>
+      </fieldset>
+      {filterGroup("Benefits", uniqueBenefits, selectedBenefits, (value) => toggleSelection(value, setSelectedBenefits), benefitSearch, setBenefitSearch)}
+      {filterGroup("Vitamins & nutrients", uniqueVitamins, selectedVitamins, (value) => toggleSelection(value, setSelectedVitamins), vitaminSearch, setVitaminSearch)}
+    </div>
+  );
+
+  const filterHeader = (showCloseButton = false) => (
+    <div className="flex items-center justify-between gap-3">
+      <div className="flex items-center gap-2">
+        <h2 className="font-serif text-xl font-black text-stone-900 italic">Filters</h2>
+        {activeFilterCount > 0 && (
+          <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-amber-700 px-1.5 text-[10px] font-black text-white">
+            {activeFilterCount}
+          </span>
+        )}
+      </div>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          disabled={activeFilterCount === 0}
+          onClick={clearAll}
+          className="cursor-pointer text-[9px] font-black tracking-[0.12em] text-amber-800 uppercase hover:text-amber-950 disabled:cursor-not-allowed disabled:text-stone-400"
+        >
+          Clear all
+        </button>
+        {showCloseButton && (
+          <button
+            type="button"
+            onClick={() => setIsMobileOpen(false)}
+            className="cursor-pointer rounded-md p-1 text-stone-500 hover:bg-stone-900/5 hover:text-stone-900"
+            aria-label="Close filters"
+          >
+            <XMarkIcon className="h-5 w-5" aria-hidden="true" />
+          </button>
+        )}
       </div>
     </div>
+  );
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setIsMobileOpen(true)}
+        className="flex w-full cursor-pointer items-center justify-between rounded-xl border border-stone-900/10 bg-white/65 px-4 py-3 text-left shadow-[0_3px_12px_rgba(28,25,23,0.04)] lg:hidden"
+        aria-expanded={isMobileOpen}
+        aria-controls="ingredient-filter-dialog"
+      >
+        <span className="font-serif text-xl font-black text-stone-900 italic">Filters</span>
+        <span className="text-xs font-black tracking-[0.12em] text-amber-800 uppercase">
+          {activeFilterCount > 0 ? `${activeFilterCount} active` : "Open"}
+        </span>
+      </button>
+
+      <aside className="hidden w-56 shrink-0 rounded-2xl border border-stone-900/10 bg-white/65 p-5 text-left shadow-[0_3px_12px_rgba(28,25,23,0.04)] lg:block">
+        {filterHeader()}
+        <div className="mt-5">{filterOptions}</div>
+      </aside>
+
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-start bg-stone-950/35 p-3 backdrop-blur-sm sm:items-center sm:justify-center"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setIsMobileOpen(false);
+          }}
+        >
+          <div
+            id="ingredient-filter-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="ingredient-filter-dialog-title"
+            className="flex max-h-[85vh] w-full flex-col overflow-hidden rounded-2xl border border-stone-900/10 bg-stone-50 p-5 shadow-[0_12px_40px_rgba(28,25,23,0.2)] sm:max-w-md"
+          >
+            <div id="ingredient-filter-dialog-title">{filterHeader(true)}</div>
+            <div className="mt-5 min-h-0 flex-1 overflow-y-auto">{filterOptions}</div>
+            <div className="sticky bottom-0 -mx-5 -mb-5 mt-5 border-t border-stone-900/10 bg-stone-50/95 p-4 backdrop-blur-sm">
+              <button
+                type="button"
+                onClick={() => setIsMobileOpen(false)}
+                className="w-full cursor-pointer rounded-xl bg-amber-700 px-4 py-3 text-[11px] font-black tracking-[0.18em] text-white uppercase shadow-[0_3px_10px_rgba(120,53,15,0.2)] transition-colors hover:bg-amber-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2"
+              >
+                Apply filters · {resultCount} {resultCount === 1 ? "result" : "results"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };

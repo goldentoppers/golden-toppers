@@ -40,7 +40,7 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "vegetable",
     icon: "carrot",
-    benefits: ["Eye Health", "Plaque Removal"],
+    benefits: ["Eye Health", "Dental Health"],
     vitamins: ["Beta-Carotene", "Vitamin A", "Vitamin K"],
     maxGramsCap: 60.0, // Controlled safe beta-carotene ceiling
     preparation: "Steam & Puree or Grate Raw",

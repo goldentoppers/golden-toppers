@@ -104,7 +104,7 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     </div>
                     <div className="relative">
                         <ul
-                            className="grid list-none grid-cols-2 sm:grid-cols-4 lg:grid-cols-6"
+                            className="grid list-none grid-cols-2 xxs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6"
                             role="list"
                             aria-label={chapterConfig.label}
                         >

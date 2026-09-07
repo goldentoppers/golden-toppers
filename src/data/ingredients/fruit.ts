@@ -21,7 +21,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "apple",
-    benefits: ["Dental Health", "Fresh Breath"],
+    benefits: ["Dental Health"],
     vitamins: ["Vitamin A", "Vitamin C", "Fiber"],
     maxGramsCap: 25.0, // Limits excess sugars (~2 small slices fine-sliced)
     preparation: "Core, Seed & Cube Fine",
@@ -35,7 +35,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "strawberries",
-    benefits: ["Teeth Whitening Enzyme"],
+    benefits: ["Dental Health"],
     vitamins: ["Vitamin C", "Folate", "Potassium"],
     maxGramsCap: 30.0, // Safe antioxidant ceiling
     preparation: "Hull & Finely Slice",
