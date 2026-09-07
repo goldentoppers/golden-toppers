@@ -12,8 +12,6 @@ interface IngredientFiltersProps {
   resultCount: number;
   selectedBenefits: string[];
   setSelectedBenefits: React.Dispatch<React.SetStateAction<string[]>>;
-  selectedVitamins: string[];
-  setSelectedVitamins: React.Dispatch<React.SetStateAction<string[]>>;
   selectedCategory: string;
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -23,15 +21,12 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
   resultCount,
   selectedBenefits,
   setSelectedBenefits,
-  selectedVitamins,
-  setSelectedVitamins,
   selectedCategory,
   setSelectedCategory,
 }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [categorySearch, setCategorySearch] = useState("");
   const [benefitSearch, setBenefitSearch] = useState("");
-  const [vitaminSearch, setVitaminSearch] = useState("");
 
   useEffect(() => {
     if (!isMobileOpen) return;
@@ -63,12 +58,6 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
     return Array.from(benefitsSet).sort();
   }, [options]);
 
-  const uniqueVitamins = useMemo(() => {
-    const vitaminsSet = new Set<string>();
-    options.forEach((item) => item.vitamins.forEach((v) => vitaminsSet.add(v)));
-    return Array.from(vitaminsSet).sort();
-  }, [options]);
-
   const uniqueCategories = useMemo(() => {
     const categoriesSet = new Set<string>();
     options.forEach((item) => categoriesSet.add(item.category));
@@ -76,12 +65,11 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
   }, [options]);
 
   const activeFilterCount =
-    (selectedCategory ? 1 : 0) + selectedBenefits.length + selectedVitamins.length;
+    (selectedCategory ? 1 : 0) + selectedBenefits.length;
 
   const clearAll = () => {
     setSelectedCategory("");
     setSelectedBenefits([]);
-    setSelectedVitamins([]);
   };
 
   const filterGroup = (
@@ -184,7 +172,6 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
         </div>
       </fieldset>
       {filterGroup("Benefits", uniqueBenefits, selectedBenefits, (value) => toggleSelection(value, setSelectedBenefits), benefitSearch, setBenefitSearch)}
-      {filterGroup("Vitamins & nutrients", uniqueVitamins, selectedVitamins, (value) => toggleSelection(value, setSelectedVitamins), vitaminSearch, setVitaminSearch)}
     </div>
   );
 

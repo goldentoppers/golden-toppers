@@ -67,16 +67,6 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     className="relative flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
             shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
                 >
-                    <div
-                        className="pointer-events-none absolute top-0 right-3 z-20 flex h-[3.25rem] w-9 items-start
-                                            justify-center shadow-md sm:right-5 sm:h-[4.5rem] sm:w-10 md:right-6 md:h-[5.75rem]
-                                            md:w-11 lg:right-7 lg:h-[7rem] lg:w-12"
-                        style={{
-                            backgroundColor: chapterConfig.hexColor,
-                            clipPath: "polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%)",
-                        }}
-                        aria-hidden="true"
-                    />
                     <div className="flex flex-col gap-1">
                         <IngredientCategoryHeader activeChapter={chapterConfig} />
                         {details}

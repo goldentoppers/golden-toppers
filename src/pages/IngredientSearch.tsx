@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import {
+    CheckCircleIcon,
     ExclamationTriangleIcon,
     MagnifyingGlassIcon,
     NoSymbolIcon,
@@ -64,69 +65,80 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
     const isLimitedUse = ingredient.isHighRisk && !ingredient.isToxic;
 
     return (
-        <article className="relative flex min-h-52 flex-col rounded-2xl border border-stone-900/10 bg-white/55 p-4 shadow-[0_3px_12px_rgba(28,25,23,0.04)]">
-            <div className="flex items-start gap-3">
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl">
-                    <AssetIcon name={ingredient.icon} className="h-14 w-14" aria-hidden="true" />
+        <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-stone-900/10 bg-white/65 shadow-[0_3px_12px_rgba(28,25,23,0.04)]">
+            <div className="relative flex items-center gap-3 p-3 text-left">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center">
+                    <AssetIcon name={ingredient.icon} className="h-11 w-11 object-contain" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
-                    <h2 className="font-serif text-xl leading-tight font-black text-stone-900">
+                    <h2 className="font-serif text-lg leading-tight font-black text-stone-900">
                         <HighlightedName name={ingredient.name} query={query} />
                     </h2>
-                    <div className="mt-2 flex flex-wrap gap-1.5 text-[9px] font-black tracking-[0.12em] text-stone-500 uppercase">
-                        <span
-                            style={{
-                                backgroundColor: `${categoryColor}14`,
-                                borderColor: `${categoryColor}40`,
-                                color: categoryColor,
-                            }}
-                            className="rounded-md border px-2 py-1"
-                        >
-                            {formatLabel(ingredient.category)}
-                        </span>
-                    </div>
+                    <span
+                        style={{ color: categoryColor }}
+                        className="mt-1 inline-block text-[9px] font-black tracking-[0.14em] uppercase"
+                    >
+                        {formatLabel(ingredient.category)}
+                    </span>
                 </div>
+            </div>
+            <div className="flex items-center gap-3 px-3" aria-hidden="true">
+                <span className="h-px flex-1 bg-stone-900/10" />
+                <span className="h-1.5 w-1.5 rotate-45 border border-amber-700/50" />
+                <span className="h-px flex-1 bg-stone-900/10" />
             </div>
 
             {isForbidden ? (
-                <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-red-900/15 bg-red-900/5 px-4 py-4 text-center text-red-900">
-                    <NoSymbolIcon className="h-6 w-6 shrink-0" aria-hidden="true" />
-                    <strong className="text-sm font-black leading-relaxed">Not safe for dogs. Do not serve.</strong>
-                    <p className="max-w-lg text-xs leading-relaxed font-semibold text-red-900/80">
-                        {safetyReason}
-                    </p>
+                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
+                    <div className="flex items-center gap-3 rounded-lg border border-red-900/15 bg-red-900/5 px-3 py-2.5 text-red-900">
+                        <div className="flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center">
+                            <NoSymbolIcon className="h-5 w-5" aria-hidden="true" />
+                            <strong className="text-[9px] leading-none font-black tracking-[0.08em] uppercase">Not safe</strong>
+                        </div>
+                        <p className="min-w-0 text-xs leading-relaxed font-semibold text-red-900/80">
+                            {safetyReason}
+                        </p>
+                    </div>
                 </div>
             ) : isLimitedUse ? (
-                <div className="mt-6 flex flex-1 flex-col items-center justify-center gap-2 rounded-xl border border-amber-700/15 bg-amber-500/5 px-4 py-4 text-center text-amber-900">
-                    <ExclamationTriangleIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
-                    <strong className="text-sm font-black leading-relaxed">Use caution. Small amounts only.</strong>
-                    <p className="max-w-lg text-xs leading-relaxed font-semibold text-amber-900/80">
-                        {safetyReason}
-                    </p>
+                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
+                    <div className="flex items-center gap-3 rounded-lg border border-amber-700/15 bg-amber-500/5 px-3 py-2.5 text-amber-950">
+                        <div className="flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center">
+                            <ExclamationTriangleIcon className="h-5 w-5 text-amber-600" aria-hidden="true" />
+                            <strong className="text-[9px] leading-none font-black tracking-[0.08em] text-amber-600 uppercase">Caution</strong>
+                        </div>
+                        <p className="min-w-0 text-xs leading-relaxed font-semibold text-amber-900/80">
+                            {safetyReason}
+                        </p>
+                    </div>
                 </div>
             ) : (
-                <div className="mt-6 flex flex-1 flex-col gap-3 rounded-xl border border-emerald-800/15 bg-emerald-500/5 px-4 py-4 text-emerald-950">
-                    <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px] text-stone-600">
-                        {ingredient.allergens?.length ? (
-                            <div>
-                                <dt className="font-black tracking-[0.12em] uppercase">Allergens</dt>
-                                <dd className="mt-0.5 font-semibold">{ingredient.allergens.join(", ")}</dd>
+                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
+                    <div className="flex flex-1 flex-col gap-3 px-4 pb-3 text-emerald-950">
+                        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px] text-stone-600">
+                            {ingredient.allergens?.length ? (
+                                <div>
+                                    <dt className="font-black tracking-[0.12em] uppercase">Allergens</dt>
+                                    <dd className="mt-0.5 font-semibold">{ingredient.allergens.join(", ")}</dd>
+                                </div>
+                            ) : null}
+                            <div className="col-span-2">
+                                <dt className="font-black tracking-[0.12em] uppercase">Benefits</dt>
+                                <dd className="font-semibold text-emerald-800">{ingredient.benefits.join(", ")}</dd>
                             </div>
-                        ) : null}
-                        <div className="col-span-2">
-                            <dt className="font-black tracking-[0.12em] uppercase">Benefits</dt>
-                            <dd className="mt-0.5 font-semibold text-emerald-800">{ingredient.benefits.join(", ")}</dd>
-                        </div>
-                        <div className="col-span-2">
-                            <dt className="font-black tracking-[0.12em] uppercase">Vitamins</dt>
-                            <dd className="mt-0.5 font-semibold">{ingredient.vitamins.join(", ")}</dd>
-                        </div>
-                    </dl>
-                    {details.length > 0 && (
-                        <p className="border-t border-emerald-800/10 pt-3 text-[10px] leading-relaxed font-semibold text-stone-700">
-                            {details.join(" ")}
-                        </p>
-                    )}
+                        </dl>
+                        {details.length > 0 && (
+                            <div className="flex items-center gap-3 rounded-lg border border-emerald-800/15 bg-emerald-500/5 px-3 py-2.5">
+                                <div className="flex shrink-0 flex-col items-center gap-1 text-emerald-700 px-3">
+                                    <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
+                                    <strong className="text-[9px] font-black tracking-[0.08em] uppercase">Safe</strong>
+                                </div>
+                                <p className="min-w-0 text-[10px] leading-relaxed font-semibold text-stone-700">
+                                    {details.join(" ")}
+                                </p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             )}
         </article>
@@ -136,7 +148,6 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
 export const IngredientSearch: React.FC = () => {
     const [query, setQuery] = useState("");
     const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
-    const [selectedVitamins, setSelectedVitamins] = useState<string[]>([]);
     const [selectedCategory, setSelectedCategory] = useState("");
     const normalizedQuery = normalizeSearchText(query.trim());
 
@@ -153,13 +164,8 @@ export const IngredientSearch: React.FC = () => {
                         selectedBenefits.length === 0 ||
                         selectedBenefits.some((benefit) => ingredient.benefits.includes(benefit)),
                 )
-                .filter(
-                    (ingredient) =>
-                        selectedVitamins.length === 0 ||
-                        selectedVitamins.some((vitamin) => ingredient.vitamins.includes(vitamin)),
-                )
                 .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" })),
-        [normalizedQuery, selectedCategory, selectedBenefits, selectedVitamins],
+        [normalizedQuery, selectedCategory, selectedBenefits],
     );
 
     return (
@@ -177,47 +183,12 @@ export const IngredientSearch: React.FC = () => {
                     </p>
                 )}
             />
-            <section className="mx-auto flex max-w-4xl flex-col items-center text-center">
-                <form
-                    className="mt-8 w-full max-w-[650px]"
-                    onSubmit={(event) => event.preventDefault()}
-                    role="search"
-                >
-                    <label className="sr-only" htmlFor="ingredient-search">
-                        Search ingredients
-                    </label>
-                    <div className="flex items-center rounded-full border border-stone-900/15 bg-white/75 px-5 py-3 shadow-[0_5px_20px_rgba(28,25,23,0.08)] transition-shadow focus-within:border-amber-700/40 focus-within:shadow-[0_7px_24px_rgba(28,25,23,0.12)]">
-                        <MagnifyingGlassIcon className="h-5 w-5 shrink-0 text-stone-500" aria-hidden="true" />
-                        <input
-                            id="ingredient-search"
-                            type="search"
-                            value={query}
-                            onChange={(event) => setQuery(event.target.value)}
-                            placeholder="Search ingredients"
-                            className="min-w-0 flex-1 appearance-none bg-transparent px-3 font-sans text-base text-stone-900 outline-none placeholder:text-stone-400 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
-                        />
-                        {query && (
-                            <button
-                                type="button"
-                                onClick={() => setQuery("")}
-                                className="rounded-full p-1 text-stone-500 transition-colors hover:bg-stone-900/8 hover:text-stone-900 cursor-pointer"
-                                aria-label="Clear ingredient search"
-                            >
-                                <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                            </button>
-                        )}
-                    </div>
-                </form>
-            </section>
-
             <div className="mx-auto mt-10 flex w-full max-w-5xl flex-col items-stretch gap-6 lg:flex-row lg:items-start">
                 <IngredientFilters
                     options={INGREDIENT_LIBRARY}
                     resultCount={results.length}
                     selectedBenefits={selectedBenefits}
                     setSelectedBenefits={setSelectedBenefits}
-                    selectedVitamins={selectedVitamins}
-                    setSelectedVitamins={setSelectedVitamins}
                     selectedCategory={selectedCategory}
                     setSelectedCategory={setSelectedCategory}
                 />
@@ -226,19 +197,46 @@ export const IngredientSearch: React.FC = () => {
                     aria-live="polite"
                     aria-label="Ingredient search results"
                 >
-                    <div className="mb-4 flex items-baseline justify-between gap-4 border-b border-stone-900/10 pb-3">
-                        <h2 className="font-sans text-[11px] font-black tracking-[0.22em] text-stone-900 uppercase">
-                            {normalizedQuery ? "Matching ingredients" : "All ingredients"}
-                        </h2>
+                    <div className="mb-4 flex items-center justify-between gap-4 border-b border-stone-900/10 pb-3">
+                        <form
+                            className="min-w-0 flex-1"
+                            onSubmit={(event) => event.preventDefault()}
+                            role="search"
+                        >
+                            <label className="sr-only" htmlFor="ingredient-search">
+                                Search ingredients
+                            </label>
+                            <div className="flex items-center rounded-full border border-stone-900/15 bg-white/75 px-4 py-2 shadow-[0_5px_20px_rgba(28,25,23,0.08)] transition-shadow focus-within:border-amber-700/40 focus-within:shadow-[0_7px_24px_rgba(28,25,23,0.12)]">
+                                <MagnifyingGlassIcon className="h-4 w-4 shrink-0 text-stone-500" aria-hidden="true" />
+                                <input
+                                    id="ingredient-search"
+                                    type="search"
+                                    value={query}
+                                    onChange={(event) => setQuery(event.target.value)}
+                                    placeholder="Search ingredients"
+                                    className="min-w-0 flex-1 appearance-none bg-transparent px-3 font-sans text-sm text-stone-900 outline-none placeholder:text-stone-400 [&::-webkit-search-cancel-button]:appearance-none [&::-webkit-search-decoration]:appearance-none"
+                                />
+                                {query && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setQuery("")}
+                                        className="cursor-pointer rounded-full p-1 text-stone-500 transition-colors hover:bg-stone-900/8 hover:text-stone-900"
+                                        aria-label="Clear ingredient search"
+                                    >
+                                        <XMarkIcon className="h-4 w-4" aria-hidden="true" />
+                                    </button>
+                                )}
+                            </div>
+                        </form>
                         <span className="shrink-0 text-[10px] font-bold tracking-wider text-stone-500 uppercase">
                             {results.length} {results.length === 1 ? "result" : "results"}
                         </span>
                     </div>
 
                     {results.length > 0 ? (
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2" role="list">
                             {results.map((ingredient) => (
-                                <div key={ingredient.id} role="listitem">
+                                <div key={ingredient.id} className="h-full" role="listitem">
                                     <IngredientCard ingredient={ingredient} query={query} />
                                 </div>
                             ))}

@@ -39,7 +39,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
           </div>
         )}
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           {title && (
             <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
               <AssetIcon

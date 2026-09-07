@@ -75,7 +75,11 @@ export const Recipes = () => {
         setCurrentChapter("proteins");
         setIsReviewOpen(true);
         navigate("/");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+            });
+        });
     };
 
     return (
