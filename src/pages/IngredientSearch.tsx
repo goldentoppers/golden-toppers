@@ -64,78 +64,90 @@ const IngredientCard: React.FC<{ ingredient: Ingredient; query: string }> = ({
     const isForbidden = ingredient.isToxic;
     const isLimitedUse = ingredient.isHighRisk && !ingredient.isToxic;
 
+    const statusConfig = isForbidden
+        ? {
+            badgeClass: "absolute right-3 top-3 z-10 flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center text-red-900",
+            labelClass: "text-[9px] leading-none font-black tracking-[0.08em] uppercase text-red-900",
+            icon: NoSymbolIcon,
+            iconClass: "h-5 w-5",
+            label: "Not safe",
+            panelClass: "rounded-lg border border-red-900/15 bg-red-900/5 px-3 py-3 text-red-900",
+            textClass: "min-w-0 text-xs leading-relaxed font-semibold text-red-900/80",
+        }
+        : isLimitedUse
+            ? {
+                badgeClass: "absolute right-3 top-3 z-10 flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center text-amber-900",
+                labelClass: "text-[9px] leading-none font-black tracking-[0.08em] uppercase text-amber-700",
+                icon: ExclamationTriangleIcon,
+                iconClass: "h-5 w-5 text-amber-700",
+                label: "Caution",
+                panelClass: "rounded-lg border border-amber-700/15 bg-amber-500/5 px-3 py-3 text-amber-950",
+                textClass: "min-w-0 text-xs leading-relaxed font-semibold text-amber-900/80",
+            }
+            : {
+                badgeClass: "absolute right-3 top-3 z-10 flex shrink-0 flex-col items-center gap-1 rounded-md px-4 py-1 text-center text-emerald-800",
+                labelClass: "text-[9px] font-black tracking-[0.08em] uppercase text-emerald-800",
+                icon: CheckCircleIcon,
+                iconClass: "h-5 w-5",
+                label: "Safe",
+                panelClass: "rounded-lg border border-emerald-800/15 bg-emerald-500/5 px-3 py-3",
+                textClass: "min-w-0 text-[10px] leading-relaxed font-semibold text-emerald-900",
+            };
+
+    const StatusIcon = statusConfig.icon;
+
     return (
         <article className="relative flex h-full flex-col overflow-hidden rounded-xl border border-stone-900/10 bg-white/65 shadow-[0_3px_12px_rgba(28,25,23,0.04)]">
+            <div className={statusConfig.badgeClass}>
+                <StatusIcon className={statusConfig.iconClass} aria-hidden="true" />
+                <strong className={statusConfig.labelClass}>{statusConfig.label}</strong>
+            </div>
             <div className="relative flex items-center gap-3 p-3 text-left">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center">
                     <AssetIcon name={ingredient.icon} className="h-11 w-11 object-contain" aria-hidden="true" />
                 </div>
                 <div className="min-w-0 flex-1">
-                    <h2 className="font-serif text-lg leading-tight font-black text-stone-900">
-                        <HighlightedName name={ingredient.name} query={query} />
-                    </h2>
                     <span
                         style={{ color: categoryColor }}
                         className="mt-1 inline-block text-[9px] font-black tracking-[0.14em] uppercase"
                     >
                         {formatLabel(ingredient.category)}
                     </span>
+                    <h2 className="font-serif text-lg leading-tight font-black text-stone-900">
+                        <HighlightedName name={ingredient.name} query={query} />
+                    </h2>
                 </div>
             </div>
-            <div className="flex items-center gap-3 px-3" aria-hidden="true">
-                <span className="h-px flex-1 bg-stone-900/10" />
-                <span className="h-1.5 w-1.5 rotate-45 border border-amber-700/50" />
-                <span className="h-px flex-1 bg-stone-900/10" />
-            </div>
-
             {isForbidden ? (
-                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
-                    <div className="flex items-center gap-3 rounded-lg border border-red-900/15 bg-red-900/5 px-3 py-2.5 text-red-900">
-                        <div className="flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center">
-                            <NoSymbolIcon className="h-5 w-5" aria-hidden="true" />
-                            <strong className="text-[9px] leading-none font-black tracking-[0.08em] uppercase">Not safe</strong>
-                        </div>
-                        <p className="min-w-0 text-xs leading-relaxed font-semibold text-red-900/80">
-                            {safetyReason}
-                        </p>
+                <div id={`ingredient-details-${ingredient.id}`} className="px-3 pb-3">
+                    <div className={statusConfig.panelClass}>
+                        <p className={statusConfig.textClass}>{safetyReason}</p>
                     </div>
                 </div>
             ) : isLimitedUse ? (
-                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
-                    <div className="flex items-center gap-3 rounded-lg border border-amber-700/15 bg-amber-500/5 px-3 py-2.5 text-amber-950">
-                        <div className="flex shrink-0 flex-col items-center gap-1 rounded-md px-2 py-1 text-center">
-                            <ExclamationTriangleIcon className="h-5 w-5 text-amber-600" aria-hidden="true" />
-                            <strong className="text-[9px] leading-none font-black tracking-[0.08em] text-amber-600 uppercase">Caution</strong>
-                        </div>
-                        <p className="min-w-0 text-xs leading-relaxed font-semibold text-amber-900/80">
-                            {safetyReason}
-                        </p>
+                <div id={`ingredient-details-${ingredient.id}`} className="px-3 pb-3">
+                    <div className={statusConfig.panelClass}>
+                        <p className={statusConfig.textClass}>{safetyReason}</p>
                     </div>
                 </div>
             ) : (
-                <div id={`ingredient-details-${ingredient.id}`} className="p-3">
+                <div id={`ingredient-details-${ingredient.id}`} className="px-3 pb-3">
                     <div className="flex flex-1 flex-col gap-3 px-4 pb-3 text-emerald-950">
-                        <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-[10px] text-stone-600">
-                            {ingredient.allergens?.length ? (
-                                <div>
-                                    <dt className="font-black tracking-[0.12em] uppercase">Allergens</dt>
-                                    <dd className="mt-0.5 font-semibold">{ingredient.allergens.join(", ")}</dd>
-                                </div>
-                            ) : null}
-                            <div className="col-span-2">
-                                <dt className="font-black tracking-[0.12em] uppercase">Benefits</dt>
-                                <dd className="font-semibold text-emerald-800">{ingredient.benefits.join(", ")}</dd>
+                        <div className="text-[10px] text-stone-600">
+                            <div className="flex flex-wrap gap-2">
+                                {ingredient.benefits.map((benefit) => (
+                                    <span
+                                        key={benefit}
+                                        className="inline-flex items-center rounded-full border border-emerald-800/15 bg-emerald-500/5 px-2.5 py-1 font-semibold text-emerald-900"
+                                    >
+                                        {benefit}
+                                    </span>
+                                ))}
                             </div>
-                        </dl>
+                        </div>
                         {details.length > 0 && (
-                            <div className="flex items-center gap-3 rounded-lg border border-emerald-800/15 bg-emerald-500/5 px-3 py-2.5">
-                                <div className="flex shrink-0 flex-col items-center gap-1 text-emerald-700 px-3">
-                                    <CheckCircleIcon className="h-5 w-5" aria-hidden="true" />
-                                    <strong className="text-[9px] font-black tracking-[0.08em] uppercase">Safe</strong>
-                                </div>
-                                <p className="min-w-0 text-[10px] leading-relaxed font-semibold text-stone-700">
-                                    {details.join(" ")}
-                                </p>
+                            <div className={statusConfig.panelClass}>
+                                <p className={statusConfig.textClass}>{details.join(" ")}</p>
                             </div>
                         )}
                     </div>

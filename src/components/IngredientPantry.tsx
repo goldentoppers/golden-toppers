@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { IngredientButton } from "./buttons/IngredientButton";
-import { IngredientCategoryHeader } from "./IngredientCategoryHeader";
 import type { ChapterConfig } from "../data/chapter-config";
+import { PageHeading } from "./PageHeading";
 
 interface PantryProps {
     onToggle: (id: string) => void;
@@ -68,8 +68,15 @@ export const IngredientPantry: React.FC<PantryProps> = ({
             shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
                 >
                     <div className="flex flex-col gap-1">
-                        <IngredientCategoryHeader activeChapter={chapterConfig} />
-                        {details}
+                        <PageHeading
+                            title={chapterConfig.title}
+                            icon={chapterConfig.icon}
+                            color={chapterConfig.hexColor}
+                            headingId="-title"
+                            details={() => (
+                                <p>{details}</p>
+                            )}
+                        />
                     </div>
                     <div className="flex flex-col items-center gap-1 px-1 pt-1 text-center">
                         <h3

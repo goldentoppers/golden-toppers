@@ -9,6 +9,8 @@ interface PageHeadingProps {
   align?: "left" | "center";
   className?: string;
   // adSlot?: string;
+  icon?: string;
+  color?: string;
 }
 
 export const PageHeading: React.FC<PageHeadingProps> = ({
@@ -18,6 +20,8 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   headingId = 'about-philosophy-title',
   align = 'center',
   className = '',
+  icon = 'pumpkin-bundle',
+  color = '#b45309',
   // adSlot,
 }) => {
   const alignmentClass = align === 'left' ? 'text-left' : 'text-center';
@@ -43,8 +47,9 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
           {title && (
             <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
               <AssetIcon
-                name="pumpkin-bundle"
-                className="h-20 w-20 shrink-0 text-amber-700"
+                name={icon}
+                color={color}
+                className={`h-20 w-20 shrink-0`}
               />
               <h2
                 id={headingId}
