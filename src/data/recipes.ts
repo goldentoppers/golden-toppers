@@ -253,7 +253,7 @@ const recipeList: Recipes[] = [
         "tags": ["Protein", "Quick"],
         "summary": "A fast morning scramble of a whole cooked egg and fine minces of vibrant steamed broccoli.",
         "ingredients": [
-            ...INGREDIENT_LIBRARY.filter((i) => i.id === "egg" || i.id === "broccoli"),
+            ...INGREDIENT_LIBRARY.filter((i) => i.id === "egg-whole" || i.id === "broccoli"),
         ],
         "sunnyLiked": true,
         "charlieLiked": true,

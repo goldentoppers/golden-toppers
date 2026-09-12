@@ -1,6 +1,20 @@
 import type { Ingredient } from "../../types/nutrition";
 
 export const VEGETABLE_INGREDIENTS: Ingredient[] = [
+  {
+    id: "broth",
+    name: "Broth",
+    kcalPerGram: 0.1,
+    category: "vegetable",
+    role: "topper",
+    density: "rainbow",
+    icon: "chicken-broth",
+    benefits: ["Hydration Support"],
+    vitamins: [],
+    maxGramsCap: 30.0,
+    preparation: "Use Plain, Unsalted Broth",
+    preparationAlert: "Use only plain broth with no onion, garlic, salt, or other seasonings.",
+  },
   // ==========================================
   // --- 🌈 RAINBOW (Vitamins & Fiber) ---
   // ==========================================

@@ -136,6 +136,7 @@ import { DogWitchIcon } from "../assets/art/react-icons/halloween/dog-witch";
 import { DogWitchBroomIcon } from "../assets/art/react-icons/halloween/dog-witch-broom";
 import { DogWithGhostsIcon } from "../assets/art/react-icons/halloween/dog-with-ghosts";
 import { DogWithPumpkinIcon } from "../assets/art/react-icons/halloween/dog-with-pumpkin";
+import ChickenBrothIcon from "../assets/art/files/SVG/51-chicken-broth.svg?react";
 
 interface AssetIconProps extends React.SVGProps<SVGSVGElement> {
   name: string;
@@ -291,6 +292,8 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           {...props}
         />
       );
+    case "chicken-broth":
+      return <ChickenBrothIcon className={className} style={style} {...props} />;
     case "chicken-leg":
       return (
         <ChickenLegIcon

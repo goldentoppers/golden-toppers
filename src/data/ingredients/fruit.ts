@@ -1,6 +1,19 @@
 import type { Ingredient } from "../../types/nutrition";
 
 export const FRUIT_INGREDIENTS: Ingredient[] = [
+  {
+    id: "applesauce",
+    name: "Applesauce",
+    kcalPerGram: 0.4,
+    category: "fruit",
+    role: "carbohydrate",
+    icon: "apple",
+    benefits: ["Digestive Health"],
+    vitamins: ["Vitamin C", "Fiber"],
+    maxGramsCap: 30.0,
+    preparation: "Use Plain, Unsweetened Applesauce",
+    preparationAlert: "Use only 100% unsweetened applesauce with no added sugar, spices, or xylitol.",
+  },
   // --- GOLDEN TOPPERS (Antioxidant Focus) ---
   {
     id: "blueberries",
