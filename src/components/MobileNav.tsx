@@ -4,9 +4,11 @@ import {
   BookOpenIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
+  PencilSquareIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/solid";
 import { AMBER_600, AMBER_700 } from "../data/color-scheme";
+import { featureFlags } from "../features/featureFlags";
 
 export const MobileNav: React.FC = () => {
   const navigate = useNavigate();
@@ -137,6 +139,42 @@ export const MobileNav: React.FC = () => {
           </span>
         </div>
       </button>
+
+      {featureFlags.blogEnabled && <button
+        type="button"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          navigate("/blog");
+        }}
+        aria-current={currentPath === "/blog" ? "page" : undefined}
+        role="tab"
+        style={{
+          backgroundColor: currentPath === "/blog" ? activeBackingTint : "transparent",
+          color: currentPath === "/blog" ? AMBER_700 : "#57534e",
+        }}
+        className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
+          justify-center overflow-hidden rounded-none shadow-none outline-none
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
+      >
+        <div
+          className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none"
+        >
+          <PencilSquareIcon
+            className={`h-5 w-5 stroke-[2.5] ${currentPath === "/blog"
+              ? "scale-105 opacity-100"
+              : "opacity-75 group-hover/tab:scale-105"
+              }`}
+          />
+          <span
+            className={`mt-1.5 text-[9.5px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${currentPath === "/blog"
+              ? "text-stone-900"
+              : "font-bold text-stone-600 group-hover/tab:text-stone-800"
+              }`}
+          >
+            Blog
+          </span>
+        </div>
+      </button>}
 
       {/* ========================================================= */}
       {/* ⚙️ TAB 2: THE INTERACTIVE ABOUT GUIDANCE ROUTE              */}

@@ -7,6 +7,8 @@ import { RecipeBook } from "./components/RecipeBook";
 import { DesktopNav } from "./components/DesktopNav";
 import { IngredientSearch } from "./pages/IngredientSearch";
 import { Recipes } from "./pages/Recipes";
+import { Blog } from "./pages/Blog";
+import { featureFlags } from "./features/featureFlags";
 
 // --- B. THE MULTI-PAGE ROUTE GRAPH ---
 const router = createBrowserRouter([
@@ -30,6 +32,10 @@ const router = createBrowserRouter([
         path: "recipes",
         element: <div className="flex flex-col gap-8"><DesktopNav /><Recipes /></div>,
       },
+      ...(featureFlags.blogEnabled ? [{
+        path: "blog",
+        element: <div className="flex flex-col gap-8"><DesktopNav /><Blog /></div>,
+      }] : []),
     ],
   },
 ]);

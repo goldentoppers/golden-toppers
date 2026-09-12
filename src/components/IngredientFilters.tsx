@@ -223,7 +223,7 @@ export const IngredientFilters: React.FC<IngredientFiltersProps> = ({
         </span>
       </button>
 
-      <aside className="hidden w-56 shrink-0 rounded-2xl border border-stone-900/10 bg-white/65 p-5 text-left shadow-[0_3px_12px_rgba(28,25,23,0.04)] lg:block">
+      <aside className="hidden w-56 shrink-0 p-1 text-left lg:block">
         {filterHeader()}
         <div className="mt-5">{filterOptions}</div>
       </aside>
