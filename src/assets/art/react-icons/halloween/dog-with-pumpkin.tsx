@@ -2,8 +2,9 @@ import type { SVGProps } from "react";
 import dogWithPumpkin from "../../halloween/dog-with-pumpkin.svg";
 
 export const DogWithPumpkinIcon = ({ className, color, style, ...props }: SVGProps<SVGSVGElement>) => (
-    <span
+    <svg
         className={className}
+        viewBox="0 0 100 100"
         style={{
             ...style,
             display: "inline-block",
