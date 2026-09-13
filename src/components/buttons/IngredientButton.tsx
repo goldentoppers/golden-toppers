@@ -38,7 +38,7 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       aria-label={
         isNoneItem ? "Clear all selections" : `${isSelected ? "Remove" : "Add"} ${ingredient.name}`
       }
-      className={`relative z-10 flex h-24 w-full flex-col items-center justify-center gap-1 rounded-xl
+      className={`relative z-10 flex h-32 w-full flex-col items-center justify-center gap-1 rounded-xl
         border border-white/70 bg-white/35 text-center shadow-[0_2px_8px_rgba(28,25,23,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]
         backdrop-blur-md transition-all duration-200 outline-none
         select-none
@@ -76,6 +76,13 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       >
         {ingredient.name}
       </h3>
+      {ingredient.benefits[0] && (
+        <div className="flex max-w-full flex-wrap justify-center gap-1 px-1">
+          <span className="inline-flex max-w-full items-center rounded-full border border-emerald-800/15 bg-emerald-500/5 px-1.5 py-0.5 text-[8px] leading-tight font-semibold text-emerald-900">
+            {ingredient.benefits[0]}
+          </span>
+        </div>
+      )}
 
       {isSelected && (
         <span

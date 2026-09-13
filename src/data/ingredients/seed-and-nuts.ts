@@ -56,8 +56,6 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     vitamins: ["Zinc", "Magnesium", "Cucurbitacin"],
     maxGramsCap: 9.0, // Controlled safe trace mineral parameter (~1 tbsp max)
     preparation: "Grind Raw & Unsalted",
-    preparationAlert:
-      "Contains cucurbitacin, an amino acid known to help eliminate intestinal parasites.",
   },
 
   // --- SAFE BUT SPREE / HIGH ENERGY ---
