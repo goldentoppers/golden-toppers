@@ -38,8 +38,9 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       aria-label={
         isNoneItem ? "Clear all selections" : `${isSelected ? "Remove" : "Add"} ${ingredient.name}`
       }
-      className={`relative z-10 flex h-24 w-full flex-col items-center justify-center gap-1 border-0
-        bg-transparent text-center shadow-none transition-all duration-200 outline-none
+      className={`relative z-10 flex h-24 w-full flex-col items-center justify-center gap-1 rounded-xl
+        border border-white/70 bg-white/35 text-center shadow-[0_2px_8px_rgba(28,25,23,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]
+        backdrop-blur-md transition-all duration-200 outline-none
         select-none
         focus-visible:ring-2 focus-visible:ring-stone-500 focus-visible:ring-offset-2 ${!isSelected && !isDisabled
           ? "cursor-pointer hover:-translate-y-0.5 active:translate-y-0"
@@ -79,11 +80,11 @@ export const IngredientButton: React.FC<IngredientButtonProps> = ({
       {isSelected && (
         <span
           style={{ backgroundColor: color }}
-          className="absolute top-0 right-0 flex h-5 w-5 items-center justify-center rounded-full
+          className="absolute top-2 right-2 flex h-4 w-4 items-center justify-center rounded-full
             text-white shadow-sm"
           aria-hidden="true"
         >
-          <CheckIcon className="h-3 w-3" strokeWidth={3} />
+          <CheckIcon className="h-2.5 w-2.5" strokeWidth={3} />
         </span>
       )}
 
