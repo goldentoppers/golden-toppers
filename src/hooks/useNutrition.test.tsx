@@ -75,6 +75,48 @@ describe('useNutrition', () => {
     expect(p.kcalProvided).toBeGreaterThan(0);
   });
 
+  it('keeps positive portions visible for a 5 lb dog', () => {
+    const protein: Ingredient = {
+      id: 'small-dog-protein',
+      name: 'Small Dog Protein',
+      kcalPerGram: 2,
+      category: 'meat',
+      role: 'protein',
+      icon: 'x',
+      benefits: [],
+      vitamins: [],
+    };
+
+    render(<TestHarness weightLbs={5} activity="low" ingredients={[protein]} />);
+    const raw = screen.getByTestId('result').textContent || '';
+    const parsed = JSON.parse(raw);
+    const item = parsed.recipeItems.find((r: Record<string, unknown>) => String(r.id) === 'small-dog-protein');
+
+    expect(item.grams).toBeGreaterThanOrEqual(0.1);
+  });
+
+  it('scales fixed ingredient caps down for small dogs', () => {
+    const cappedProtein: Ingredient = {
+      id: 'small-dog-capped-protein',
+      name: 'Small Dog Capped Protein',
+      kcalPerGram: 0.1,
+      category: 'meat',
+      role: 'protein',
+      icon: 'x',
+      benefits: [],
+      vitamins: [],
+      maxGramsCap: 100,
+    };
+
+    render(<TestHarness weightLbs={5} activity="low" ingredients={[cappedProtein]} />);
+    const raw = screen.getByTestId('result').textContent || '';
+    const parsed = JSON.parse(raw);
+    const item = parsed.recipeItems.find((r: Record<string, unknown>) => String(r.id) === 'small-dog-capped-protein');
+    const expectedCap = 100 * Math.pow(5 / 65, 0.75);
+
+    expect(item.grams).toBeCloseTo(expectedCap, 1);
+  });
+
   it('zeroes out items that are toxic or have non-positive kcalPerGram', () => {
     const bad: Ingredient = {
       id: 'bad',

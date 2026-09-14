@@ -20,6 +20,7 @@ export const useNutrition = (
   return useMemo(() => {
     const validWeightLbs = weightLbs > 0 ? weightLbs : 1;
     const weightKg = validWeightLbs / 2.20462;
+    const capScale = Math.min(1, Math.pow(validWeightLbs / 65, 0.75));
 
     // 1. Core Calorie Target Computations (RER -> DER)
     const rer = 70 * Math.pow(weightKg, 0.75);
@@ -91,16 +92,17 @@ export const useNutrition = (
           const calculatedGrams =
             item.kcalAllocated / item.ingredient.kcalPerGram;
 
-          if (
-            item.ingredient.maxGramsCap &&
-            calculatedGrams > item.ingredient.maxGramsCap
-          ) {
+          const effectiveMaxGramsCap = item.ingredient.maxGramsCap
+            ? item.ingredient.maxGramsCap * capScale
+            : undefined;
+
+          if (effectiveMaxGramsCap && calculatedGrams > effectiveMaxGramsCap) {
             const safeKcal =
-              item.ingredient.maxGramsCap * item.ingredient.kcalPerGram;
+              effectiveMaxGramsCap * item.ingredient.kcalPerGram;
             carriedDeficitKcal += item.kcalAllocated - safeKcal;
             return {
               ...item,
-              grams: item.ingredient.maxGramsCap,
+              grams: effectiveMaxGramsCap,
               kcalAllocated: safeKcal,
               isCapped: true,
             };
@@ -136,7 +138,7 @@ export const useNutrition = (
           item.grams ??
           (item.ingredient.kcalPerGram > 0 ? item.kcalAllocated / item.ingredient.kcalPerGram : 0);
 
-        const roundedGrams = Math.round(gramsRaw * 10) / 10;
+        const roundedGrams = gramsRaw > 0 ? Math.max(0.1, Math.round(gramsRaw * 10) / 10) : 0;
 
         return {
           ...item.ingredient,

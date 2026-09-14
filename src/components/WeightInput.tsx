@@ -16,7 +16,7 @@ export const WeightInput = () => {
   // Layout coordinate state to track button location
   const [coords, setCoords] = useState({ top: 0, left: 0, width: 220 });
 
-  const weightOptions = Array.from({ length: 9 }, (_, i) => 50 + i * 5);
+  const weightOptions = Array.from({ length: 30 }, (_, i) => 5 + i * 5);
 
   // Recalculate precisely where the button is on the screen when opened
   useEffect(() => {

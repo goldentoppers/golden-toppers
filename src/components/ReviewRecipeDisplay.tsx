@@ -41,7 +41,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
             <DogStaringAtBowlIcon />
           </div>
           <p className="font-serif text-[15px] leading-tight font-black text-stone-900 italic">
-            Your Golden's bowl is waiting to be filled!
+            Your Dogs's bowl is waiting to be filled!
           </p>
 
           <span
