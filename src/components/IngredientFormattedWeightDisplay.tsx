@@ -17,7 +17,7 @@ export const IngredientFormattedWeightDisplay: React.FC<IngredientFormattedWeigh
 }) => {
   const context = useContext(GlobalControlOptionsContext);
   const { formData } = context || { formData: { servingSize: 1 } };
-  console.log("ingredient: ", ingredient);
+
   const formattedWeight = formatSmartWeight({
     grams: ingredient.grams,
     category: ingredient.category,

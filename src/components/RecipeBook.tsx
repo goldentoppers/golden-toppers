@@ -45,7 +45,6 @@ export const RecipeBook: React.FC = () => {
     if (hasStartedBuilding) return;
 
     const interval = setInterval(() => {
-      console.log("setting current image index to", (currentImageIndex + 1) % recipes.length);
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % recipes.length);
     }, 4000);
 

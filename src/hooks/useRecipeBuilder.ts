@@ -18,8 +18,6 @@ export function useRecipeBuilder(): (recipe: Recipes) => void {
       toppers: [],
     };
 
-    console.log("Navigating to recipe:", recipe);
-
     recipe.ingredients.forEach((ingredient) => {
       const chapter = chapterConfig.find((config) => config.options.some((option) => option.id === ingredient.id));
       if (chapter && !nextSelections[chapter.id].includes(ingredient.id)) {
