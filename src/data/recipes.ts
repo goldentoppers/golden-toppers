@@ -20,7 +20,7 @@ import eggBroccoliBreakfast from "../assets/egg-broccoli-breakfast.jpg";
 import type { Ingredient } from "../types/nutrition";
 import { INGREDIENT_LIBRARY } from "./ingredients";
 
-interface Recipes {
+export interface Recipes {
     "id": string;
     "title": string;
     "tags": string[];

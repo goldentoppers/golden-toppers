@@ -1,41 +1,10 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { PageHeading } from "../components/PageHeading";
 import { RecipeCard } from "../components/RecipeCard";
 import { recipes } from "../data/recipes";
-import { GlobalControlOptionsContext, type SelectionsState } from "../contexts/GlobalControlOptionsContext";
-import { chapterConfig } from "../data/chapter-config";
+import { useRecipeBuilder } from "../hooks/useRecipeBuilder";
 
 export const Recipes = () => {
-    const navigate = useNavigate();
-    const { setSelections, setCurrentChapter, setIsReviewOpen } = useContext(GlobalControlOptionsContext);
-
-    const buildRecipe = (recipe: (typeof recipes)[number]) => {
-        const nextSelections: SelectionsState = {
-            proteins: [],
-            heartyBases: [],
-            freshColors: [],
-            energyBoosts: [],
-            toppers: [],
-        };
-
-        recipe.ingredients.forEach((ingredient) => {
-            const chapter = chapterConfig.find((config) => config.options.some((option) => option.id === ingredient.id));
-            if (chapter && !nextSelections[chapter.id].includes(ingredient.id)) {
-                nextSelections[chapter.id].push(ingredient.id);
-            }
-        });
-
-        setSelections(nextSelections);
-        setCurrentChapter("proteins");
-        setIsReviewOpen(true);
-        navigate("/");
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-            });
-        });
-    };
+    const buildRecipe = useRecipeBuilder();
 
     return (
         <main className="mx-auto w-full max-w-4xl pb-20" aria-labelledby="recipes-title">

@@ -67,11 +67,6 @@ export const IngredientPantry: React.FC<PantryProps> = ({
                     className="relative flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
             shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
                 >
-                    {action && (
-                        <div className="flex w-full flex-col gap-2 xs:flex-row xs:justify-between">
-                            {action}
-                        </div>
-                    )}
                     <div className="flex flex-col gap-1">
                         <PageHeading
                             subtitle={chapterConfig.target}
