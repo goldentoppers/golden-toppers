@@ -57,7 +57,7 @@ const PhilosophySection: React.FC<(typeof philosophySections)[number]> = ({
 );
 
 export const About: React.FC = () => {
-  const buyMeACoffeeUrl = import.meta.env.VITE_BUY_ME_A_COFFEE_URL?.trim();
+  // const buyMeACoffeeUrl = import.meta.env.VITE_BUY_ME_A_COFFEE_URL?.trim();
 
   return (
     <>
@@ -213,7 +213,7 @@ export const About: React.FC = () => {
         </div>
       </ContentCard>
 
-      <ContentCard>
+      {/* <ContentCard>
         <PageHeading
           align="left"
           title="Support the Mission"
@@ -259,7 +259,7 @@ export const About: React.FC = () => {
         />
 
 
-      </ContentCard>
+      </ContentCard> */}
     </>
   );
 };
