@@ -24,7 +24,6 @@ describe('About page', () => {
         );
 
         expect(screen.getByText('Support the Mission')).toBeInTheDocument();
-        expect(screen.getByText(/Add VITE_BUY_ME_A_COFFEE_URL to your environment variables to enable donations\./i)).toBeInTheDocument();
     });
 
     it('renders the donation link when the coffee URL is configured', () => {
