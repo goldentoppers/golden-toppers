@@ -11,6 +11,7 @@ interface PageHeadingProps {
   // adSlot?: string;
   icon?: string;
   color?: string;
+  iconSize?: string;
 }
 
 export const PageHeading: React.FC<PageHeadingProps> = ({
@@ -22,13 +23,14 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   className = '',
   icon = 'pumpkin-bundle',
   color = '#b45309',
+  iconSize,
   // adSlot,
 }) => {
   const alignmentClass = align === 'left' ? 'text-left' : 'text-center';
   const sectionWidthClass = 'mx-auto w-full max-w-4xl px-4';
 
   return (
-    <section className={`${sectionWidthClass} ${className} font-sans select-none`} aria-labelledby={headingId}>
+    <section className={`${sectionWidthClass} ${className} font-sans text-[13px] leading-relaxed text-stone-600 md:text-[14px]select-none`} aria-labelledby={headingId}>
       <div className="flex flex-col">
         {subtitle && (
           <div className="flex w-full items-center justify-center text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
@@ -43,17 +45,17 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
           </div>
         )}
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           {title && (
             <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
               <AssetIcon
                 name={icon}
                 color={color}
-                className={`h-20 w-20 shrink-0`}
+                className={`h-20 w-20 shrink-0 ${iconSize ? iconSize : "h-16 w-16"}`}
               />
               <h2
                 id={headingId}
-                className="text-left font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic sm:text-center"
+                className={`text-left font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic sm:${align}`}
               >
                 {title}
               </h2>
@@ -66,7 +68,6 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
             </div>
           )}
         </div>
-
       </div>
     </section>
   );

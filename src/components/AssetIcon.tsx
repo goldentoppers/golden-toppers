@@ -1,4 +1,5 @@
 import React from "react";
+import { WrenchScrewdriverIcon } from "@heroicons/react/24/solid";
 
 import { AppleIcon } from "../assets/art/react-icons/fruit/apple";
 import { NoneIcon } from "../assets/art/react-icons/none";
@@ -190,6 +191,8 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           {...props}
         />
       );
+    case "build":
+      return <WrenchScrewdriverIcon className={className} style={style} {...props} />
     case "pumpkin-spice-latte":
       return <PumpkinSpiceLatteIcon className={className} style={style} {...props} />;
     case "dog-bat":
