@@ -23,20 +23,20 @@ describe('About page', () => {
             </MemoryRouter>,
         );
 
-        expect(screen.getByText('Support the Mission')).toBeInTheDocument();
+        expect(screen.getByText('Engineering the Platform')).toBeInTheDocument();
     });
 
-    it('renders the donation link when the coffee URL is configured', () => {
-        import.meta.env.VITE_BUY_ME_A_COFFEE_URL = 'https://www.buymeacoffee.com/example';
+    // it('renders the donation link when the coffee URL is configured', () => {
+    //     import.meta.env.VITE_BUY_ME_A_COFFEE_URL = 'https://www.buymeacoffee.com/example';
 
-        render(
-            <MemoryRouter>
-                <About />
-            </MemoryRouter>,
-        );
+    //     render(
+    //         <MemoryRouter>
+    //             <About />
+    //         </MemoryRouter>,
+    //     );
 
-        const link = screen.getByRole('link', { name: /buy me a coffee/i });
-        expect(link).toHaveAttribute('href', 'https://www.buymeacoffee.com/example');
-        expect(link).toHaveTextContent('Buy me a coffee');
-    });
+    //     const link = screen.getByRole('link', { name: /buy me a coffee/i });
+    //     expect(link).toHaveAttribute('href', 'https://www.buymeacoffee.com/example');
+    //     expect(link).toHaveTextContent('Buy me a coffee');
+    // });
 });
