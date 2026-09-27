@@ -10,7 +10,13 @@ export const RecipeCard = ({ recipe, onBuild }: RecipeCardProps) => {
     return (
         <article className="flex flex-row overflow-hidden rounded-lg border border-stone-900/10 bg-white/60 shadow-[0_3px_12px_rgba(28,25,23,0.06)]">
             <div className="relative min-h-64 w-1/2 shrink-0">
-                <img src={recipe.image} alt={recipe.imageAlt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <img
+                    key={recipe.image} // 🔑 Forces React to re-mount the tag on parent updates
+                    src={recipe.image}
+                    alt={recipe.imageAlt}
+                    className="absolute inset-0 h-full w-full object-cover animate-fade-in"
+                    loading="lazy"
+                />
             </div>
             <div className="flex flex-1 flex-col justify-between gap-3 px-3 py-5 text-center">
                 <div className="flex shrink-0 items-end justify-center gap-2" aria-label="Recipe ingredients">
