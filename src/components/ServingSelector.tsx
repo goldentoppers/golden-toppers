@@ -23,7 +23,7 @@ export default function ServingSelector(): React.JSX.Element {
     <div className="relative flex flex-col items-start font-sans select-none">
       <fieldset className="m-0 border-none p-0">
         <legend className="sr-only">Number of active recipe servings</legend>
-        <div className="flex flex-col gap-1 md:gap-4">
+        <div className="flex flex-col">
           <InputLabel htmlFor="servings">Servings</InputLabel>
 
           <div

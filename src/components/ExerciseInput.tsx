@@ -30,7 +30,7 @@ export const ExerciseInput = () => {
 
   return (
     <div className="animate-fade-in relative flex w-auto flex-col font-sans select-none">
-      <span className="mb-2 text-[10px] font-black tracking-[0.25em] text-stone-800 uppercase">
+      <span className="mb-1.5 text-[10px] font-black tracking-[0.25em] text-stone-800 uppercase">
         Activity Level
       </span>
 
@@ -44,15 +44,15 @@ export const ExerciseInput = () => {
               type="button"
               onClick={() => handleSelect(opt.value)}
               aria-pressed={isSelected}
-              className={`relative flex aspect-square h-16 w-16 cursor-pointer flex-col items-center justify-center gap-1 rounded-md p-2
+              className={`relative flex aspect-square h-14 w-14 cursor-pointer flex-col items-center justify-center gap-0.5 rounded-md p-1.5
                 text-center transition-colors duration-150 outline-none focus-visible:ring-2
-                focus-visible:ring-amber-700 focus-visible:ring-offset-2 md:h-24 md:w-24 md:p-2 ${isSelected
+                focus-visible:ring-amber-700 focus-visible:ring-offset-2 md:h-14 md:w-16 ${isSelected
                   ? "bg-amber-700/10 text-amber-700"
                   : "text-stone-600 hover:bg-stone-900/5 hover:text-stone-900"
                 }`}
             >
-              <AssetIcon className="h-10 w-10" name={opt.icon} />
-              <span className="block text-[11px] leading-none font-black tracking-wide">
+              <AssetIcon className="h-7 w-7" name={opt.icon} />
+              <span className="block text-[10px] leading-none font-black tracking-wide">
                 {opt.label}
               </span>
 

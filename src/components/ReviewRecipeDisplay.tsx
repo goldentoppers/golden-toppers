@@ -76,12 +76,12 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section
-            className="animate-fade-in space-y-4 rounded-lg border border-stone-900/10 bg-white/65 p-12
-              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text"
+            className="animate-fade-in space-y-3 rounded-lg border border-stone-900/10 bg-white/65 px-6 py-6
+              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:px-10 sm:py-8"
           >
-            <header className="relative flex flex-col items-center justify-center overflow-hidden pb-5 pt-2 select-text">
+            <header className="relative flex flex-col items-center justify-center overflow-hidden pb-2 pt-1 select-text">
               <div
-                className="mb-5 flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em]
+                className="mb-3 flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em]
                   text-amber-800/75 uppercase"
                 aria-hidden="true"
               >
@@ -90,7 +90,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                 <span className="h-px flex-1 bg-amber-700/25" />
               </div>
               <h1
-                className="max-w-full break-words text-center font-serif text-4xl leading-tight font-black
+                className="max-w-full break-words text-center font-serif text-3xl sm:text-4xl leading-tight font-black
                     tracking-wide text-stone-900 italic"
               >
                 <span className="text-amber-700">
@@ -100,12 +100,12 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
               </h1>
             </header>
 
-            <section className="mb-2 flex w-full flex-col pb-6 select-none">
-              <div className="mx-auto flex w-full max-w-[650px] flex-col items-center gap-6">
+            <section className="flex w-full flex-col pb-2 select-none">
+              <div className="mx-auto flex w-full max-w-[650px] flex-col items-center gap-3.5">
                 <DogNameInput />
-                <div className="flex w-full flex-col items-center gap-5 px-2 sm:flex-row sm:items-start sm:justify-center sm:gap-3 sm:px-0">
+                <div className="flex w-full flex-col items-center gap-4 px-2 sm:flex-row sm:items-start sm:justify-center sm:gap-3 sm:px-0">
                   <ExerciseInput />
-                  <div className="mx-auto flex w-fit items-start justify-center gap-4">
+                  <div className="mx-auto flex w-fit items-start justify-center gap-3">
                     <WeightInput />
                     <ServingSelector />
                   </div>
@@ -119,7 +119,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                   <li
                     key={item.id}
                     className="flex items-center justify-between gap-6 border-b border-stone-800/10
-                      py-3 pr-2 transition-all duration-300 select-none sm:py-5 sm:pr-5
+                      py-2.5 pr-2 transition-all duration-300 select-none sm:py-3 sm:pr-4
                       print:break-inside-avoid"
                     role="listitem"
                   >
@@ -165,7 +165,7 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
                 ))}
               </ul>
             </div>
-            <div className="pt-4">
+            <div className="pt-2">
               <TopperOnlyWarning />
             </div>
             {actions && (

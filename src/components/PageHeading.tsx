@@ -21,7 +21,8 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   headingId = 'about-philosophy-title',
   align = 'center',
   className = '',
-  icon = 'pumpkin-bundle',
+  icon,
+  // icon = 'pumpkin-bundle',
   color = '#b45309',
   iconSize,
   // adSlot,
@@ -48,11 +49,12 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
         <div className="flex flex-col gap-4">
           {title && (
             <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
-              <AssetIcon
-                name={icon}
-                color={color}
-                className={`h-20 w-20 shrink-0 ${iconSize ? iconSize : "h-16 w-16"}`}
-              />
+              {icon && (
+                <AssetIcon
+                  name={icon}
+                  color={color}
+                  className={`h-20 w-20 shrink-0 ${iconSize ? iconSize : "h-16 w-16"}`}
+                />)}
               <h2
                 id={headingId}
                 className={`text-left font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic sm:${align}`}

@@ -84,7 +84,7 @@ export const RecipeBook: React.FC = () => {
             onClick={() => setHasStartedBuilding(true)}
             className="mt-8 cursor-pointer rounded-lg bg-amber-700 px-6 py-3 text-[11px] font-black tracking-[0.2em] text-white uppercase shadow-[0_3px_8px_rgba(120,53,15,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 active:translate-y-0"
           >
-            Start Building a Bowl
+            Start Building
           </button>
 
           {/* New Preview Carousel Container */}

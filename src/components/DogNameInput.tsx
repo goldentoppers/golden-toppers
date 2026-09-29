@@ -19,7 +19,7 @@ export const DogNameInput = () => {
       <InputLabel htmlFor="canine-name-field">Dog's Name</InputLabel>
       <div
         className="flex w-full items-center justify-between rounded-full border border-stone-300/80
-          bg-white/55 px-5 py-2.5 shadow-sm backdrop-blur-md transition-all duration-300
+          bg-white/55 px-5 py-2 shadow-sm backdrop-blur-md transition-all duration-300
           focus-within:border-stone-500 focus-within:bg-white/75 focus-within:shadow-md"
       >
         <input

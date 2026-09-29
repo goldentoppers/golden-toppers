@@ -58,7 +58,7 @@ export const WeightInput = () => {
   return (
     <div
       ref={containerRef}
-      className="relative flex w-auto flex-col items-start font-sans select-none gap-1 md:gap-4"
+      className="relative flex w-auto flex-col items-start font-sans select-none"
     >
       <InputLabel htmlFor={"canine-weight-trigger"}>Weight</InputLabel>
 

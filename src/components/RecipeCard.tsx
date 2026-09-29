@@ -45,7 +45,7 @@ export const RecipeCard = ({ recipe, onBuild }: RecipeCardProps) => {
                 <button
                     type="button"
                     onClick={() => onBuild(recipe)}
-                    className="mx-6 inline-flex cursor-pointer items-center justify-center rounded-lg bg-amber-700 px-4 py-2.5 text-[10px] font-black tracking-[0.18em] text-white uppercase shadow-[0_3px_8px_rgba(120,53,15,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 active:translate-y-0"
+                    className="mx-6 inline-flex cursor-pointer items-center justify-center rounded-lg border-2 border-amber-700 bg-transparent px-4 py-2.5 text-[10px] font-black tracking-[0.18em] text-amber-800 uppercase shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:bg-amber-700/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-700 focus-visible:ring-offset-2 active:translate-y-0"
                 >
                     Build This Bowl
                 </button>
