@@ -1,4 +1,4 @@
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 
 export const ContentCard = ({ title, children, icon, iconSize, align }: { title?: string; children: React.ReactNode; icon?: string; iconSize?: string; align?: string; }) => {
   return (

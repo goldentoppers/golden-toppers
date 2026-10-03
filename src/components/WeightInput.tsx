@@ -1,7 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { InputLabel } from "./common/InputLabel";
+import { InputLabel } from "./input/InputLabel";
 
 export const WeightInput = () => {
   const context = useContext(GlobalControlOptionsContext);

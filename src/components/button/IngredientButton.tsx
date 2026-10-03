@@ -1,5 +1,5 @@
 import React from "react";
-import { AssetIcon } from "../AssetIcon";
+import { AssetIcon } from "../icon/AssetIcon";
 import type { Ingredient } from "../../types/nutrition";
 import { CheckIcon, NoSymbolIcon } from "@heroicons/react/24/solid";
 

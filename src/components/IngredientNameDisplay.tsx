@@ -1,6 +1,6 @@
 import React from "react";
 import type { Ingredient } from "../types/nutrition";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 
 interface IngredientNameDisplayProps {
   ingredient: Ingredient;

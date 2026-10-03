@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
 import type { ActivityLevel } from "../types/nutrition";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 
 export const ExerciseInput = () => {
   const context = useContext(GlobalControlOptionsContext);

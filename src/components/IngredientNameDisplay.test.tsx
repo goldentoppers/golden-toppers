@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 
 // Mock AssetIcon to avoid rendering many SVG components
-vi.mock('./AssetIcon', () => ({
+vi.mock('./icon/AssetIcon', () => ({
   AssetIcon: ({ name }: { name: string }) => <div data-testid="asset-icon">{name}</div>,
 }));
 

@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   BookOpenIcon,
+  GlobeAmericasIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
   PencilSquareIcon,
@@ -95,6 +96,42 @@ export const MobileNav: React.FC = () => {
           />
           <span
             className={`mt-1.5 text-[9.5px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${currentPath === "/ingredients"
+              ? "text-stone-900"
+              : "font-bold text-stone-600 group-hover/tab:text-stone-800"
+              }`}
+          >
+            Ingredients
+          </span>
+        </div>
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          navigate("/explore");
+        }}
+        aria-current={currentPath === "/explore" ? "page" : undefined}
+        role="tab"
+        style={{
+          backgroundColor: currentPath === "/explore" ? activeBackingTint : "transparent",
+          color: currentPath === "/explore" ? AMBER_700 : "#57534e",
+        }}
+        className="group/tab relative flex h-full flex-1 cursor-pointer flex-col items-center
+          justify-center overflow-hidden rounded-none shadow-none outline-none
+          aria-[current=page]:shadow-[0_3px_10px_rgba(120,53,15,0.18)]"
+      >
+        <div
+          className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none"
+        >
+          <GlobeAmericasIcon
+            className={`h-5 w-5 stroke-[2.5] ${currentPath === "/explore"
+              ? "scale-105 opacity-100"
+              : "opacity-75 group-hover/tab:scale-105"
+              }`}
+          />
+          <span
+            className={`mt-1.5 text-[9.5px] font-black tracking-[0.2em] uppercase transition-colors duration-300 ${currentPath === "/explore"
               ? "text-stone-900"
               : "font-bold text-stone-600 group-hover/tab:text-stone-800"
               }`}

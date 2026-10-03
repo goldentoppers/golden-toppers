@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { PrintedRecipeTemplate } from "./PrintedRecipeTemplate";
+import { PrintedRecipeTemplate } from "../PrintedRecipeTemplate";
 import { AppFooter } from "./AppFooter";
-import { GlobalControlOptionsProvider } from "../contexts/GlobalControlOptionsProvider";
-import { INGREDIENT_LIBRARY } from "../data/ingredients";
-import { MobileNav } from "./MobileNav";
-import dogHero from "../assets/hero-dog-with-carrots.jpg";
-import { MainContent } from "./MainContent";
-import { AssetIcon } from "./AssetIcon";
-import kitchenHero from "../assets/hero-woman-and-dog-in-kitchen.jpg";
+import { GlobalControlOptionsProvider } from "../../contexts/GlobalControlOptionsProvider";
+import { BreedProvider } from "../../contexts/BreedProvider";
+import { INGREDIENT_LIBRARY } from "../../data/ingredients";
+import { MobileNav } from "../MobileNav";
+import dogHero from "../../assets/hero-dog-with-carrots.jpg";
+import { MainContent } from "../MainContent";
+import { AssetIcon } from "../icon/AssetIcon";
+import kitchenHero from "../../assets/hero-woman-and-dog-in-kitchen.jpg";
 
 export const AppLayout: React.FC = () => {
   const [isImageDownloaded, setIsImageDownloaded] = useState<boolean>(false);
@@ -109,19 +110,21 @@ export const AppLayout: React.FC = () => {
         role="none"
       >
         <GlobalControlOptionsProvider allIngredients={INGREDIENT_LIBRARY}>
-          {/* EMBEDDED PRINT PAPER TEMPLATE LAYER: Handles custom paper output layout */}
-          <PrintedRecipeTemplate />
+          <BreedProvider>
+            {/* EMBEDDED PRINT PAPER TEMPLATE LAYER: Handles custom paper output layout */}
+            <PrintedRecipeTemplate />
 
-          <div className="w-full grow print:hidden">
-            <MainContent />
-          </div>
-
-          <div className="w-full print:hidden">
-            <AppFooter backgroundImage={dogHero} />
-            <div className="block md:hidden">
-              <MobileNav />
+            <div className="w-full grow print:hidden">
+              <MainContent />
             </div>
-          </div>
+
+            <div className="w-full print:hidden">
+              <AppFooter backgroundImage={dogHero} />
+              <div className="block md:hidden">
+                <MobileNav />
+              </div>
+            </div>
+          </BreedProvider>
         </GlobalControlOptionsProvider>
       </div>
     </div>

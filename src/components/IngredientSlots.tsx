@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 import type { RecipeResultItem } from "../types/nutrition";
 import { EmptyPantrySlots } from "./EmptyPantrySlots";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { CloseButton } from "./common/CloseButton";
+import { CloseButton } from "./button/CloseButton";
 import { TopperOnlyWarning } from "./TopperOnlyWarning";
 import type { ChapterConfig } from "../data/chapter-config";
 

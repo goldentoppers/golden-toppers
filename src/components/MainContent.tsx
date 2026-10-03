@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { AppHeader } from "./AppHeader";
+import { AppHeader } from "./app-layout/AppHeader";
 
 export const MainContent: React.FC = () => {
   return (

@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import {
   BookOpenIcon,
+  GlobeAmericasIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
   PencilSquareIcon,
@@ -56,13 +57,34 @@ export const DesktopNav = () => {
             }`}
           aria-hidden="true"
         />
+        <span>Ingredients</span>
+      </NavLink>
+
+      <NavLink
+        to="/explore"
+        className={({ isActive }) =>
+          `group/tab order-3 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+            text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 ease-out
+            outline-none select-none focus-visible:ring-2 focus-visible:ring-amber-700
+            focus-visible:ring-offset-2 ${isActive
+            ? "bg-white text-stone-900 shadow-[0_2px_6px_rgba(28,25,23,0.06)]"
+            : "bg-white/40 text-stone-600 hover:-translate-y-0.5 hover:bg-white/50"
+          }`
+        }
+      >
+        <GlobeAmericasIcon
+          style={{ color: currentPath === "/explore" ? AMBER_700 : "#57534e" }}
+          className={`h-4 w-4 transition-transform duration-200 ${currentPath === "/explore" ? "" : "group-hover/tab:scale-110"
+            }`}
+          aria-hidden="true"
+        />
         <span>Explore</span>
       </NavLink>
 
       <NavLink
         to="/recipes"
         className={({ isActive }) =>
-          `group/tab order-3 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+          `group/tab order-4 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
             text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 ease-out
             outline-none select-none focus-visible:ring-2 focus-visible:ring-amber-700
             focus-visible:ring-offset-2 ${isActive
@@ -82,7 +104,7 @@ export const DesktopNav = () => {
       {featureFlags.blogEnabled && <NavLink
         to="/blog"
         className={({ isActive }) =>
-          `group/tab order-4 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+          `group/tab order-5 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
             text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 ease-out
             outline-none select-none focus-visible:ring-2 focus-visible:ring-amber-700
             focus-visible:ring-offset-2 ${isActive
@@ -102,7 +124,7 @@ export const DesktopNav = () => {
       <NavLink
         to="/about"
         className={({ isActive }) =>
-          `group/tab order-5 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
+          `group/tab order-6 relative inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3
             text-[11px] font-black tracking-[0.2em] uppercase transition-all duration-200 ease-out
             outline-none select-none focus-visible:ring-2 focus-visible:ring-amber-700
             focus-visible:ring-offset-2 ${isActive

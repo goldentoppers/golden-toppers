@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { InputLabel } from "./common/InputLabel";
+import { InputLabel } from "./input/InputLabel";
 
 export const DogNameInput = () => {
   const context = useContext(GlobalControlOptionsContext);

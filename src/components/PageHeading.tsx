@@ -1,5 +1,5 @@
 import React from 'react';
-import { AssetIcon } from './AssetIcon';
+import { AssetIcon } from './icon/AssetIcon';
 
 interface PageHeadingProps {
   title?: string;

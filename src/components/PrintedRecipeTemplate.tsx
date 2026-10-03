@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 import { formatSmartWeight } from "../helpers/format-smart-weight";
 import { DailyTargetDisplay } from "./DailyTargetDisplay";
 

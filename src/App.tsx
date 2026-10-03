@@ -1,11 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 
-import { AppLayout } from "./components/AppLayout";
+import { AppLayout } from "./components/app-layout/AppLayout";
 import { About } from "./pages/About";
 import { RecipeBook } from "./components/RecipeBook";
 import { DesktopNav } from "./components/DesktopNav";
 import { IngredientSearch } from "./pages/IngredientSearch";
+import { ExploreBreeds } from "./pages/ExploreBreeds";
 import { Recipes } from "./pages/Recipes";
 import { Blog } from "./pages/Blog";
 import { featureFlags } from "./features/featureFlags";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "ingredients",
         element: <div className="flex flex-col gap-8"><DesktopNav /><IngredientSearch /></div>,
+      },
+      {
+        path: "explore",
+        element: <div className="flex flex-col gap-8"><DesktopNav /><ExploreBreeds /></div>,
       },
       {
         path: "recipes",

@@ -6,7 +6,7 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     name: "Applesauce",
     kcalPerGram: 0.4,
     category: "fruit",
-    role: "carbohydrate",
+    role: "topper",
     icon: "apple",
     benefits: ["Digestive Health"],
     vitamins: ["Vitamin C", "Fiber"],

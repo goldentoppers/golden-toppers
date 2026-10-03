@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import { IngredientButton } from "./buttons/IngredientButton";
+import { IngredientButton } from "./button/IngredientButton";
 import type { ChapterConfig } from "../data/chapter-config";
 import { PageHeading } from "./PageHeading";
 

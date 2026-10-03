@@ -1,4 +1,4 @@
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 import { recipes } from "../data/recipes";
 
 export interface RecipeCardProps {

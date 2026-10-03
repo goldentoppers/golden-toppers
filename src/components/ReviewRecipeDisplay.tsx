@@ -1,6 +1,6 @@
 import React, { useContext, type ReactNode } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 import { DogStaringAtBowlIcon } from "../assets/art/react-icons/dogs/dog-staring-at-bowl";
 import { TopperOnlyWarning } from "./TopperOnlyWarning";
 import { IngredientFormattedWeightDisplay } from "./IngredientFormattedWeightDisplay";

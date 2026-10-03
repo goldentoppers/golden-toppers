@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalControlOptionsContext } from "../contexts/GlobalControlOptionsContext";
-import { InputLabel } from "./common/InputLabel";
+import { InputLabel } from "./input/InputLabel";
 
 export default function ServingSelector(): React.JSX.Element {
   const context = useContext(GlobalControlOptionsContext);

@@ -1,5 +1,5 @@
 import React from "react";
-import { AssetIcon } from "./AssetIcon";
+import { AssetIcon } from "./icon/AssetIcon";
 import type { ChapterConfig } from "../data/chapter-config";
 
 interface IngredientCategoryHeaderProps {
