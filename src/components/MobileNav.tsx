@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   BookOpenIcon,
-  GlobeAmericasIcon,
+  HeartIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
   PencilSquareIcon,
@@ -100,7 +100,7 @@ export const MobileNav: React.FC = () => {
               : "font-bold text-stone-600 group-hover/tab:text-stone-800"
               }`}
           >
-            Ingredients
+            Pantry
           </span>
         </div>
       </button>
@@ -124,7 +124,7 @@ export const MobileNav: React.FC = () => {
         <div
           className="relative z-10 flex h-full w-full flex-col items-center justify-center pb-1.5 leading-none select-none"
         >
-          <GlobeAmericasIcon
+          <HeartIcon
             className={`h-5 w-5 stroke-[2.5] ${currentPath === "/explore"
               ? "scale-105 opacity-100"
               : "opacity-75 group-hover/tab:scale-105"
@@ -136,7 +136,7 @@ export const MobileNav: React.FC = () => {
               : "font-bold text-stone-600 group-hover/tab:text-stone-800"
               }`}
           >
-            Explore
+            Health
           </span>
         </div>
       </button>

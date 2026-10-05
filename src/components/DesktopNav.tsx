@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import {
+  HeartIcon,
   BookOpenIcon,
-  GlobeAmericasIcon,
   InformationCircleIcon,
   MagnifyingGlassIcon,
   PencilSquareIcon,
@@ -57,7 +57,7 @@ export const DesktopNav = () => {
             }`}
           aria-hidden="true"
         />
-        <span>Ingredients</span>
+        <span>Pantry</span>
       </NavLink>
 
       <NavLink
@@ -72,13 +72,13 @@ export const DesktopNav = () => {
           }`
         }
       >
-        <GlobeAmericasIcon
+        <HeartIcon
           style={{ color: currentPath === "/explore" ? AMBER_700 : "#57534e" }}
           className={`h-4 w-4 transition-transform duration-200 ${currentPath === "/explore" ? "" : "group-hover/tab:scale-110"
             }`}
           aria-hidden="true"
         />
-        <span>Explore</span>
+        <span>Health</span>
       </NavLink>
 
       <NavLink
