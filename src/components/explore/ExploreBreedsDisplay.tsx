@@ -1,4 +1,6 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
+import { createPortal } from "react-dom";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import { SearchAndFilter } from "./SearchAndFilter";
 import { ExploreOptionList, type ExploreOption } from "./ExploreOptionList";
 
@@ -39,10 +41,8 @@ export function ExploreDataDisplay<T extends ExploreItem>({
 }: ExploreDataDisplayProps<T>) {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState<string>("All");
-    const [uncontrolledActiveId, setUncontrolledActiveId] = useState(dataSet[0]?.id || "");
-
-    const isControlled = selectedId !== undefined;
-    const effectiveActiveId = isControlled ? selectedId : uncontrolledActiveId;
+    const [activeDataId, setActiveDataId] = useState(selectedId || dataSet[0]?.id || "");
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const filteredData = useMemo(() => {
         const q = searchQuery.toLowerCase().trim();
@@ -73,19 +73,41 @@ export function ExploreDataDisplay<T extends ExploreItem>({
     }, [dataSet, searchQuery, selectedCategory]);
 
     const currentData = useMemo(() => {
-        const match = filteredData.find((b) => b.id === effectiveActiveId);
+        const match = filteredData.find((b) => b.id === activeDataId);
         return match ?? filteredData[0] ?? dataSet[0];
-    }, [filteredData, effectiveActiveId, dataSet]);
+    }, [filteredData, activeDataId, dataSet]);
 
     const handleSelectOption = (option: ExploreOption) => {
-        if (!isControlled) {
-            setUncontrolledActiveId(option.id);
-        }
+        setActiveDataId(option.id);
         const match = dataSet.find((b) => b.id === option.id);
         if (match && onSelect) {
             onSelect(match);
         }
+        setIsModalOpen(true);
     };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
+    useEffect(() => {
+        if (!isModalOpen) return;
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "Escape") {
+                setIsModalOpen(false);
+            }
+        };
+
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = prevOverflow;
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isModalOpen]);
 
     const renderDetails = () => {
         if (!details || !currentData) return null;
@@ -125,20 +147,55 @@ export function ExploreDataDisplay<T extends ExploreItem>({
                     filterLabel={filterLabel}
                 />
 
-                {/* Two-Column Explorer Layout */}
-                <section className="grid grid-cols-1 gap-6 lg:grid-cols-12 text-left" aria-label="Explore Grid">
+                {/* Explore List */}
+                <section className="w-full text-left" aria-label="Explore List">
                     <ExploreOptionList
                         dataSet={filteredData}
                         searchQuery={searchQuery}
                         setSearchQuery={setSearchQuery}
                         setSelectedGroup={setSelectedCategory}
-                        selectedOptionId={currentData?.id || ""}
+                        selectedOptionId={isModalOpen ? (currentData?.id || "") : (selectedId || "")}
                         onOptionSlected={handleSelectOption}
                         itemLabel={itemLabel}
                     />
-
-                    {renderDetails()}
                 </section>
+
+                {/* Details Popup Modal (Mounted via portal to escape parent stacking contexts & backdrop-blur) */}
+                {isModalOpen && currentData && typeof document !== "undefined"
+                    ? createPortal(
+                        <div
+                            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+                            role="dialog"
+                            aria-modal="true"
+                            aria-label={`${currentData.name} details`}
+                        >
+                            {/* Backdrop overlay (separate layer so fading backdrop never makes the white modal card transparent) */}
+                            <div
+                                className="fixed inset-0 bg-stone-950/60 backdrop-blur-xs transition-opacity duration-150"
+                                onClick={handleCloseModal}
+                                aria-hidden="true"
+                            />
+
+                            {/* Modal Card (100% solid white background, high z-index, stops event propagation) */}
+                            <div
+                                className="relative z-10 w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl border border-stone-900/10 p-6 sm:p-8 text-left"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button
+                                    type="button"
+                                    onClick={handleCloseModal}
+                                    className="absolute top-4 right-4 z-20 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-stone-100 text-stone-500 transition-colors hover:bg-stone-200 hover:text-stone-900 outline-none focus-visible:ring-2 focus-visible:ring-amber-700"
+                                    aria-label="Close details popup"
+                                >
+                                    <XMarkIcon className="h-5 w-5" />
+                                </button>
+
+                                {renderDetails()}
+                            </div>
+                        </div>,
+                        document.body
+                    )
+                    : null}
             </div>
         </main>
     );

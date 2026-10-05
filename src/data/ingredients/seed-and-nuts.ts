@@ -128,13 +128,13 @@ export const SEED_AND_NUT_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "seeds-nuts",
     icon: "almond",
-    isHighRisk: true,
+    isToxic: true,
     maxGramsCap: 0, // Set to zero to prevent mechanical choking risks on phone layouts
-    preparation: "Strict Choking Hazard",
+    preparation: "DO NOT SERVE - AVOID",
     vitamins: [],
     benefits: [],
     preparationAlert:
-      "Not easily digested by dogs. Can cause severe gastric blockages and sharp stomach blockages.",
+      "Not easily digested by dogs. High risk of severe gastric obstruction, choking, and pancreatitis.",
   },
 
   // ==========================================

@@ -81,11 +81,11 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "20-milk",
-    isHighRisk: true,
+    isToxic: true,
     maxGramsCap: 0, // Disabled in calculation loops
     preparation: "Not Recommended for Use",
     preparationAlert:
-      "Most dogs are lactose intolerant. Can cause severe gas, bloating, and diarrhea.",
+      "Most dogs are lactose intolerant. Can cause severe gas, bloating, and diarrhea. Avoid entirely.",
     vitamins: [],
     benefits: [],
   },
@@ -111,7 +111,7 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "23-butter",
-    isHighRisk: true,
+    isToxic: true,
     vitamins: [],
     benefits: [],
     maxGramsCap: 0, // Disabled in calculation loops
@@ -140,11 +140,11 @@ export const DAIRY_INGREDIENTS: Ingredient[] = [
     role: "topper",
     category: "dairy",
     icon: "soya-drink",
-    isHighRisk: true,
+    isToxic: true,
     vitamins: [],
     benefits: [],
     maxGramsCap: 0, // Disabled in calculation loops
-    preparation: "Check Component Additives",
-    preparationAlert: "Often contains added sugars and thickeners not suitable for dogs.",
+    preparation: "Not Recommended for Use",
+    preparationAlert: "Often contains added sugars, artificial thickeners, and xylitol not suitable for dogs.",
   },
 ];

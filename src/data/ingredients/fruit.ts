@@ -192,10 +192,10 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "avocado",
-    isHighRisk: true,
+    isToxic: true,
     maxGramsCap: 0, // Blocked entirely from active calculations
     preparation: "AVOID ENTIRELY",
-    preparationAlert: "Pit and skin are lethal choking risks.",
+    preparationAlert: "Pit, skin, and leaves contain persin and are toxic; pit is a lethal choking and obstruction risk.",
     vitamins: [],
     benefits: [],
   },
@@ -206,9 +206,10 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     category: "fruit",
     role: "topper",
     icon: "lemon",
-    isHighRisk: true,
+    isToxic: true,
     maxGramsCap: 0, // Blocked entirely from active calculations
     preparation: "Do Not Serve Citric Acid",
+    preparationAlert: "High citric acid and essential oils (psoralens) can cause severe gastric distress and toxicity.",
     vitamins: [],
     benefits: [],
   },
@@ -313,11 +314,11 @@ export const FRUIT_INGREDIENTS: Ingredient[] = [
     icon: "grapefruit",
     vitamins: [],
     benefits: [],
-    isHighRisk: true,
+    isToxic: true,
     maxGramsCap: 0, // Set to zero to isolate from active calculations
-    preparation: "Flesh Only - Serve Sparingly",
+    preparation: "DO NOT SERVE - AVOID",
     preparationAlert:
-      "Highly acidic. Rind and seeds are toxic. Can cause severe vomiting or gastric distress.",
+      "Toxic to dogs. Contains psoralens and essential oils. Can cause severe vomiting, diarrhea, and gastric distress.",
   },
   {
     id: "melon",

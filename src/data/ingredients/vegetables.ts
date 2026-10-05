@@ -256,12 +256,12 @@ export const VEGETABLE_INGREDIENTS: Ingredient[] = [
     density: "rainbow",
     category: "vegetable",
     icon: "garlic",
-    isHighRisk: true,
+    isToxic: true,
     vitamins: [],
     benefits: [],
     maxGramsCap: 0, // Blocked from active baseline loops
-    preparation: "USE EXTREME CAUTION",
-    preparationAlert: "Toxic in larger volumes. High concentration of thiosulfate compounds.",
+    preparation: "CRITICAL TOXICITY - AVOID",
+    preparationAlert: "LETHAL TOXICITY. Allium family contains concentrated thiosulfates that destroy canine red blood cells and cause hemolytic anemia.",
   },
   {
     id: "peas",
