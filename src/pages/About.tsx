@@ -209,6 +209,16 @@ export const About: React.FC = () => {
             >
               Review Source
             </a>
+            <a
+              href="https://www.linkedin.com/in/maxinegerhard/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex shrink-0 items-center justify-center rounded-xl bg-[#0a66c2] px-5 py-3
+                font-sans text-[10px] font-black tracking-[0.2em] text-white uppercase transition-all 
+                duration-200 hover:bg-[#084a8a] outline-none active:scale-[0.98]"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </ContentCard>
