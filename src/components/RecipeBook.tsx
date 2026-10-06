@@ -37,6 +37,12 @@ export const RecipeBook: React.FC = () => {
   const [hasStartedBuilding, setHasStartedBuilding] = useState(selectedIds.length > 0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  useEffect(() => {
+    if (selectedIds.length > 0 || isReviewOpen) {
+      setHasStartedBuilding(true);
+    }
+  }, [selectedIds.length, isReviewOpen]);
+
   const currentIndex = chapterConfig.findIndex((c) => c.id === currentChapter);
   const activeChapter = chapterConfig[currentIndex];
 
