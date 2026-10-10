@@ -76,12 +76,12 @@ export const ReviewRecipeDisplay: React.FC<ReviewRecipeDisplayProps> = ({ goToSt
       ) : (
         <>
           <section
-            className="animate-fade-in space-y-3 rounded-lg border border-stone-900/10 bg-white/65 px-6 py-6
-              shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:px-10 sm:py-8"
+            className="animate-fade-in space-y-3 sm:rounded-lg sm:border sm:border-stone-900/10 sm:bg-white/65 px-6
+              sm:shadow-[0_3px_12px_rgba(28,25,23,0.06)] select-text sm:px-10 sm:py-8"
           >
             <header className="relative flex flex-col items-center justify-center overflow-hidden pb-2 pt-1 select-text">
               <div
-                className="mb-3 flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em]
+                className="hidden mb-3 sm:flex w-full max-w-xl items-center gap-3 text-[9px] font-black tracking-[0.28em]
                   text-amber-800/75 uppercase"
                 aria-hidden="true"
               >

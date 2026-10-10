@@ -131,10 +131,10 @@ export function ExploreDataDisplay<T extends ExploreItem>({
     };
 
     return (
-        <main className="mx-auto w-full max-w-4xl pb-24" aria-labelledby="explore-title">
+        <main className="mx-auto w-full max-w-4xl sm:pb-24" aria-labelledby="explore-title">
             <div
-                className="flex flex-col gap-8 rounded-2xl border border-stone-900/10 bg-white/70 px-4 py-8
-          shadow-[0_8px_28px_rgba(28,25,23,0.08)] sm:px-10 sm:py-10"
+                className="flex flex-col gap-8 sm:rounded-2xl sm:border border-stone-900/10 sm:bg-white/70 sm:px-4 sm:py-8
+          sm:shadow-[0_8px_28px_rgba(28,25,23,0.08)] px-5 sm:px-10 sm:py-10"
             >
                 {heading ? heading : null}
                 <SearchAndFilter

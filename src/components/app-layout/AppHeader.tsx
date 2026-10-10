@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export const AppHeader = () => {
   return (
-    <header className="relative flex w-full flex-col items-start select-none py-8" role="banner">
+    <header className="relative flex w-full flex-col items-start select-none py-8 pl-8" role="banner">
       <Link
         to="/"
         aria-label="Golden Toppers home"

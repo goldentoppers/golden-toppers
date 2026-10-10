@@ -64,8 +64,8 @@ export const IngredientPantry: React.FC<PantryProps> = ({
             >
                 <div
                     ref={cardRef}
-                    className="relative flex flex-col gap-4 rounded-2xl border border-stone-900/8 bg-white/60 p-10
-            shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
+                    className="relative flex flex-col gap-4 sm:rounded-2xl sm:border border-stone-900/8 sm:bg-white/60 sm:p-10
+            sm:shadow-[0_3px_12px_rgba(28,25,23,0.06)]"
                 >
                     <div className="flex flex-col gap-1">
                         <PageHeading

@@ -34,7 +34,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
     <section className={`${sectionWidthClass} ${className} font-sans text-[13px] leading-relaxed text-stone-600 md:text-[14px]select-none`} aria-labelledby={headingId}>
       <div className="flex flex-col">
         {subtitle && (
-          <div className="flex w-full items-center justify-center text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
+          <div className="hidden sm:flex w-full items-center justify-center text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
             <span className="mr-4 h-px w-16 shrink-0 bg-amber-700/25" />
             <span
               className="block text-[9.5px] leading-none font-black tracking-[0.25em] text-amber-700
@@ -48,7 +48,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
 
         <div className="flex flex-col gap-4">
           {title && (
-            <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center">
+            <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center m-auto">
               {icon && (
                 <AssetIcon
                   name={icon}
@@ -57,7 +57,7 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
                 />)}
               <h2
                 id={headingId}
-                className={`text-left font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic sm:${align}`}
+                className={`text-center font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic`}
               >
                 {title}
               </h2>

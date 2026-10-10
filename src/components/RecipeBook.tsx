@@ -72,7 +72,7 @@ export const RecipeBook: React.FC = () => {
     <>
       {!hasStartedBuilding && (
         <section
-          className="mx-auto flex w-full max-w-4xl flex-col items-center rounded-2xl border border-stone-900/10 bg-white/70 px-5 py-10 shadow-[0_8px_28px_rgba(28,25,23,0.08)] sm:px-10 sm:py-12"
+          className="mx-auto flex w-full max-w-4xl flex-col items-center rounded-2xl sm:border border-stone-900/10 sm:bg-white/70 sm:px-5 sm:py-10 sm:shadow-[0_8px_28px_rgba(28,25,23,0.08)] sm:px-10 sm:py-12"
           aria-labelledby="builder-intro-title"
         >
           <PageHeading
