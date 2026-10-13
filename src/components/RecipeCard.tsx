@@ -8,8 +8,8 @@ export interface RecipeCardProps {
 
 export const RecipeCard = ({ recipe, onBuild }: RecipeCardProps) => {
     return (
-        <article className="flex flex-row overflow-hidden rounded-lg border border-stone-900/10 bg-white/60 shadow-[0_3px_12px_rgba(28,25,23,0.06)]">
-            <div className="relative min-h-64 w-1/2 shrink-0">
+        <article className="flex flex-col md:flex-row overflow-hidden rounded-lg border border-stone-900/10 bg-white/60 shadow-[0_3px_12px_rgba(28,25,23,0.06)]">
+            <div className="relative min-h-64 md:w-1/2 shrink-0">
                 <img
                     key={recipe.image} // 🔑 Forces React to re-mount the tag on parent updates
                     src={recipe.image}
