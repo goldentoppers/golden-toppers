@@ -1,5 +1,5 @@
-import React from 'react';
-import { AssetIcon } from './icon/AssetIcon';
+import React from "react";
+import { AssetIcon } from "./icon/AssetIcon";
 
 interface PageHeadingProps {
   title?: string;
@@ -18,23 +18,30 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
   title,
   subtitle,
   details: Details,
-  headingId = 'about-philosophy-title',
-  align = 'center',
-  className = '',
+  headingId = "about-philosophy-title",
+  align = "center",
+  className = "",
   icon,
   // icon = 'pumpkin-bundle',
-  color = '#b45309',
+  color = "#b45309",
   iconSize,
   // adSlot,
 }) => {
-  const alignmentClass = align === 'left' ? 'text-left' : 'text-center';
-  const sectionWidthClass = 'mx-auto w-full max-w-4xl px-4';
+  const alignmentClass = align === "left" ? "text-left" : "text-center";
+  const sectionWidthClass = "mx-auto w-full max-w-4xl px-4";
 
   return (
-    <section className={`${sectionWidthClass} ${className} font-sans text-[13px] leading-relaxed text-stone-600 md:text-[14px]select-none`} aria-labelledby={headingId}>
+    <section
+      className={`${sectionWidthClass} ${className} md:text-[14px]select-none font-sans text-[13px]
+        leading-relaxed text-stone-600`}
+      aria-labelledby={headingId}
+    >
       <div className="flex flex-col">
         {subtitle && (
-          <div className="hidden sm:flex w-full items-center justify-center text-[9px] font-black tracking-[0.28em] text-amber-800/75 uppercase">
+          <div
+            className="hidden w-full items-center justify-center text-[9px] font-black
+              tracking-[0.28em] text-amber-800/75 uppercase sm:flex"
+          >
             <span className="mr-4 h-px w-16 shrink-0 bg-amber-700/25" />
             <span
               className="block text-[9.5px] leading-none font-black tracking-[0.25em] text-amber-700
@@ -48,16 +55,21 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
 
         <div className="flex flex-col gap-4">
           {title && (
-            <header className="mt-3 flex flex-row items-center justify-start gap-4 sm:justify-center m-auto">
+            <header
+              className="m-auto mt-3 flex flex-row items-center justify-start gap-4
+                sm:justify-center"
+            >
               {icon && (
                 <AssetIcon
                   name={icon}
                   color={color}
                   className={`h-20 w-20 shrink-0 ${iconSize ? iconSize : "h-16 w-16"}`}
-                />)}
+                />
+              )}
               <h2
                 id={headingId}
-                className={`text-center font-serif text-3xl leading-tight font-black tracking-wide text-stone-900 italic`}
+                className={`text-center font-serif text-3xl leading-tight font-black tracking-wide
+                text-stone-900 italic`}
               >
                 {title}
               </h2>
@@ -65,7 +77,10 @@ export const PageHeading: React.FC<PageHeadingProps> = ({
           )}
 
           {Details && (
-            <div className={`${alignmentClass} font-serif text-[14.5px] leading-relaxed font-medium p-y-5 text-stone-700/95 italic select-text sm:text-[16px]`}>
+            <div
+              className={`${alignmentClass} p-y-5 font-serif text-[14.5px] leading-relaxed
+              font-medium text-stone-700/95 italic select-text sm:text-[16px]`}
+            >
               <Details />
             </div>
           )}

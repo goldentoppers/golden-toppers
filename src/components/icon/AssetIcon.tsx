@@ -192,7 +192,7 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
         />
       );
     case "build":
-      return <WrenchScrewdriverIcon className={className} style={style} {...props} />
+      return <WrenchScrewdriverIcon className={className} style={style} {...props} />;
     case "pumpkin-spice-latte":
       return <PumpkinSpiceLatteIcon className={className} style={style} {...props} />;
     case "dog-bat":
@@ -576,7 +576,7 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           style={style}
           {...props}
         />
-      )
+      );
     case "empty-dog-bowl":
       return (
         <EmptyDogBowlIcon
@@ -818,13 +818,14 @@ export const AssetIcon: React.FC<AssetIconProps> = ({
           {...props}
         />
       );
-    case "dill": return (
-      <DillIcon
-        className={`${className} transition-colors duration-200`}
-        style={style}
-        {...props}
-      />
-    )
+    case "dill":
+      return (
+        <DillIcon
+          className={`${className} transition-colors duration-200`}
+          style={style}
+          {...props}
+        />
+      );
     case "cucumber":
       return (
         <CucumberIcon
